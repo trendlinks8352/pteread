@@ -935,21 +935,48 @@
 <script>
 // ═══════════════════════════════════════════════
 //  DATA LAYER
+//  우선순위: data.json (GitHub) → localStorage (퀴즈 기록)
+//  data.json  : 문제 원본 (GitHub에서 관리)
+//  localStorage: 퀴즈 history + 직접 추가한 문제
 // ═══════════════════════════════════════════════
 
 let DB = {
   questions: [],
-  history: []   // { date, qid, correct }
+  history: []
 };
 
-function loadDB() {
+async function loadDB() {
+  // 1) localStorage에서 history + 직접 추가 문제 로드
+  let local = { questions: [], history: [] };
   try {
     const raw = localStorage.getItem('pte-vault');
-    if (raw) DB = JSON.parse(raw);
+    if (raw) local = JSON.parse(raw);
   } catch(e) {}
+
+  // 2) data.json fetch (GitHub Pages 또는 로컬)
+  let remote = { questions: [] };
+  try {
+    const res = await fetch('data.json?v=' + Date.now());
+    if (res.ok) remote = await res.json();
+  } catch(e) {
+    console.log('data.json 없음 — localStorage만 사용');
+  }
+
+  // 3) 병합: data.json 문제 기준, localStorage 직접 추가 문제 추가
+  const remoteIds = new Set((remote.questions || []).map(q => q.id));
+  const localOnly = (local.questions || []).filter(q => !remoteIds.has(q.id));
+
+  DB.questions = [...(remote.questions || []), ...localOnly];
+  DB.history   = local.history || [];
 }
 
 function saveDB() {
+  // history + 직접 추가 문제(data.json에 없는 것)만 localStorage 저장
+  // data.json 문제는 GitHub에서 관리하므로 저장 안 함
+  let remoteIds = new Set();
+  try {
+    // data.json id 목록은 알 수 없으므로 전체 저장 (중복 병합으로 처리)
+  } catch(e) {}
   localStorage.setItem('pte-vault', JSON.stringify(DB));
 }
 
@@ -1713,44 +1740,9 @@ function updateHeaderStats() {
 //  INIT
 // ═══════════════════════════════════════════════
 
-window.addEventListener('DOMContentLoaded', () => {
-  loadDB();
+window.addEventListener('DOMContentLoaded', async () => {
+  await loadDB();   // data.json fetch 후 localStorage 병합
   document.getElementById('f-date').value = todayStr();
-
-  // Add some sample data if empty
-  if (DB.questions.length === 0) {
-    DB.questions = [
-      {
-        id: 'sample1',
-        type: 'FIB',
-        date: todayStr(),
-        passage: 'The economy [BLANK] rapidly after the war, with unemployment rates [BLANK] to historic lows.',
-        question: '',
-        options: ['recovered', 'falling', 'rose', 'declined', 'dramatically'],
-        answers: ['recovered', 'falling'],
-        explanation: '"Recovered" is correct because the economy bounced back. "Falling" matches unemployment going down to historic lows.',
-        memo: '시제, 문맥'
-      },
-      {
-        id: 'sample2',
-        type: 'MCM',
-        date: todayStr(),
-        passage: 'Scientists have discovered that regular exercise not only improves physical health but also enhances cognitive function, reduces stress, and may even slow the aging process.',
-        question: 'According to the passage, which of the following are benefits of regular exercise? (Select ALL that apply)',
-        options: [
-          { text: 'Improved physical health', correct: true },
-          { text: 'Enhanced cognitive function', correct: true },
-          { text: 'Reduced stress', correct: true },
-          { text: 'Complete immunity to disease', correct: false },
-          { text: 'Slowing the aging process', correct: true }
-        ],
-        answers: [],
-        explanation: 'All options except "complete immunity to disease" are explicitly mentioned in the passage.',
-        memo: 'MCM 전략: 지문에 명시된 것만 선택'
-      }
-    ];
-    saveDB();
-  }
 
   renderDashboard();
   updateHeaderStats();
