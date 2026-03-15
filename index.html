@@ -91,6 +91,7 @@ main{overflow-y:auto;}
 .bw-used{opacity:0.25;pointer-events:none;}
 .blank{display:inline-block;border-bottom:2px solid var(--accent);min-width:80px;margin:0 3px;padding:0 6px;text-align:center;font-family:'DM Mono',monospace;font-size:13px;color:var(--accent);cursor:pointer;border-radius:2px;transition:background 0.15s;}
 .blank:hover{background:rgba(200,245,58,0.08);}
+.b-active{border-color:var(--accent)!important;background:rgba(200,245,58,0.15)!important;color:var(--accent)!important;outline:2px solid var(--accent);}
 .b-filled{background:rgba(200,245,58,0.06);}
 .b-correct{border-color:var(--green)!important;color:var(--green)!important;background:rgba(58,255,160,0.08)!important;}
 .b-wrong{border-color:var(--red)!important;color:var(--red)!important;background:rgba(255,91,91,0.08)!important;}
@@ -492,14 +493,9 @@ function buildPassage(q){
 
 function buildInteraction(q,state){
   if(q.type==='FIB'||q.type==='RW-FIB'){
-    // 단어 뱅크: 클릭하면 첫 빈 칸에 자동 삽입
-    return `
-      <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:1px;">
-        👆 단어 클릭 → 빈칸에 자동 입력 &nbsp;|&nbsp; 채워진 빈칸 클릭 → 취소
-      </div>
-      <div class="word-bank" id="bank-${q.id}">
-        ${(q.options||[]).map((w,i)=>`<span class="bank-word" id="bw-${q.id}-${i}" onclick="fillNext('${q.id}','${esc(w)}')">${w}</span>`).join('')}
-      </div>`;
+    return `<div class="word-bank" id="bank-${q.id}">
+      ${(q.options||[]).map((w,i)=>`<span class="bank-word" id="bw-${q.id}-${i}" onclick="pickWord('${q.id}','${esc(w)}')">${w}</span>`).join('')}
+    </div>`;
   }
   if(q.type==='MCM'||q.type==='MCS'){
     const sel=state.selected||[];
@@ -508,32 +504,63 @@ function buildInteraction(q,state){
   return '';
 }
 
-// 단어 클릭 → 첫 번째 빈 칸(___) 에 자동 채우기
-function fillNext(qid, word){
-  const blanks = [...document.querySelectorAll(`[id^="bl-${qid}-"]`)];
-  // 아직 안 채워진 첫 번째 빈칸 찾기
-  const target = blanks.find(bl => bl.dataset.filled !== '1');
-  if(!target){ showToast('모든 빈칸이 채워졌어요! 빈칸을 클릭해서 지우세요.'); return; }
-  target.textContent = word;
-  target.dataset.filled = '1';
-  target.dataset.word = word;
-  target.classList.add('b-filled');
-}
+// 현재 선택된 빈칸 (qid -> blankIdx)
+let activeBlank = null;
 
-// 채워진 빈칸 클릭 → 지우기
-function clearBlank(qid, bi){
+// 빈칸 클릭 → 활성화 (테두리 강조)
+function activateBlank(qid, bi){
+  // 같은 문제의 기존 활성 빈칸 해제
+  document.querySelectorAll(`[id^="bl-${qid}-"]`).forEach(b=>{
+    b.classList.remove('b-active');
+  });
   const bl = document.getElementById(`bl-${qid}-${bi}`);
-  if(!bl || bl.dataset.filled !== '1') return;
-  bl.textContent = '___';
-  bl.dataset.filled = '';
-  bl.dataset.word = '';
-  bl.classList.remove('b-filled','b-correct','b-wrong');
+  if(!bl) return;
+  // 이미 채워져 있으면 지우기
+  if(bl.dataset.filled==='1'){
+    bl.textContent='___';
+    bl.dataset.filled='';
+    bl.dataset.word='';
+    bl.classList.remove('b-filled','b-correct','b-wrong');
+    activeBlank=null;
+    return;
+  }
+  bl.classList.add('b-active');
+  activeBlank={qid, bi};
 }
 
-// 기존 호환용 (사용 안 함)
+// 단어 클릭 → 활성화된 빈칸에 채우기
+function pickWord(qid, word){
+  if(!activeBlank || activeBlank.qid!==qid){
+    // 활성 빈칸 없으면 첫 번째 빈 칸 자동 선택
+    const blanks=[...document.querySelectorAll(`[id^="bl-${qid}-"]`)];
+    const empty=blanks.find(b=>b.dataset.filled!=='1');
+    if(!empty){ showToast('모든 빈칸이 채워졌어요. 빈칸 클릭 → 삭제'); return; }
+    activeBlank={qid, bi: parseInt(empty.id.split('-').pop())};
+    document.querySelectorAll(`[id^="bl-${qid}-"]`).forEach(b=>b.classList.remove('b-active'));
+    empty.classList.add('b-active');
+  }
+  const bl=document.getElementById(`bl-${activeBlank.qid}-${activeBlank.bi}`);
+  if(!bl) return;
+  bl.textContent=word;
+  bl.dataset.filled='1';
+  bl.dataset.word=word;
+  bl.classList.remove('b-active');
+  bl.classList.add('b-filled');
+  activeBlank=null;
+
+  // 다음 빈 칸 자동 활성화
+  const blanks=[...document.querySelectorAll(`[id^="bl-${qid}-"]`)];
+  const next=blanks.find(b=>b.dataset.filled!=='1');
+  if(next){
+    next.classList.add('b-active');
+    activeBlank={qid, bi: parseInt(next.id.split('-').pop())};
+  }
+}
+
+// 기존 호환
 let selWord=null;
 function selectWord(){}
-function clickBlank(qid,bi){ clearBlank(qid,bi); }
+function clickBlank(qid,bi){ activateBlank(qid,bi); }
 function toggleOpt(qid,idx,type){
   if(!quizStates[qid])quizStates[qid]={};
   let sel=quizStates[qid].selected||[];
