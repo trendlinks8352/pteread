@@ -3,86 +3,90 @@
     {
       "id": "20250308-seminar-fib",
       "type": "FIB",
+      "cat": "collocation",
       "date": "2025-03-08",
       "passage": "Seminars are not designed to be mini-lectures. Their educational [BLANK] is to provide an opportunity for in-depth discussion of material that has been introduced in lectures. This is founded on the [BLANK] that students have read the relevant material beforehand, and it is highly [BLANK] that a worthwhile seminar can take place if they have not. Each student has a responsibility, possibly including undertaking a [BLANK] for the entire group, such as leading the discussion or summarising key points. The seminar is also to [BLANK] discussion, so students should come prepared with questions and comments.",
       "question": "아래 단어 중 알맞은 것을 골라 빈칸을 채우세요.",
-      "options": [
-        "role",
-        "assumption",
-        "unlikely",
-        "duty",
-        "provoke",
-        "purpose",
-        "information",
-        "possible",
-        "task",
-        "commit"
-      ],
-      "answers": ["role", "assumption", "unlikely", "duty", "provoke"],
-      "explanation": "【Collocation 패턴 정리】\n\n✅ role\n패턴: the role is to + verb / play a role in\n예문: The teacher's role is to guide students.\n\n✅ assumption\n패턴: founded on the assumption that / based on the assumption that\n예문: The theory is based on the assumption that markets are efficient.\n❌ information → assumption (founded on information은 어색한 표현)\n\n✅ unlikely\n패턴: highly unlikely / very unlikely / unlikely that\n예문: It is highly unlikely that the plan will succeed.\n❌ possible → unlikely (highly possible은 거의 안 씀)\n\n✅ duty\n패턴: undertake a duty / perform a duty / carry out a duty\n예문: He undertook the duty of leading the team.\n❌ task → duty (task는 complete/perform a task)\n\n✅ provoke\n패턴: provoke discussion / provoke debate / provoke reaction\n예문: The article provoked a debate.\n❌ commit → provoke (commit은 commit a crime / commit to a plan)",
-      "memo": "Collocation | role is to / founded on assumption / highly unlikely / undertake a duty / provoke discussion"
+      "options": ["role","assumption","unlikely","duty","provoke","purpose","information","possible","task","commit"],
+      "answers": ["role","assumption","unlikely","duty","provoke"],
+      "explanation": "❌ purpose → ✅ role\n패턴: educational role is to + verb\n\n❌ information → ✅ assumption\n패턴: founded on the assumption that (고정 표현)\n\n❌ possible → ✅ unlikely\n패턴: highly unlikely (highly possible은 거의 안 씀)\n\n❌ task → ✅ duty\n패턴: undertake a duty (task는 complete/perform a task)\n\n❌ commit → ✅ provoke\n패턴: provoke discussion (commit은 commit a crime/to a plan)",
+      "memo": "founded on assumption / highly unlikely / undertake a duty / provoke discussion"
     },
     {
       "id": "20250308-seminar-drill",
       "type": "MCM",
+      "cat": "collocation",
       "date": "2025-03-08",
       "passage": "",
-      "question": "【Collocation 복습 — 세미나】 다음 중 올바른 표현을 모두 고르세요.",
+      "question": "【Collocation 복습 — 세미나】 올바른 표현을 모두 고르세요.",
       "options": [
-        { "text": "the role is to provide", "correct": true },
-        { "text": "the purpose is to provide", "correct": false },
-        { "text": "founded on the assumption that", "correct": true },
-        { "text": "founded on the information that", "correct": false },
-        { "text": "highly unlikely", "correct": true },
-        { "text": "highly possible", "correct": false },
-        { "text": "undertake a duty", "correct": true },
-        { "text": "undertake a task", "correct": false },
-        { "text": "provoke discussion", "correct": true },
-        { "text": "commit discussion", "correct": false }
+        {"text":"educational role","correct":true},{"text":"educational purpose","correct":false},
+        {"text":"founded on the assumption that","correct":true},{"text":"founded on the information that","correct":false},
+        {"text":"highly unlikely","correct":true},{"text":"highly possible","correct":false},
+        {"text":"undertake a duty","correct":true},{"text":"undertake a task","correct":false},
+        {"text":"provoke discussion","correct":true},{"text":"commit discussion","correct":false}
       ],
       "answers": [],
-      "explanation": "핵심 Collocation 5가지:\n• role is to + verb — 역할은 ~이다\n• founded on the assumption that — ~라는 가정에 근거하다\n• highly unlikely — 매우 가능성이 낮다\n• undertake a duty — 책임을 맡다 (task는 complete/perform)\n• provoke discussion — 토론을 촉발하다",
-      "memo": "Collocation 복습 | 세미나 | 2025-03-08"
+      "explanation": "• educational role — 역할 (role is to + verb)\n• founded on the assumption that — ~라는 가정에 근거\n• highly unlikely — 매우 가능성 낮다\n• undertake a duty — 책임을 맡다\n• provoke discussion — 토론을 촉발하다",
+      "memo": "세미나 Collocation 드릴"
     },
     {
       "id": "20250308-ikebana-fib",
       "type": "FIB",
+      "cat": "collocation",
       "date": "2025-03-08",
       "passage": "More than simply putting flowers in a [BLANK], Ikebana is a [BLANK] art form that encompasses the aesthetic principles of Japanese culture. Rather than a multicolored [BLANK] of blossoms, Ikebana often uses other areas of the [BLANK], such as stems, leaves, and branches, as design elements.",
       "question": "아래 단어 중 알맞은 것을 골라 빈칸을 채우세요.",
-      "options": [
-        "container",
-        "disciplined",
-        "arrangement",
-        "plant",
-        "vase",
-        "creative",
-        "collection",
-        "flower"
-      ],
-      "answers": ["container", "disciplined", "arrangement", "plant"],
-      "explanation": "【Collocation 패턴 정리】\n\n✅ container\n패턴: flowers in a container / put in a container\n비슷한 표현: vase(꽃병), pot(화분), container(용기)\n예문: She placed the flowers in a glass container.\n\n✅ disciplined\n패턴: disciplined art form / highly disciplined practice\n예문: Ballet is a highly disciplined art form.\n❌ creative → disciplined (문맥상 '체계적/규율 있는'이 맞음)\n\n✅ arrangement\n패턴: flower arrangement / arrangement of flowers / a multicolored arrangement\n예문: She made a beautiful flower arrangement.\n❌ collection → arrangement (arrangement는 의도적 배열, collection은 단순 모음)\n\n✅ plant\n패턴: parts of a plant / areas of the plant\n예문: The leaves are important parts of the plant.\n❌ flower → plant (flower는 꽃 자체, plant는 stems/leaves/branches 포함한 식물 전체)",
-      "memo": "Collocation | flowers in a container / disciplined art form / flower arrangement / parts of a plant"
+      "options": ["container","disciplined","arrangement","plant","vase","creative","collection","flower"],
+      "answers": ["container","disciplined","arrangement","plant"],
+      "explanation": "❌ vase → ✅ container\n패턴: flowers in a container\n\n❌ creative → ✅ disciplined\n패턴: disciplined art form (체계적/규율)\n\n❌ collection → ✅ arrangement\n패턴: flower arrangement (의도적 배열)\n\n❌ flower → ✅ plant\n패턴: areas of the plant (식물 전체)",
+      "memo": "flowers in container / disciplined art form / flower arrangement / parts of a plant"
     },
     {
       "id": "20250308-ikebana-drill",
       "type": "MCM",
+      "cat": "collocation",
       "date": "2025-03-08",
       "passage": "",
-      "question": "【Collocation 복습 — 이케바나】 다음 중 올바른 표현을 모두 고르세요.",
+      "question": "【Collocation 복습 — 이케바나】 올바른 표현을 모두 고르세요.",
       "options": [
-        { "text": "flowers in a container", "correct": true },
-        { "text": "flowers in a collection", "correct": false },
-        { "text": "disciplined art form", "correct": true },
-        { "text": "creative art form", "correct": false },
-        { "text": "flower arrangement", "correct": true },
-        { "text": "flower collection", "correct": false },
-        { "text": "parts of a plant", "correct": true },
-        { "text": "parts of a flower", "correct": false }
+        {"text":"flowers in a container","correct":true},{"text":"flowers in a collection","correct":false},
+        {"text":"disciplined art form","correct":true},{"text":"creative art form","correct":false},
+        {"text":"flower arrangement","correct":true},{"text":"flower collection","correct":false},
+        {"text":"areas of the plant","correct":true},{"text":"areas of the flower","correct":false}
       ],
       "answers": [],
-      "explanation": "핵심 Collocation 4가지:\n• flowers in a container — 꽃을 용기에 넣다\n• disciplined art form — 규율 있는 예술 형식\n• flower arrangement — 꽃꽂이 / 의도적 배열\n• parts of a plant — 식물의 부분 (stems, leaves, branches 포함)",
-      "memo": "Collocation 복습 | 이케바나 | 2025-03-08"
+      "explanation": "• flowers in a container\n• disciplined art form\n• flower arrangement\n• areas of the plant",
+      "memo": "이케바나 Collocation 드릴"
+    },
+    {
+      "id": "20250315-sedentary-fib",
+      "type": "FIB",
+      "cat": "collocation",
+      "date": "2025-03-15",
+      "passage": "Research shows that children spend an increasing amount of time [BLANK] in sedentary activities such as watching television and playing video games. This [BLANK] is linked to rising obesity rates, as these activities burn very few calories. Although active video games have been proposed as a solution, they are not a sufficient [BLANK] for normal physical activity and should not be treated as such.",
+      "question": "아래 단어 중 알맞은 것을 골라 빈칸을 채우세요.",
+      "options": ["engaged","behavior","replacement","wasted","action","consumption","involved","habit","substitute","alternative"],
+      "answers": ["engaged","behavior","replacement"],
+      "explanation": "① Collocation 오류\n❌ wasted → ✅ engaged\n패턴: engage in activities\n\n❌ consumption → ✅ replacement\n패턴: replacement for\n\n② 의미 착각\n❌ action → ✅ behavior\nbehavior = 반복 행동 패턴 / action = 개별 행동\n\n③ 논리\nsedentary activity → 비만 → AVG는 대체 불가\n∴ replacement",
+      "memo": "engage in / replacement for | behavior vs action"
+    },
+    {
+      "id": "20250315-sedentary-drill",
+      "type": "MCM",
+      "cat": "collocation",
+      "date": "2025-03-15",
+      "passage": "",
+      "question": "【복습 — 비만/운동】 올바른 표현을 모두 고르세요.",
+      "options": [
+        {"text":"engage in activities","correct":true},{"text":"waste in activities","correct":false},
+        {"text":"sedentary behavior","correct":true},{"text":"sedentary action","correct":false},
+        {"text":"replacement for","correct":true},{"text":"replacement to","correct":false},
+        {"text":"substitute for","correct":true},{"text":"alternative to","correct":true}
+      ],
+      "answers": [],
+      "explanation": "• engage in ~ — 참여/시간 보내다\n• sedentary behavior — 생활 패턴 (behavior)\n• replacement for / substitute for — 전치사 for\n• alternative to — 전치사 to",
+      "memo": "비만/운동 Collocation 드릴"
     }
   ]
 }
