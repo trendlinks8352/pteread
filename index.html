@@ -807,6 +807,10 @@
   <div class="activity-list" id="type-stats"></div>
 
   <br>
+  <div class="section-title">카테고리별 정답률</div>
+  <div class="activity-list" id="cat-stats"></div>
+
+  <br>
   <div class="section-title">최근 퀴즈 기록</div>
   <div class="activity-list" id="activity-list">
     <div style="color:var(--muted);font-size:13px;text-align:center;padding:30px;">아직 퀴즈 기록이 없어요. 퀴즈를 풀어보세요!</div>
@@ -816,16 +820,34 @@
 <!-- ═══════════════════ QUIZ PAGE ═══════════════════ -->
 <div id="page-quiz" class="page">
 
-  <div class="quiz-controls">
-    <button class="filter-btn active" onclick="filterQuiz('all',this)">전체</button>
-    <button class="filter-btn" onclick="filterQuiz('FIB',this)">FIB</button>
-    <button class="filter-btn" onclick="filterQuiz('RW-FIB',this)">RW-FIB</button>
-    <button class="filter-btn" onclick="filterQuiz('MCM',this)">MCM</button>
-    <button class="filter-btn" onclick="filterQuiz('MCS',this)">MCS</button>
-    <button class="filter-btn" onclick="filterQuiz('RO',this)">RO</button>
-    <button class="filter-btn" onclick="filterQuiz('wrong',this)">❌ 오답만</button>
-    <button class="quiz-mode-btn" onclick="startSession()">🚀 세션 시작</button>
+  <!-- Row 1: 오류 카테고리 -->
+  <div style="margin-bottom:8px">
+    <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">오류 카테고리</div>
+    <div class="quiz-controls" style="margin-bottom:0">
+      <button class="filter-btn cat-btn active" onclick="filterCat('all',this)">📚 전체</button>
+      <button class="filter-btn cat-btn" onclick="filterCat('collocation',this)" style="color:#c85bff;border-color:#c85bff40">🔗 Collocation</button>
+      <button class="filter-btn cat-btn" onclick="filterCat('meaning',this)" style="color:var(--warn);border-color:#ffd93a40">💡 의미 착각</button>
+      <button class="filter-btn cat-btn" onclick="filterCat('logic',this)" style="color:var(--accent2);border-color:#5b8cff40">🧩 논리 흐름</button>
+      <button class="filter-btn cat-btn" onclick="filterCat('wrong',this)" style="color:var(--wrong);border-color:#ff5b5b40">❌ 오답만</button>
+      <button class="quiz-mode-btn" onclick="startSession()">🚀 세션 시작</button>
+    </div>
   </div>
+
+  <!-- Row 2: 문제 유형 -->
+  <div style="margin-bottom:24px">
+    <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">문제 유형</div>
+    <div class="quiz-controls" style="margin-bottom:0">
+      <button class="filter-btn type-btn active" onclick="filterType('all',this)">전체</button>
+      <button class="filter-btn type-btn" onclick="filterType('FIB',this)">FIB</button>
+      <button class="filter-btn type-btn" onclick="filterType('RW-FIB',this)">RW-FIB</button>
+      <button class="filter-btn type-btn" onclick="filterType('MCM',this)">MCM</button>
+      <button class="filter-btn type-btn" onclick="filterType('MCS',this)">MCS</button>
+      <button class="filter-btn type-btn" onclick="filterType('RO',this)">RO</button>
+    </div>
+  </div>
+
+  <!-- 현재 필터 표시 -->
+  <div id="filter-badge" style="display:none;margin-bottom:16px;font-family:'DM Mono',monospace;font-size:12px;color:var(--muted)"></div>
 
   <div id="quiz-list"></div>
 
@@ -1002,6 +1024,39 @@ const QUESTIONS = [
     answers: [],
     explanation: "핵심 Collocation 4가지:\n• flowers in a container — 꽃을 용기에 넣다\n• disciplined art form — 규율 있는 예술 형식\n• flower arrangement — 꽃꽂이 / 의도적 배열\n• parts of a plant — 식물의 부분 (stems, leaves, branches 포함)",
     memo: "Collocation 복습 | 이케바나 | 2025-03-08"
+  },
+
+  // ── 2025-03-15 | 비만/운동 지문 ──────────────────
+  {
+    id: "20250315-sedentary-fib",
+    type: "FIB",
+    date: "2025-03-15",
+    passage: "Research shows that children spend an increasing amount of time [BLANK] in sedentary activities such as watching television and playing video games. This [BLANK] is linked to rising obesity rates, as these activities burn very few calories. Although active video games have been proposed as a solution, they are not a sufficient [BLANK] for normal physical activity and should not be treated as such.",
+    question: "아래 단어 중 알맞은 것을 골라 빈칸을 채우세요.",
+    options: ["engaged","behavior","replacement","wasted","action","consumption","involved","habit","substitute","alternative"],
+    answers: ["engaged","behavior","replacement"],
+    explanation: "【오류 카테고리별 분석】\n\n━━ ① Collocation 오류 ━━\n✅ engaged — engage in (sedentary activities)\n❌ wasted → engaged\n기억할 표현:\n  • engage in activities\n  • engage in research\n  • engage in discussion\n\n✅ replacement — replacement for\n❌ consumption → replacement\n기억할 표현:\n  • replacement for (= ~의 대체)\n  • substitute for\n  • alternative to\n\n━━ ② 의미 착각 ━━\n✅ behavior — sedentary behavior\n❌ action → behavior\n구분:\n  • behavior = 행동 패턴 / 반복되는 생활 방식\n  • action = 개별적인 단일 행동\n예문: Sedentary behavior increases obesity risk.\n\n━━ ③ 논리 흐름 ━━\nsedentary activity 증가 → 운동 부족 → 비만 증가\n→ AVG 게임 등장 → but 운동 대체는 아님\n∴ replacement가 논리적으로 자연스러운 흐름",
+    memo: "Collocation: engage in / replacement for | 의미착각: behavior vs action | 논리: sedentary→obesity→not replacement"
+  },
+  {
+    id: "20250315-sedentary-drill",
+    type: "MCM",
+    date: "2025-03-15",
+    passage: "",
+    question: "【Collocation + 의미 복습 — 비만/운동】 다음 중 올바른 표현을 모두 고르세요.",
+    options: [
+      { text: "engage in activities", correct: true },
+      { text: "waste in activities", correct: false },
+      { text: "sedentary behavior", correct: true },
+      { text: "sedentary action", correct: false },
+      { text: "replacement for physical activity", correct: true },
+      { text: "consumption for physical activity", correct: false },
+      { text: "substitute for", correct: true },
+      { text: "substitute to", correct: false }
+    ],
+    answers: [],
+    explanation: "핵심 정리:\n\n• engage in ~ — ~에 참여하다/시간을 보내다 (Collocation)\n• sedentary behavior — 앉아있는 생활 습관 (의미: 패턴/습관 → behavior)\n• replacement for / substitute for — ~의 대체 (전치사 for 필수!)\n• alternative to — ~의 대안 (전치사 to 주의)\n\n⚡ PTE 빈도 패턴:\n  60% Collocation / 25% 의미구분 / 15% 논리",
+    memo: "Collocation 복습 | 비만/운동 | 2025-03-15"
   }
 ];
 
@@ -1106,6 +1161,7 @@ function renderDashboard() {
 
   renderHeatmap();
   renderTypeStats(types);
+  renderCatStats();
   renderActivity();
 }
 
@@ -1165,7 +1221,58 @@ function renderTypeStats(types) {
   }
 }
 
-function renderActivity() {
+function renderCatStats() {
+  const el = document.getElementById('cat-stats');
+  if (!el) return;
+  el.innerHTML = '';
+
+  const cats = {
+    collocation: { label: '🔗 Collocation 오류',  color: '#c85bff', total: 0, attempts: 0, correct: 0 },
+    meaning:     { label: '💡 의미 착각',           color: '#ffd93a', total: 0, attempts: 0, correct: 0 },
+    logic:       { label: '🧩 논리 흐름',           color: '#5b8cff', total: 0, attempts: 0, correct: 0 },
+  };
+
+  DB.questions.forEach(q => {
+    const cat = getQuestionCategory(q);
+    if (cats[cat]) cats[cat].total++;
+  });
+
+  DB.history.forEach(h => {
+    const q = DB.questions.find(q => q.id === h.qid);
+    if (!q) return;
+    const cat = getQuestionCategory(q);
+    if (!cats[cat]) return;
+    cats[cat].attempts++;
+    if (h.correct) cats[cat].correct++;
+  });
+
+  Object.entries(cats).forEach(([key, s]) => {
+    const acc = s.attempts ? Math.round(s.correct / s.attempts * 100) : null;
+    const div = document.createElement('div');
+    div.className = 'activity-item';
+    div.style.cursor = 'pointer';
+    div.onclick = () => {
+      showPage('quiz');
+      // 카테고리 버튼 클릭 시뮬레이션
+      setTimeout(() => {
+        const btn = [...document.querySelectorAll('.cat-btn')].find(b => b.textContent.includes(
+          key === 'collocation' ? 'Collocation' : key === 'meaning' ? '의미' : '논리'
+        ));
+        if (btn) filterCat(key, btn);
+      }, 50);
+    };
+    div.innerHTML = `
+      <span style="font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:${s.color};min-width:160px">${s.label}</span>
+      <span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--muted)">${s.total}문제</span>
+      <div style="flex:1;height:6px;background:var(--border);border-radius:3px;margin:0 16px;overflow:hidden">
+        <div style="height:100%;width:${acc ?? 0}%;background:${s.color};border-radius:3px;transition:width 0.6s ease;opacity:0.8"></div>
+      </div>
+      <span style="font-family:'DM Mono',monospace;font-size:13px;color:${acc !== null ? (acc >= 70 ? 'var(--correct)' : 'var(--wrong)') : 'var(--muted)'};min-width:50px;text-align:right">${acc !== null ? acc + '%' : '미시도'}</span>
+      <span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-left:8px">→ 연습</span>
+    `;
+    el.appendChild(div);
+  });
+}
   const el = document.getElementById('activity-list');
   const recent = [...DB.history].reverse().slice(0, 15);
   if (!recent.length) { el.innerHTML = '<div style="color:var(--muted);font-size:13px;text-align:center;padding:30px;">아직 퀴즈 기록이 없어요.</div>'; return; }
@@ -1191,28 +1298,76 @@ function renderActivity() {
 //  QUIZ LIST
 // ═══════════════════════════════════════════════
 
-let currentFilter = 'all';
-let quizStates = {}; // qid -> state
+let currentFilter = 'all';   // 오류 카테고리
+let currentType   = 'all';   // 문제 유형
+let quizStates = {};
 
-function filterQuiz(type, btn) {
-  currentFilter = type;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+// 카테고리 키워드 매핑 (memo 필드 기준)
+const CAT_KEYWORDS = {
+  collocation: ['collocation', 'Collocation'],
+  meaning:     ['의미착각', '의미 착각', '의미구분'],
+  logic:       ['논리', 'logic']
+};
+
+function getQuestionCategory(q) {
+  const memo = (q.memo || '').toLowerCase();
+  const exp  = (q.explanation || '').toLowerCase();
+  if (memo.includes('collocation') || exp.includes('collocation')) return 'collocation';
+  if (memo.includes('의미착각') || memo.includes('의미 착각') || exp.includes('의미 착각') || exp.includes('의미착각')) return 'meaning';
+  if (memo.includes('논리') || exp.includes('논리')) return 'logic';
+  return 'collocation'; // 기본값
+}
+
+function filterCat(cat, btn) {
+  currentFilter = cat;
+  document.querySelectorAll('.cat-btn').forEach(b => {
+    b.classList.remove('active');
+    b.style.background = '';
+  });
   btn.classList.add('active');
+  updateFilterBadge();
   renderQuizList();
+}
+
+function filterType(type, btn) {
+  currentType = type;
+  document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  updateFilterBadge();
+  renderQuizList();
+}
+
+// 이전 호환용
+function filterQuiz(type, btn) { filterType(type, btn); }
+
+function updateFilterBadge() {
+  const el = document.getElementById('filter-badge');
+  const catLabel = { all:'전체', collocation:'🔗 Collocation', meaning:'💡 의미 착각', logic:'🧩 논리 흐름', wrong:'❌ 오답만' };
+  const typeLabel = { all:'전체 유형', FIB:'FIB', 'RW-FIB':'RW-FIB', MCM:'MCM', MCS:'MCS', RO:'RO' };
+  const qs = getFilteredQuestions();
+  el.style.display = 'block';
+  el.textContent = `${catLabel[currentFilter] || currentFilter}  ·  ${typeLabel[currentType] || currentType}  —  ${qs.length}문제`;
 }
 
 function getFilteredQuestions() {
   let qs = DB.questions;
+
+  // 카테고리 필터
   if (currentFilter === 'wrong') {
-    // questions that have been attempted and last attempt was wrong
     qs = qs.filter(q => {
       const attempts = DB.history.filter(h => h.qid === q.id);
       if (!attempts.length) return false;
       return !attempts[attempts.length - 1].correct;
     });
   } else if (currentFilter !== 'all') {
-    qs = qs.filter(q => q.type === currentFilter);
+    qs = qs.filter(q => getQuestionCategory(q) === currentFilter);
   }
+
+  // 유형 필터
+  if (currentType !== 'all') {
+    qs = qs.filter(q => q.type === currentType);
+  }
+
   return qs;
 }
 
@@ -1237,12 +1392,18 @@ function buildQuizCard(q, idx) {
   div.id = 'qcard-' + q.id;
 
   const tagClass = { FIB:'tag-fib', 'RW-FIB':'tag-rwfib', MCM:'tag-mcm', MCS:'tag-mcs', RO:'tag-ro' };
+  const catBadge = {
+    collocation: `<span style="font-family:'DM Mono',monospace;font-size:10px;padding:2px 8px;border-radius:10px;background:#c85bff15;color:#c85bff;border:1px solid #c85bff30">🔗 Collocation</span>`,
+    meaning:     `<span style="font-family:'DM Mono',monospace;font-size:10px;padding:2px 8px;border-radius:10px;background:#ffd93a15;color:#ffd93a;border:1px solid #ffd93a30">💡 의미착각</span>`,
+    logic:       `<span style="font-family:'DM Mono',monospace;font-size:10px;padding:2px 8px;border-radius:10px;background:#5b8cff15;color:#5b8cff;border:1px solid #5b8cff30">🧩 논리흐름</span>`,
+  };
   const state = quizStates[q.id] || {};
 
   let inner = `
     <div class="quiz-meta">
       <span class="quiz-num">#${(idx + 1).toString().padStart(2, '0')}</span>
       <span class="activity-tag ${tagClass[q.type] || ''}">${q.type}</span>
+      ${catBadge[getQuestionCategory(q)] || ''}
       <span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-left:auto">${q.date || ''}</span>
     </div>
   `;
