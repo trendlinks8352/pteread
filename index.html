@@ -7,246 +7,158 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=Pretendard:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg:      #09090e;
-  --surface: #111117;
-  --card:    #16161d;
-  --border:  #252530;
-  --accent:  #c8f53a;
-  --blue:    #5b8cff;
-  --purple:  #c85bff;
-  --yellow:  #ffd93a;
-  --text:    #e4e4ee;
-  --muted:   #64647a;
-  --green:   #3affa0;
-  --red:     #ff5b5b;
+  --bg:#09090e; --surface:#111117; --card:#16161d; --border:#252530;
+  --accent:#c8f53a; --blue:#5b8cff; --purple:#c85bff; --yellow:#ffd93a;
+  --text:#e4e4ee; --muted:#64647a; --green:#3affa0; --red:#ff5b5b;
 }
-* { margin:0; padding:0; box-sizing:border-box; }
-body { background:var(--bg); color:var(--text); font-family:'Pretendard',sans-serif; min-height:100vh; }
-
-.shell { display:grid; grid-template-columns:220px 1fr; min-height:100vh; }
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Pretendard',sans-serif;min-height:100vh;}
+.shell{display:grid;grid-template-columns:220px 1fr;min-height:100vh;}
 
 /* SIDEBAR */
-aside {
-  background:var(--surface);
-  border-right:1px solid var(--border);
-  padding:28px 0;
-  position:sticky; top:0; height:100vh;
-  display:flex; flex-direction:column;
-}
-.logo { padding:0 24px 24px; border-bottom:1px solid var(--border); margin-bottom:20px; }
-.logo h1 { font-family:'Bebas Neue',sans-serif; font-size:26px; letter-spacing:3px; color:var(--accent); }
-.logo p  { font-family:'DM Mono',monospace; font-size:11px; color:var(--muted); margin-top:3px; }
-
-.nav-section { padding:0 12px; }
-.nav-label { font-family:'DM Mono',monospace; font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:1.5px; padding:0 12px; margin-bottom:6px; }
-.nav-btn {
-  display:flex; align-items:center; gap:10px; width:100%;
-  padding:10px 14px; border-radius:8px; border:none;
-  background:transparent; color:var(--muted);
-  font-family:'Pretendard',sans-serif; font-size:14px;
-  cursor:pointer; transition:all 0.15s; text-align:left;
-}
-.nav-btn:hover { background:var(--card); color:var(--text); }
-.nav-btn.active { background:rgba(200,245,58,0.1); color:var(--accent); }
-.nav-btn .icon { font-size:15px; width:20px; text-align:center; }
-
-.sidebar-stats {
-  margin-top:auto; padding:20px 24px 0;
-  border-top:1px solid var(--border);
-}
-.sidebar-stat {
-  display:flex; justify-content:space-between; align-items:center;
-  padding:8px 0; font-family:'DM Mono',monospace; font-size:12px; color:var(--muted);
-  border-bottom:1px solid var(--border);
-}
-.sidebar-stat:last-child { border-bottom:none; }
-.sidebar-stat b { color:var(--accent); font-size:18px; }
+aside{background:var(--surface);border-right:1px solid var(--border);padding:28px 0;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;}
+.logo{padding:0 24px 24px;border-bottom:1px solid var(--border);margin-bottom:20px;}
+.logo h1{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:3px;color:var(--accent);}
+.logo p{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:3px;}
+.nav-section{padding:0 12px;}
+.nav-label{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;padding:0 12px;margin-bottom:6px;}
+.nav-btn{display:flex;align-items:center;gap:10px;width:100%;padding:10px 14px;border-radius:8px;border:none;background:transparent;color:var(--muted);font-family:'Pretendard',sans-serif;font-size:14px;cursor:pointer;transition:all 0.15s;text-align:left;}
+.nav-btn:hover{background:var(--card);color:var(--text);}
+.nav-btn.active{background:rgba(200,245,58,0.1);color:var(--accent);}
+.nav-btn .icon{font-size:15px;width:20px;text-align:center;}
+.sidebar-stats{margin-top:auto;padding:20px 24px 0;border-top:1px solid var(--border);}
+.sidebar-stat{display:flex;justify-content:space-between;align-items:center;padding:8px 0;font-family:'DM Mono',monospace;font-size:12px;color:var(--muted);border-bottom:1px solid var(--border);}
+.sidebar-stat:last-child{border-bottom:none;}
+.sidebar-stat b{color:var(--accent);font-size:18px;}
 
 /* MAIN */
-main { overflow-y:auto; }
-.page { display:none; padding:40px; max-width:860px; }
-.page.active { display:block; }
+main{overflow-y:auto;}
+.page{display:none;padding:40px;max-width:860px;}
+.page.active{display:block;}
 
 /* DASHBOARD */
-.dash-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:36px; }
-.metric { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 22px; }
-.metric-label { font-family:'DM Mono',monospace; font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:1.5px; margin-bottom:8px; }
-.metric-value { font-family:'Bebas Neue',sans-serif; font-size:44px; line-height:1; color:var(--accent); }
-.metric-sub { font-size:12px; color:var(--muted); margin-top:4px; }
-
-.section-title { font-family:'DM Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:2px; color:var(--muted); margin-bottom:12px; margin-top:32px; }
-
-.cat-bar-row {
-  background:var(--card); border:1px solid var(--border); border-radius:10px;
-  padding:16px 20px; display:flex; align-items:center; gap:16px;
-  margin-bottom:8px; cursor:pointer; transition:border-color 0.15s;
-}
-.cat-bar-row:hover { border-color:var(--accent); }
-.cat-bar-label { font-size:13px; min-width:130px; }
-.cat-bar-count { font-family:'DM Mono',monospace; font-size:11px; color:var(--muted); min-width:50px; }
-.cat-bar-track { flex:1; height:5px; background:var(--border); border-radius:3px; overflow:hidden; }
-.cat-bar-fill { height:100%; border-radius:3px; transition:width 0.6s ease; }
-.cat-bar-acc { font-family:'DM Mono',monospace; font-size:13px; min-width:44px; text-align:right; }
-
-.history-row {
-  display:flex; align-items:center; gap:12px; padding:11px 16px;
-  background:var(--card); border:1px solid var(--border); border-radius:8px; margin-bottom:6px; font-size:13px;
-}
-.history-date { font-family:'DM Mono',monospace; font-size:11px; color:var(--muted); min-width:80px; }
-.history-q { flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-.r-ok  { font-family:'DM Mono',monospace; font-size:12px; color:var(--green); }
-.r-bad { font-family:'DM Mono',monospace; font-size:12px; color:var(--red); }
+.dash-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:36px;}
+.metric{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 22px;}
+.metric-label{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;}
+.metric-value{font-family:'Bebas Neue',sans-serif;font-size:44px;line-height:1;color:var(--accent);}
+.metric-sub{font-size:12px;color:var(--muted);margin-top:4px;}
+.section-title{font-family:'DM Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--muted);margin-bottom:12px;margin-top:32px;}
+.cat-bar-row{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px 20px;display:flex;align-items:center;gap:16px;margin-bottom:8px;cursor:pointer;transition:border-color 0.15s;}
+.cat-bar-row:hover{border-color:var(--accent);}
+.cat-bar-label{font-size:13px;min-width:130px;}
+.cat-bar-count{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);min-width:50px;}
+.cat-bar-track{flex:1;height:5px;background:var(--border);border-radius:3px;overflow:hidden;}
+.cat-bar-fill{height:100%;border-radius:3px;transition:width 0.6s ease;}
+.cat-bar-acc{font-family:'DM Mono',monospace;font-size:13px;min-width:44px;text-align:right;}
+.history-row{display:flex;align-items:center;gap:12px;padding:11px 16px;background:var(--card);border:1px solid var(--border);border-radius:8px;margin-bottom:6px;font-size:13px;}
+.history-date{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);min-width:80px;}
+.history-q{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.r-ok{font-family:'DM Mono',monospace;font-size:12px;color:var(--green);}
+.r-bad{font-family:'DM Mono',monospace;font-size:12px;color:var(--red);}
 
 /* QUIZ */
-.quiz-header { display:flex; align-items:center; gap:8px; margin-bottom:20px; flex-wrap:wrap; }
-.cat-pill {
-  padding:8px 18px; border-radius:20px; border:1px solid var(--border);
-  background:transparent; font-family:'DM Mono',monospace; font-size:12px;
-  color:var(--muted); cursor:pointer; transition:all 0.15s;
-}
-.cat-pill:hover { border-color:var(--text); color:var(--text); }
-.p-all    { background:rgba(200,245,58,0.1);  border-color:var(--accent); color:var(--accent); }
-.p-colloc { background:rgba(200,91,255,0.1);  border-color:var(--purple); color:var(--purple); }
-.p-meaning{ background:rgba(255,217,58,0.1);  border-color:var(--yellow); color:var(--yellow); }
-.p-logic  { background:rgba(91,140,255,0.1);  border-color:var(--blue);   color:var(--blue); }
-.p-wrong  { background:rgba(255,91,91,0.1);   border-color:var(--red);    color:var(--red); }
-
-.session-btn {
-  margin-left:auto; padding:9px 22px; border-radius:8px; border:none;
-  background:var(--accent); color:#09090e; font-family:'DM Mono',monospace;
-  font-size:13px; font-weight:500; cursor:pointer; transition:all 0.15s;
-}
-.session-btn:hover { background:#d4f954; }
-
-.quiz-count { font-family:'DM Mono',monospace; font-size:12px; color:var(--muted); margin-bottom:20px; }
+.quiz-header{display:flex;align-items:center;gap:8px;margin-bottom:20px;flex-wrap:wrap;}
+.cat-pill{padding:8px 18px;border-radius:20px;border:1px solid var(--border);background:transparent;font-family:'DM Mono',monospace;font-size:12px;color:var(--muted);cursor:pointer;transition:all 0.15s;}
+.cat-pill:hover{border-color:var(--text);color:var(--text);}
+.p-all   {background:rgba(200,245,58,0.1);border-color:var(--accent);color:var(--accent);}
+.p-colloc{background:rgba(200,91,255,0.1);border-color:var(--purple);color:var(--purple);}
+.p-meaning{background:rgba(255,217,58,0.1);border-color:var(--yellow);color:var(--yellow);}
+.p-logic {background:rgba(91,140,255,0.1);border-color:var(--blue);color:var(--blue);}
+.p-wrong {background:rgba(255,91,91,0.1);border-color:var(--red);color:var(--red);}
+.session-btn{margin-left:auto;padding:9px 22px;border-radius:8px;border:none;background:var(--accent);color:#09090e;font-family:'DM Mono',monospace;font-size:13px;font-weight:500;cursor:pointer;transition:all 0.15s;}
+.session-btn:hover{background:#d4f954;}
+.quiz-count{font-family:'DM Mono',monospace;font-size:12px;color:var(--muted);margin-bottom:20px;}
 
 /* QUIZ CARD */
-.qcard {
-  background:var(--card); border:1px solid var(--border); border-radius:14px;
-  padding:28px; margin-bottom:14px; transition:border-color 0.3s;
-  animation:fadeUp 0.25s ease;
-}
-@keyframes fadeUp { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
-.qcard.state-correct { border-color:var(--green); background:rgba(58,255,160,0.03); }
-.qcard.state-wrong   { border-color:var(--red);   background:rgba(255,91,91,0.03); }
-
-.qcard-meta { display:flex; align-items:center; gap:8px; margin-bottom:18px; }
-.qcard-num  { font-family:'DM Mono',monospace; font-size:11px; color:var(--muted); }
-.qcard-date { font-family:'DM Mono',monospace; font-size:11px; color:var(--muted); margin-left:auto; }
-
-.badge { font-family:'DM Mono',monospace; font-size:10px; padding:3px 9px; border-radius:12px; border:1px solid; }
-.badge-type  { color:var(--blue);   border-color:rgba(91,140,255,0.3);  background:rgba(91,140,255,0.08); }
-.badge-colloc{ color:var(--purple); border-color:rgba(200,91,255,0.3);  background:rgba(200,91,255,0.08); }
-.badge-meaning{color:var(--yellow); border-color:rgba(255,217,58,0.3);  background:rgba(255,217,58,0.08); }
-.badge-logic { color:var(--blue);   border-color:rgba(91,140,255,0.3);  background:rgba(91,140,255,0.08); }
-
-.passage {
-  background:var(--surface); border-left:3px solid var(--blue);
-  border-radius:0 8px 8px 0; padding:14px 18px;
-  font-size:14px; line-height:1.9; margin-bottom:18px; white-space:pre-wrap;
-}
-.question-text { font-size:14px; font-weight:500; line-height:1.6; margin-bottom:16px; }
-
-.word-bank { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:14px; }
-.bank-word {
-  padding:5px 14px; border-radius:16px; border:1px solid var(--border);
-  background:var(--surface); font-family:'DM Mono',monospace; font-size:13px;
-  color:var(--text); cursor:pointer; transition:all 0.15s;
-}
-.bank-word:hover { border-color:var(--accent); color:var(--accent); }
-.bw-sel  { border-color:var(--accent)!important; color:var(--accent)!important; background:rgba(200,245,58,0.08)!important; outline:2px solid var(--accent); }
-.bw-used { opacity:0.25; pointer-events:none; }
-
-.blank {
-  display:inline-block; border-bottom:2px solid var(--accent); min-width:80px;
-  margin:0 3px; padding:0 6px; text-align:center;
-  font-family:'DM Mono',monospace; font-size:13px; color:var(--accent);
-  cursor:pointer; border-radius:2px; transition:background 0.15s;
-}
-.blank:hover { background:rgba(200,245,58,0.08); }
-.b-filled  { background:rgba(200,245,58,0.06); }
-.b-correct { border-color:var(--green)!important; color:var(--green)!important; background:rgba(58,255,160,0.08)!important; }
-.b-wrong   { border-color:var(--red)!important;   color:var(--red)!important;   background:rgba(255,91,91,0.08)!important; }
-
-.options-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:8px; margin-bottom:16px; }
-.opt-btn {
-  padding:11px 16px; border-radius:9px; border:1px solid var(--border);
-  background:var(--surface); color:var(--text); font-size:13px;
-  cursor:pointer; transition:all 0.15s; text-align:left;
-}
-.opt-btn:hover:not(:disabled) { border-color:var(--blue); background:rgba(91,140,255,0.07); }
-.opt-btn.opt-sel     { border-color:var(--blue); background:rgba(91,140,255,0.1); }
-.opt-btn.opt-correct { border-color:var(--green); background:rgba(58,255,160,0.08); color:var(--green); }
-.opt-btn.opt-wrong   { border-color:var(--red);   background:rgba(255,91,91,0.08);  color:var(--red); }
-.opt-btn:disabled { cursor:default; }
-
-.qcard-actions { display:flex; align-items:center; gap:8px; margin-top:16px; }
-.btn { padding:9px 20px; border-radius:7px; border:1px solid; font-family:'DM Mono',monospace; font-size:12px; cursor:pointer; transition:all 0.15s; }
-.btn-primary { background:var(--accent); color:#09090e; border-color:var(--accent); font-weight:500; }
-.btn-primary:hover { background:#d4f954; }
-.btn-ghost   { background:transparent; color:var(--muted); border-color:var(--border); }
-.btn-ghost:hover { color:var(--text); border-color:var(--muted); }
-.btn-danger  { background:transparent; color:var(--red); border-color:transparent; font-size:11px; }
-.btn-danger:hover { border-color:var(--red); }
-.memo-tag { margin-left:auto; font-family:'DM Mono',monospace; font-size:11px; color:var(--muted); }
-
-.explanation {
-  margin-top:16px; padding:14px 18px;
-  background:rgba(91,140,255,0.06); border:1px solid rgba(91,140,255,0.18);
-  border-radius:9px; font-size:13px; line-height:1.8; white-space:pre-wrap; display:none;
-}
-.explanation.show { display:block; }
-.explanation strong { color:var(--blue); }
+.qcard{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:14px;transition:border-color 0.3s;animation:fadeUp 0.25s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.qcard.state-correct{border-color:var(--green);background:rgba(58,255,160,0.03);}
+.qcard.state-wrong{border-color:var(--red);background:rgba(255,91,91,0.03);}
+.qcard-meta{display:flex;align-items:center;gap:8px;margin-bottom:18px;}
+.qcard-num{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);}
+.qcard-date{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-left:auto;}
+.badge{font-family:'DM Mono',monospace;font-size:10px;padding:3px 9px;border-radius:12px;border:1px solid;}
+.badge-type{color:var(--blue);border-color:rgba(91,140,255,0.3);background:rgba(91,140,255,0.08);}
+.badge-colloc{color:var(--purple);border-color:rgba(200,91,255,0.3);background:rgba(200,91,255,0.08);}
+.badge-meaning{color:var(--yellow);border-color:rgba(255,217,58,0.3);background:rgba(255,217,58,0.08);}
+.badge-logic{color:var(--blue);border-color:rgba(91,140,255,0.3);background:rgba(91,140,255,0.08);}
+.passage{background:var(--surface);border-left:3px solid var(--blue);border-radius:0 8px 8px 0;padding:14px 18px;font-size:14px;line-height:1.9;margin-bottom:18px;white-space:pre-wrap;}
+.question-text{font-size:14px;font-weight:500;line-height:1.6;margin-bottom:16px;}
+.word-bank{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px;}
+.bank-word{padding:5px 14px;border-radius:16px;border:1px solid var(--border);background:var(--surface);font-family:'DM Mono',monospace;font-size:13px;color:var(--text);cursor:pointer;transition:all 0.15s;}
+.bank-word:hover{border-color:var(--accent);color:var(--accent);}
+.bw-sel{border-color:var(--accent)!important;color:var(--accent)!important;background:rgba(200,245,58,0.08)!important;outline:2px solid var(--accent);}
+.bw-used{opacity:0.25;pointer-events:none;}
+.blank{display:inline-block;border-bottom:2px solid var(--accent);min-width:80px;margin:0 3px;padding:0 6px;text-align:center;font-family:'DM Mono',monospace;font-size:13px;color:var(--accent);cursor:pointer;border-radius:2px;transition:background 0.15s;}
+.blank:hover{background:rgba(200,245,58,0.08);}
+.b-filled{background:rgba(200,245,58,0.06);}
+.b-correct{border-color:var(--green)!important;color:var(--green)!important;background:rgba(58,255,160,0.08)!important;}
+.b-wrong{border-color:var(--red)!important;color:var(--red)!important;background:rgba(255,91,91,0.08)!important;}
+.options-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;margin-bottom:16px;}
+.opt-btn{padding:11px 16px;border-radius:9px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:13px;cursor:pointer;transition:all 0.15s;text-align:left;}
+.opt-btn:hover:not(:disabled){border-color:var(--blue);background:rgba(91,140,255,0.07);}
+.opt-btn.opt-sel{border-color:var(--blue);background:rgba(91,140,255,0.1);}
+.opt-btn.opt-correct{border-color:var(--green);background:rgba(58,255,160,0.08);color:var(--green);}
+.opt-btn.opt-wrong{border-color:var(--red);background:rgba(255,91,91,0.08);color:var(--red);}
+.opt-btn:disabled{cursor:default;}
+.qcard-actions{display:flex;align-items:center;gap:8px;margin-top:16px;}
+.btn{padding:9px 20px;border-radius:7px;border:1px solid;font-family:'DM Mono',monospace;font-size:12px;cursor:pointer;transition:all 0.15s;}
+.btn-primary{background:var(--accent);color:#09090e;border-color:var(--accent);font-weight:500;}
+.btn-primary:hover{background:#d4f954;}
+.btn-ghost{background:transparent;color:var(--muted);border-color:var(--border);}
+.btn-ghost:hover{color:var(--text);border-color:var(--muted);}
+.btn-danger{background:transparent;color:var(--red);border-color:transparent;font-size:11px;}
+.btn-danger:hover{border-color:var(--red);}
+.memo-tag{margin-left:auto;font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);}
+.explanation{margin-top:16px;padding:14px 18px;background:rgba(91,140,255,0.06);border:1px solid rgba(91,140,255,0.18);border-radius:9px;font-size:13px;line-height:1.8;white-space:pre-wrap;display:none;}
+.explanation.show{display:block;}
+.explanation strong{color:var(--blue);}
 
 /* SESSION */
-.session-overlay { display:none; position:fixed; inset:0; background:var(--bg); z-index:300; overflow-y:auto; padding:0 40px 60px; }
-.session-overlay.open { display:block; }
-.session-topbar {
-  display:flex; align-items:center; gap:16px; padding:24px 0; margin-bottom:32px;
-  border-bottom:1px solid var(--border); position:sticky; top:0; background:var(--bg); z-index:10;
-}
-.sess-prog-wrap { flex:1; height:5px; background:var(--border); border-radius:3px; overflow:hidden; }
-.sess-prog-fill { height:100%; background:var(--accent); border-radius:3px; transition:width 0.4s ease; }
-.sess-counter { font-family:'DM Mono',monospace; font-size:13px; color:var(--muted); }
-.sess-body { max-width:700px; margin:0 auto; }
-
-.score-screen { text-align:center; padding:80px 0; }
-.score-big { font-family:'Bebas Neue',sans-serif; font-size:110px; line-height:1; color:var(--accent); }
-.score-sub { font-family:'DM Mono',monospace; font-size:14px; color:var(--muted); margin-bottom:40px; }
+.session-overlay{display:none;position:fixed;inset:0;background:var(--bg);z-index:300;overflow-y:auto;padding:0 40px 60px;}
+.session-overlay.open{display:block;}
+.session-topbar{display:flex;align-items:center;gap:16px;padding:24px 0;margin-bottom:32px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--bg);z-index:10;}
+.sess-prog-wrap{flex:1;height:5px;background:var(--border);border-radius:3px;overflow:hidden;}
+.sess-prog-fill{height:100%;background:var(--accent);border-radius:3px;transition:width 0.4s ease;}
+.sess-counter{font-family:'DM Mono',monospace;font-size:13px;color:var(--muted);}
+.sess-body{max-width:700px;margin:0 auto;}
+.score-screen{text-align:center;padding:80px 0;}
+.score-big{font-family:'Bebas Neue',sans-serif;font-size:110px;line-height:1;color:var(--accent);}
+.score-sub{font-family:'DM Mono',monospace;font-size:14px;color:var(--muted);margin-bottom:40px;}
 
 /* ADD FORM */
-.add-form { max-width:680px; }
-.form-group { margin-bottom:22px; }
-.form-label { display:block; font-family:'DM Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:1.5px; color:var(--muted); margin-bottom:8px; }
-.form-input,.form-select,.form-textarea {
-  width:100%; background:var(--card); border:1px solid var(--border); border-radius:9px;
-  padding:11px 15px; color:var(--text); font-family:'Pretendard',sans-serif; font-size:14px; outline:none; transition:border-color 0.15s;
-}
-.form-input:focus,.form-select:focus,.form-textarea:focus { border-color:var(--accent); }
-.form-textarea { min-height:100px; resize:vertical; line-height:1.6; }
-.form-select option { background:var(--card); }
-.opt-row { display:flex; gap:8px; align-items:center; margin-bottom:7px; }
-.opt-row input { flex:1; }
-.correct-label { display:flex; align-items:center; gap:5px; font-size:12px; color:var(--muted); white-space:nowrap; cursor:pointer; }
-.correct-label input { accent-color:var(--green); }
-.add-opt-btn { padding:7px 14px; border-radius:7px; border:1px dashed var(--border); background:transparent; color:var(--muted); font-size:12px; cursor:pointer; transition:all 0.15s; margin-top:4px; }
-.add-opt-btn:hover { border-color:var(--accent); color:var(--accent); }
-.rm-btn { padding:6px 10px; border-radius:6px; border:1px solid var(--border); background:transparent; color:var(--muted); font-size:12px; cursor:pointer; }
-.rm-btn:hover { border-color:var(--red); color:var(--red); }
-.submit-btn { width:100%; padding:14px; border-radius:10px; border:none; background:var(--accent); color:#09090e; font-family:'Bebas Neue',sans-serif; font-size:20px; letter-spacing:2px; cursor:pointer; transition:all 0.15s; margin-top:8px; }
-.submit-btn:hover { background:#d4f954; }
-.export-row { display:flex; gap:8px; align-items:center; padding:16px 20px; background:var(--card); border:1px solid var(--border); border-radius:10px; margin-bottom:28px; }
-.export-row span { font-family:'DM Mono',monospace; font-size:12px; color:var(--muted); margin-right:auto; }
+.add-form{max-width:680px;}
+.form-group{margin-bottom:22px;}
+.form-label{display:block;font-family:'DM Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;}
+.form-input,.form-select,.form-textarea{width:100%;background:var(--card);border:1px solid var(--border);border-radius:9px;padding:11px 15px;color:var(--text);font-family:'Pretendard',sans-serif;font-size:14px;outline:none;transition:border-color 0.15s;}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--accent);}
+.form-textarea{min-height:100px;resize:vertical;line-height:1.6;}
+.form-select option{background:var(--card);}
+.opt-row{display:flex;gap:8px;align-items:center;margin-bottom:7px;}
+.opt-row input{flex:1;}
+.correct-label{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--muted);white-space:nowrap;cursor:pointer;}
+.correct-label input{accent-color:var(--green);}
+.add-opt-btn{padding:7px 14px;border-radius:7px;border:1px dashed var(--border);background:transparent;color:var(--muted);font-size:12px;cursor:pointer;transition:all 0.15s;margin-top:4px;}
+.add-opt-btn:hover{border-color:var(--accent);color:var(--accent);}
+.rm-btn{padding:6px 10px;border-radius:6px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:12px;cursor:pointer;}
+.rm-btn:hover{border-color:var(--red);color:var(--red);}
+.submit-btn{width:100%;padding:14px;border-radius:10px;border:none;background:var(--accent);color:#09090e;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;cursor:pointer;transition:all 0.15s;margin-top:8px;}
+.submit-btn:hover{background:#d4f954;}
+.export-row{display:flex;gap:8px;align-items:center;padding:16px 20px;background:var(--card);border:1px solid var(--border);border-radius:10px;margin-bottom:28px;}
+.export-row span{font-family:'DM Mono',monospace;font-size:12px;color:var(--muted);margin-right:auto;}
+
+/* LOADING */
+.loading{display:flex;align-items:center;justify-content:center;height:200px;font-family:'DM Mono',monospace;font-size:13px;color:var(--muted);}
 
 /* TOAST */
-.toast { position:fixed; bottom:28px; right:28px; background:var(--card); border:1px solid var(--accent); border-radius:9px; padding:12px 20px; font-family:'DM Mono',monospace; font-size:13px; color:var(--accent); z-index:9999; opacity:0; transform:translateY(12px); transition:all 0.25s; pointer-events:none; }
-.toast.show { opacity:1; transform:translateY(0); }
+.toast{position:fixed;bottom:28px;right:28px;background:var(--card);border:1px solid var(--accent);border-radius:9px;padding:12px 20px;font-family:'DM Mono',monospace;font-size:13px;color:var(--accent);z-index:9999;opacity:0;transform:translateY(12px);transition:all 0.25s;pointer-events:none;}
+.toast.show{opacity:1;transform:translateY(0);}
 
 @media(max-width:700px){
-  .shell{grid-template-columns:1fr}
-  aside{display:none}
-  .page{padding:20px}
-  .dash-cards{grid-template-columns:repeat(2,1fr)}
+  .shell{grid-template-columns:1fr;}
+  aside{display:none;}
+  .page{padding:20px;}
+  .dash-cards{grid-template-columns:repeat(2,1fr);}
 }
 </style>
 </head>
@@ -272,7 +184,6 @@ main { overflow-y:auto; }
 </aside>
 
 <main>
-
   <!-- 대시보드 -->
   <div id="page-dashboard" class="page active">
     <div class="dash-cards">
@@ -292,10 +203,8 @@ main { overflow-y:auto; }
         <div class="metric-sub">문제</div>
       </div>
     </div>
-
-    <div class="section-title">카테고리별 정답률 — 클릭하면 바로 퀴즈로</div>
+    <div class="section-title">카테고리별 정답률 — 클릭하면 퀴즈로</div>
     <div id="cat-stats"></div>
-
     <div class="section-title">최근 기록</div>
     <div id="history-list"></div>
   </div>
@@ -303,12 +212,12 @@ main { overflow-y:auto; }
   <!-- 퀴즈 -->
   <div id="page-quiz" class="page">
     <div class="quiz-header">
-      <button class="cat-pill p-all"    onclick="setFilter('all',this)">📚 전체</button>
-      <button class="cat-pill"          onclick="setFilter('collocation',this)">🔗 Collocation</button>
-      <button class="cat-pill"          onclick="setFilter('meaning',this)">💡 의미 착각</button>
-      <button class="cat-pill"          onclick="setFilter('logic',this)">🧩 논리 흐름</button>
-      <button class="cat-pill"          onclick="setFilter('wrong',this)">❌ 오답만</button>
-      <button class="session-btn"       onclick="startSession()">🚀 세션 시작</button>
+      <button class="cat-pill p-all"     onclick="setFilter('all',this)">📚 전체</button>
+      <button class="cat-pill"           onclick="setFilter('collocation',this)">🔗 Collocation</button>
+      <button class="cat-pill"           onclick="setFilter('meaning',this)">💡 의미 착각</button>
+      <button class="cat-pill"           onclick="setFilter('logic',this)">🧩 논리 흐름</button>
+      <button class="cat-pill"           onclick="setFilter('wrong',this)">❌ 오답만</button>
+      <button class="session-btn"        onclick="startSession()">🚀 세션 시작</button>
     </div>
     <div class="quiz-count" id="quiz-count"></div>
     <div id="quiz-list"></div>
@@ -327,10 +236,9 @@ main { overflow-y:auto; }
         <label class="form-label">문제 유형</label>
         <select class="form-select" id="f-type" onchange="updateForm()">
           <option value="FIB">FIB — Fill in the Blanks</option>
-          <option value="RW-FIB">RW-FIB — R&W Fill in Blanks</option>
+          <option value="RW-FIB">RW-FIB — R&W FIB</option>
           <option value="MCM">MCM — Multiple Choice (복수)</option>
           <option value="MCS">MCS — Multiple Choice (단수)</option>
-          <option value="RO">RO — Re-order Paragraphs</option>
         </select>
       </div>
       <div class="form-group">
@@ -371,13 +279,6 @@ main { overflow-y:auto; }
           <button class="add-opt-btn" onclick="addMcOpt()">+ 보기 추가</button>
         </div>
       </div>
-      <div id="fg-ro" style="display:none">
-        <div class="form-group">
-          <label class="form-label">문장 (정답 순서대로)</label>
-          <div id="ro-list"></div>
-          <button class="add-opt-btn" onclick="addRoOpt()">+ 문장 추가</button>
-        </div>
-      </div>
       <div class="form-group">
         <label class="form-label">해설</label>
         <textarea class="form-textarea" id="f-explanation" placeholder="왜 틀렸는지, 핵심 패턴을 적어두세요."></textarea>
@@ -389,7 +290,6 @@ main { overflow-y:auto; }
       <button class="submit-btn" onclick="addQuestion()">오답 저장</button>
     </div>
   </div>
-
 </main>
 </div>
 
@@ -407,109 +307,43 @@ main { overflow-y:auto; }
 
 <script>
 // ══════════════════════════════════════════════════
-//  ★ 문제 데이터 — 오답 추가 시 여기에 넣습니다 ★
+//  DATA — data.json 에서 로드, history는 localStorage
 // ══════════════════════════════════════════════════
-const QUESTIONS = [
-  {
-    id:"20250308-seminar-fib", type:"FIB", cat:"collocation", date:"2025-03-08",
-    passage:"Seminars are not designed to be mini-lectures. Their educational [BLANK] is to provide an opportunity for in-depth discussion of material that has been introduced in lectures. This is founded on the [BLANK] that students have read the relevant material beforehand, and it is highly [BLANK] that a worthwhile seminar can take place if they have not. Each student has a responsibility, possibly including undertaking a [BLANK] for the entire group, such as leading the discussion or summarising key points. The seminar is also to [BLANK] discussion, so students should come prepared with questions and comments.",
-    question:"아래 단어 중 알맞은 것을 골라 빈칸을 채우세요.",
-    options:["role","assumption","unlikely","duty","provoke","purpose","information","possible","task","commit"],
-    answers:["role","assumption","unlikely","duty","provoke"],
-    explanation:"❌ purpose → ✅ role\n패턴: educational role is to + verb\n\n❌ information → ✅ assumption\n패턴: founded on the assumption that (고정 표현)\n\n❌ possible → ✅ unlikely\n패턴: highly unlikely (highly possible은 거의 안 씀)\n\n❌ task → ✅ duty\n패턴: undertake a duty (task는 complete/perform a task)\n\n❌ commit → ✅ provoke\n패턴: provoke discussion (commit은 commit a crime/to a plan)",
-    memo:"founded on assumption / highly unlikely / undertake a duty / provoke discussion"
-  },
-  {
-    id:"20250308-seminar-drill", type:"MCM", cat:"collocation", date:"2025-03-08",
-    passage:"", question:"【Collocation 복습 — 세미나】 올바른 표현을 모두 고르세요.",
-    options:[
-      {text:"educational role",correct:true},{text:"educational purpose",correct:false},
-      {text:"founded on the assumption that",correct:true},{text:"founded on the information that",correct:false},
-      {text:"highly unlikely",correct:true},{text:"highly possible",correct:false},
-      {text:"undertake a duty",correct:true},{text:"undertake a task",correct:false},
-      {text:"provoke discussion",correct:true},{text:"commit discussion",correct:false}
-    ],
-    answers:[],
-    explanation:"• educational role — 역할 (role is to + verb)\n• founded on the assumption that — ~라는 가정에 근거\n• highly unlikely — 매우 가능성 낮다\n• undertake a duty — 책임을 맡다\n• provoke discussion — 토론을 촉발하다",
-    memo:"세미나 Collocation 드릴"
-  },
-  {
-    id:"20250308-ikebana-fib", type:"FIB", cat:"collocation", date:"2025-03-08",
-    passage:"More than simply putting flowers in a [BLANK], Ikebana is a [BLANK] art form that encompasses the aesthetic principles of Japanese culture. Rather than a multicolored [BLANK] of blossoms, Ikebana often uses other areas of the [BLANK], such as stems, leaves, and branches, as design elements.",
-    question:"아래 단어 중 알맞은 것을 골라 빈칸을 채우세요.",
-    options:["container","disciplined","arrangement","plant","vase","creative","collection","flower"],
-    answers:["container","disciplined","arrangement","plant"],
-    explanation:"❌ vase → ✅ container\n패턴: flowers in a container\n\n❌ creative → ✅ disciplined\n패턴: disciplined art form (체계적/규율 있는)\n\n❌ collection → ✅ arrangement\n패턴: flower arrangement (의도적 배열 ≠ 단순 모음)\n\n❌ flower → ✅ plant\n패턴: areas of the plant (stems/leaves/branches = 식물 전체)",
-    memo:"flowers in container / disciplined art form / flower arrangement / parts of a plant"
-  },
-  {
-    id:"20250308-ikebana-drill", type:"MCM", cat:"collocation", date:"2025-03-08",
-    passage:"", question:"【Collocation 복습 — 이케바나】 올바른 표현을 모두 고르세요.",
-    options:[
-      {text:"flowers in a container",correct:true},{text:"flowers in a collection",correct:false},
-      {text:"disciplined art form",correct:true},{text:"creative art form",correct:false},
-      {text:"flower arrangement",correct:true},{text:"flower collection",correct:false},
-      {text:"areas of the plant",correct:true},{text:"areas of the flower",correct:false}
-    ],
-    answers:[],
-    explanation:"• flowers in a container — 꽃을 용기에\n• disciplined art form — 규율 있는 예술\n• flower arrangement — 꽃꽂이\n• areas of the plant — 식물의 부위 (stems/leaves/branches 포함)",
-    memo:"이케바나 Collocation 드릴"
-  },
-  {
-    id:"20250315-sedentary-fib", type:"FIB", cat:"collocation", date:"2025-03-15",
-    passage:"Research shows that children spend an increasing amount of time [BLANK] in sedentary activities such as watching television and playing video games. This [BLANK] is linked to rising obesity rates, as these activities burn very few calories. Although active video games have been proposed as a solution, they are not a sufficient [BLANK] for normal physical activity and should not be treated as such.",
-    question:"아래 단어 중 알맞은 것을 골라 빈칸을 채우세요.",
-    options:["engaged","behavior","replacement","wasted","action","consumption","involved","habit","substitute","alternative"],
-    answers:["engaged","behavior","replacement"],
-    explanation:"① Collocation 오류\n❌ wasted → ✅ engaged\n패턴: engage in activities / engage in research / engage in discussion\n\n❌ consumption → ✅ replacement\n패턴: replacement for / substitute for / alternative to\n\n② 의미 착각\n❌ action → ✅ behavior\nbehavior = 반복되는 행동 패턴\naction = 개별 단일 행동\n예문: Sedentary behavior increases obesity risk.\n\n③ 논리 흐름\nsedentary activity 증가 → 비만 증가 → AVG는 운동 대체 불가\n∴ replacement가 논리적으로 자연스럽다",
-    memo:"engage in / replacement for | behavior vs action | sedentary→obesity"
-  },
-  {
-    id:"20250315-sedentary-drill", type:"MCM", cat:"collocation", date:"2025-03-15",
-    passage:"", question:"【복습 — 비만/운동】 올바른 표현을 모두 고르세요.",
-    options:[
-      {text:"engage in activities",correct:true},{text:"waste in activities",correct:false},
-      {text:"sedentary behavior",correct:true},{text:"sedentary action",correct:false},
-      {text:"replacement for",correct:true},{text:"replacement to",correct:false},
-      {text:"substitute for",correct:true},{text:"alternative to",correct:true}
-    ],
-    answers:[],
-    explanation:"• engage in ~ — ~에 참여/시간을 보내다\n• sedentary behavior — 앉아있는 생활습관 (패턴 → behavior)\n• replacement for / substitute for — ~의 대체 (전치사 for)\n• alternative to — ~의 대안 (전치사 to!)",
-    memo:"비만/운동 Collocation 드릴"
-  }
-];
+let DB = { questions: [], history: [] };
 
-// ══════════════════════════════════════════════════
-//  DATA
-// ══════════════════════════════════════════════════
-let DB = {questions:[], history:[]};
+async function loadDB() {
+  // 1) localStorage에서 history + 직접 추가 문제 로드
+  let local = { questions: [], history: [] };
+  try { const r = localStorage.getItem('pte-vault'); if (r) local = JSON.parse(r); } catch(e){}
 
-function loadDB() {
-  let local={questions:[],history:[]};
-  try{const r=localStorage.getItem('pte-vault');if(r)local=JSON.parse(r);}catch(e){}
-  const ids=new Set(QUESTIONS.map(q=>q.id));
-  DB.questions=[...QUESTIONS,...(local.questions||[]).filter(q=>!ids.has(q.id))];
-  DB.history=local.history||[];
+  // 2) data.json fetch
+  let remote = { questions: [] };
+  try {
+    const res = await fetch('./data.json?t=' + Date.now());
+    if (res.ok) remote = await res.json();
+  } catch(e) { console.warn('data.json 로드 실패, localStorage만 사용'); }
+
+  // 3) 병합 (data.json 우선, 중복 제거)
+  const remoteIds = new Set((remote.questions||[]).map(q => q.id));
+  const localExtra = (local.questions||[]).filter(q => !remoteIds.has(q.id));
+  DB.questions = [...(remote.questions||[]), ...localExtra];
+  DB.history   = local.history || [];
 }
 
 function saveDB() {
-  const ids=new Set(QUESTIONS.map(q=>q.id));
-  localStorage.setItem('pte-vault',JSON.stringify({
-    questions:DB.questions.filter(q=>!ids.has(q.id)),
-    history:DB.history
+  // data.json 문제는 제외하고 직접 추가 문제 + history만 저장
+  // (data.json ID 목록을 모르므로 전체 저장 후 렌더 시 중복 제거)
+  localStorage.setItem('pte-vault', JSON.stringify({
+    questions: DB.questions.filter(q => q._local), // _local 플래그 있는 것만
+    history: DB.history
   }));
 }
 
-function todayStr(){return new Date().toISOString().slice(0,10);}
+function todayStr(){ return new Date().toISOString().slice(0,10); }
 
 function getStats(){
   const h=DB.history, ok=h.filter(x=>x.correct).length;
-  return {
-    total:DB.questions.length,
-    acc:h.length?Math.round(ok/h.length*100):null,
-    today:h.filter(x=>x.date===todayStr()).length,
-    ok, attempts:h.length
-  };
+  return { total:DB.questions.length, acc:h.length?Math.round(ok/h.length*100):null, today:h.filter(x=>x.date===todayStr()).length, ok, attempts:h.length };
 }
 
 function getCat(q){
@@ -544,8 +378,7 @@ function renderDashboard(){
   document.getElementById('s-acc').textContent=acc!==null?acc+'%':'—';
   document.getElementById('s-today').textContent=today;
   if(acc!==null) document.getElementById('m-acc-sub').textContent=`${ok} / ${attempts} 정답`;
-  renderCatStats();
-  renderHistory();
+  renderCatStats(); renderHistory();
 }
 
 function renderCatStats(){
@@ -560,27 +393,19 @@ function renderCatStats(){
     const c=getCat(q);if(!cats[c])return;
     cats[c].attempts++;if(h.correct)cats[c].correct++;
   });
-  const el=document.getElementById('cat-stats');
-  el.innerHTML='';
+  const el=document.getElementById('cat-stats'); el.innerHTML='';
   Object.entries(cats).forEach(([key,s])=>{
     const acc=s.attempts?Math.round(s.correct/s.attempts*100):null;
-    const d=document.createElement('div');
-    d.className='cat-bar-row';
+    const d=document.createElement('div'); d.className='cat-bar-row';
     d.onclick=()=>{
       showPage('quiz',document.querySelectorAll('.nav-btn')[1]);
       setTimeout(()=>{
         const btn=[...document.querySelectorAll('.cat-pill')].find(b=>b.textContent.includes(
-          key==='collocation'?'Collocation':key==='meaning'?'의미':'논리'
-        ));
+          key==='collocation'?'Collocation':key==='meaning'?'의미':'논리'));
         if(btn)setFilter(key,btn);
       },50);
     };
-    d.innerHTML=`
-      <span class="cat-bar-label">${s.label}</span>
-      <span class="cat-bar-count">${s.total}문제</span>
-      <div class="cat-bar-track"><div class="cat-bar-fill" style="width:${acc??0}%;background:${s.color}"></div></div>
-      <span class="cat-bar-acc" style="color:${acc===null?'var(--muted)':acc>=70?'var(--green)':'var(--red)'}">${acc!==null?acc+'%':'—'}</span>
-      <span style="font-size:11px;color:var(--muted)">→</span>`;
+    d.innerHTML=`<span class="cat-bar-label">${s.label}</span><span class="cat-bar-count">${s.total}문제</span><div class="cat-bar-track"><div class="cat-bar-fill" style="width:${acc??0}%;background:${s.color}"></div></div><span class="cat-bar-acc" style="color:${acc===null?'var(--muted)':acc>=70?'var(--green)':'var(--red)'}">${acc!==null?acc+'%':'—'}</span><span style="font-size:11px;color:var(--muted)">→</span>`;
     el.appendChild(d);
   });
 }
@@ -592,8 +417,7 @@ function renderHistory(){
   el.innerHTML='';
   recent.forEach(h=>{
     const q=DB.questions.find(q=>q.id===h.qid);if(!q)return;
-    const d=document.createElement('div');
-    d.className='history-row';
+    const d=document.createElement('div'); d.className='history-row';
     d.innerHTML=`<span class="history-date">${h.date}</span><span class="history-q">${(q.passage||q.question||'—').slice(0,60)}…</span><span class="${h.correct?'r-ok':'r-bad'}">${h.correct?'✓':'✗'}</span>`;
     el.appendChild(d);
   });
@@ -603,7 +427,6 @@ function renderHistory(){
 //  QUIZ
 // ══════════════════════════════════════════════════
 let currentFilter='all', quizStates={};
-
 const PILL_CLASS={all:'p-all',collocation:'p-colloc',meaning:'p-meaning',logic:'p-logic',wrong:'p-wrong'};
 
 function setFilter(cat,btn){
@@ -628,8 +451,7 @@ function renderQuizList(){
   document.getElementById('quiz-count').textContent=`${qs.length}문제`;
   const el=document.getElementById('quiz-list');
   if(!qs.length){el.innerHTML='<div style="color:var(--muted);font-size:14px;text-align:center;padding:60px 0">문제가 없습니다.</div>';return;}
-  el.innerHTML='';
-  qs.forEach((q,i)=>el.appendChild(buildCard(q,i)));
+  el.innerHTML=''; qs.forEach((q,i)=>el.appendChild(buildCard(q,i)));
 }
 
 const CAT_BADGE={
@@ -643,26 +465,18 @@ function buildCard(q,idx){
   const d=document.createElement('div');
   d.className='qcard'+(state.revealed?(state.lastCorrect?' state-correct':' state-wrong'):'');
   d.id='qcard-'+q.id;
-  let html=`<div class="qcard-meta">
-    <span class="qcard-num">#${String(idx+1).padStart(2,'0')}</span>
-    <span class="badge badge-type">${q.type}</span>
-    ${CAT_BADGE[getCat(q)]||''}
-    <span class="qcard-date">${q.date||''}</span>
-  </div>`;
+  let html=`<div class="qcard-meta"><span class="qcard-num">#${String(idx+1).padStart(2,'0')}</span><span class="badge badge-type">${q.type}</span>${CAT_BADGE[getCat(q)]||''}<span class="qcard-date">${q.date||''}</span></div>`;
   if(q.passage) html+=`<div class="passage">${buildPassage(q)}</div>`;
   if(q.question) html+=`<div class="question-text">${q.question}</div>`;
   html+=buildInteraction(q,state);
   html+=`<div class="qcard-actions">
-    ${state.revealed
-      ?`<button class="btn btn-primary" disabled>${state.lastCorrect?'✓ 정답':'✗ 오답'}</button>`
-      :`<button class="btn btn-primary" onclick="submitAnswer('${q.id}')">정답 확인</button>`}
+    ${state.revealed?`<button class="btn btn-primary" disabled>${state.lastCorrect?'✓ 정답':'✗ 오답'}</button>`:`<button class="btn btn-primary" onclick="submitAnswer('${q.id}')">정답 확인</button>`}
     <button class="btn btn-ghost" onclick="resetQ('${q.id}')">↺ 다시</button>
     ${q.memo?`<span class="memo-tag">${q.memo}</span>`:''}
     <button class="btn btn-danger" onclick="deleteQ('${q.id}')">삭제</button>
   </div>
   <div class="explanation${state.revealed?' show':''}" id="exp-${q.id}"><strong>해설</strong>\n${q.explanation||'해설 없음'}</div>`;
-  d.innerHTML=html;
-  return d;
+  d.innerHTML=html; return d;
 }
 
 function buildPassage(q){
@@ -684,31 +498,7 @@ function buildInteraction(q,state){
     const sel=state.selected||[];
     return `<div class="options-grid">${(q.options||[]).map((o,i)=>`<button class="opt-btn${sel.includes(i)?' opt-sel':''}" id="opt-${q.id}-${i}" onclick="toggleOpt('${q.id}',${i},'${q.type}')">${o.text||o}</button>`).join('')}</div>`;
   }
-  if(q.type==='RO'){
-    if(!quizStates[q.id]) quizStates[q.id]={shuffled:shuffle([...(q.options||[]).map((_,i)=>i)]),order:[]};
-    return buildRO(q);
-  }
   return '';
-}
-
-function buildRO(q){
-  const st=quizStates[q.id];
-  const rem=(st.shuffled||[]).filter(i=>!(st.order||[]).includes(i));
-  const style='padding:9px 13px;background:var(--card);border:1px solid var(--border);border-radius:7px;font-size:13px;cursor:pointer;margin-bottom:6px';
-  return `<div style="display:flex;gap:16px;margin-bottom:14px">
-    <div style="flex:1">
-      <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-bottom:8px">문장 목록</div>
-      <div id="ro-src-${q.id}" style="min-height:60px;background:var(--surface);border:1px dashed var(--border);border-radius:9px;padding:10px">
-        ${rem.map(i=>`<div style="${style}" onclick="roPick('${q.id}',${i})">${q.options[i]}</div>`).join('')}
-      </div>
-    </div>
-    <div style="flex:1">
-      <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-bottom:8px">정렬 순서</div>
-      <div id="ro-tgt-${q.id}" style="min-height:60px;background:var(--surface);border:1px dashed var(--blue);border-radius:9px;padding:10px">
-        ${(st.order||[]).map((i,p)=>`<div style="${style}" onclick="roRemove('${q.id}',${p})">${q.options[i]}</div>`).join('')}
-      </div>
-    </div>
-  </div>`;
 }
 
 let selWord=null;
@@ -717,18 +507,16 @@ function selectWord(qid,idx,word){
   document.querySelectorAll(`#bank-${qid} .bank-word`).forEach(b=>b.classList.remove('bw-sel'));
   document.getElementById(`bw-${qid}-${idx}`)?.classList.add('bw-sel');
 }
-
 function clickBlank(qid,bi){
-  if(!selWord||selWord.qid!==qid) return;
+  if(!selWord||selWord.qid!==qid)return;
   const bl=document.getElementById(`bl-${qid}-${bi}`);if(!bl)return;
   const prev=bl.dataset.fi;
   if(prev!=='') document.getElementById(`bw-${qid}-${prev}`)?.classList.remove('bw-used');
-  bl.textContent=selWord.word; bl.dataset.fi=selWord.idx; bl.classList.add('b-filled');
+  bl.textContent=selWord.word;bl.dataset.fi=selWord.idx;bl.classList.add('b-filled');
   const bw=document.getElementById(`bw-${qid}-${selWord.idx}`);
   if(bw){bw.classList.add('bw-used');bw.classList.remove('bw-sel');}
   selWord=null;
 }
-
 function toggleOpt(qid,idx,type){
   if(!quizStates[qid])quizStates[qid]={};
   let sel=quizStates[qid].selected||[];
@@ -738,52 +526,43 @@ function toggleOpt(qid,idx,type){
   (q.options||[]).forEach((_,i)=>document.getElementById(`opt-${qid}-${i}`)?.classList.toggle('opt-sel',sel.includes(i)));
 }
 
-function roPick(qid,itemIdx){quizStates[qid].order.push(itemIdx);reRO(qid);}
-function roRemove(qid,pos){quizStates[qid].order.splice(pos,1);reRO(qid);}
-function reRO(qid){
-  const q=DB.questions.find(q=>q.id===qid);if(!q)return;
-  const st=quizStates[qid], rem=(st.shuffled||[]).filter(i=>!(st.order||[]).includes(i));
-  const style='padding:9px 13px;background:var(--card);border:1px solid var(--border);border-radius:7px;font-size:13px;cursor:pointer;margin-bottom:6px';
-  document.getElementById(`ro-src-${qid}`).innerHTML=rem.map(i=>`<div style="${style}" onclick="roPick('${qid}',${i})">${q.options[i]}</div>`).join('');
-  document.getElementById(`ro-tgt-${qid}`).innerHTML=(st.order||[]).map((i,p)=>`<div style="${style}" onclick="roRemove('${qid}',${p})">${q.options[i]}</div>`).join('');
-}
-
 function submitAnswer(qid){
   const q=DB.questions.find(q=>q.id===qid);if(!q)return;
   const state=quizStates[qid]||{};
-  let correct=false;
-  if(q.type==='FIB'||q.type==='RW-FIB'){
-    let all=true;
-    (q.answers||[]).forEach((ans,i)=>{
-      const bl=document.getElementById(`bl-${qid}-${i}`);if(!bl){all=false;return;}
-      const ok=(bl.textContent||'').trim().toLowerCase()===ans.trim().toLowerCase();
-      bl.classList.remove('b-filled');bl.classList.add(ok?'b-correct':'b-wrong');
-      if(!ok)all=false;
-    });
-    correct=all;
-  } else if(q.type==='MCM'||q.type==='MCS'){
-    const ci=(q.options||[]).map((o,i)=>o.correct?i:-1).filter(i=>i!==-1);
-    const sel=state.selected||[];
-    correct=JSON.stringify([...ci].sort())===JSON.stringify([...sel].sort());
-    (q.options||[]).forEach((o,i)=>{
-      const b=document.getElementById(`opt-${qid}-${i}`);if(!b)return;
-      b.disabled=true;
-      if(o.correct)b.classList.add('opt-correct');
-      else if(sel.includes(i))b.classList.add('opt-wrong');
-    });
-  } else if(q.type==='RO'){
-    const order=(quizStates[qid]||{}).order||[];
-    correct=JSON.stringify(order)===JSON.stringify((q.options||[]).map((_,i)=>i));
-  }
+  let correct=evalAnswer(q,state);
   if(!quizStates[qid])quizStates[qid]={};
-  quizStates[qid].revealed=true; quizStates[qid].lastCorrect=correct;
-  DB.history.push({date:todayStr(),qid,correct}); saveDB();
+  quizStates[qid].revealed=true;quizStates[qid].lastCorrect=correct;
+  DB.history.push({date:todayStr(),qid,correct});saveDB();
   document.getElementById('qcard-'+qid)?.classList.add(correct?'state-correct':'state-wrong');
   document.getElementById('exp-'+qid)?.classList.add('show');
   const actions=document.getElementById('qcard-'+qid)?.querySelector('.qcard-actions');
   if(actions){const sb=actions.querySelector('button');if(sb){sb.textContent=correct?'✓ 정답':'✗ 오답';sb.disabled=true;}}
   updateSidebar();
   showToast(correct?'✓ 정답!':'✗ 오답 — 해설을 확인하세요');
+}
+
+function evalAnswer(q,state){
+  if(q.type==='FIB'||q.type==='RW-FIB'){
+    let all=true;
+    (q.answers||[]).forEach((ans,i)=>{
+      const bl=document.getElementById(`bl-${q.id}-${i}`);if(!bl){all=false;return;}
+      const ok=(bl.textContent||'').trim().toLowerCase()===ans.trim().toLowerCase();
+      bl.classList.remove('b-filled');bl.classList.add(ok?'b-correct':'b-wrong');if(!ok)all=false;
+    });
+    return all;
+  }
+  if(q.type==='MCM'||q.type==='MCS'){
+    const ci=(q.options||[]).map((o,i)=>o.correct?i:-1).filter(i=>i!==-1);
+    const sel=state.selected||[];
+    const correct=JSON.stringify([...ci].sort())===JSON.stringify([...sel].sort());
+    (q.options||[]).forEach((o,i)=>{
+      const b=document.getElementById(`opt-${q.id}-${i}`);if(!b)return;
+      b.disabled=true;
+      if(o.correct)b.classList.add('opt-correct');else if(sel.includes(i))b.classList.add('opt-wrong');
+    });
+    return correct;
+  }
+  return false;
 }
 
 function resetQ(qid){delete quizStates[qid];renderQuizList();}
@@ -806,25 +585,17 @@ function startSession(){
   document.getElementById('sess-overlay').classList.add('open');
   renderSess();
 }
-
 function endSession(){
   document.getElementById('sess-overlay').classList.remove('open');
   renderDashboard();
 }
-
 function renderSess(){
   const total=sessQueue.length;
   document.getElementById('sess-fill').style.width=(sessIdx/total*100)+'%';
   document.getElementById('sess-counter').textContent=`${sessIdx} / ${total}`;
   if(sessIdx>=total){
     saveDB();
-    document.getElementById('sess-body').innerHTML=`<div class="score-screen">
-      <div class="score-big">${Math.round(sessScore/total*100)}<span style="font-size:36px;color:var(--muted)">%</span></div>
-      <div class="score-sub">${sessScore} / ${total} 정답</div>
-      <div style="display:flex;gap:10px;justify-content:center">
-        <button class="btn btn-primary" onclick="startSession()">다시 도전</button>
-        <button class="btn btn-ghost" onclick="endSession()">목록으로</button>
-      </div></div>`;
+    document.getElementById('sess-body').innerHTML=`<div class="score-screen"><div class="score-big">${Math.round(sessScore/total*100)}<span style="font-size:36px;color:var(--muted)">%</span></div><div class="score-sub">${sessScore} / ${total} 정답</div><div style="display:flex;gap:10px;justify-content:center"><button class="btn btn-primary" onclick="startSession()">다시 도전</button><button class="btn btn-ghost" onclick="endSession()">목록으로</button></div></div>`;
     return;
   }
   const q=sessQueue[sessIdx];
@@ -832,37 +603,19 @@ function renderSess(){
   if(q.passage)html+=`<div class="passage">${buildPassage(q)}</div>`;
   if(q.question)html+=`<div class="question-text">${q.question}</div>`;
   html+=buildInteraction(q,quizStates[q.id]||{});
-  html+=`<div class="qcard-actions" id="sq-actions"><button class="btn btn-primary" onclick="submitSess('${q.id}')">정답 확인</button></div>
-  <div class="explanation" id="sq-exp"><strong>해설</strong>\n${q.explanation||'해설 없음'}</div></div>`;
+  html+=`<div class="qcard-actions" id="sq-actions"><button class="btn btn-primary" onclick="submitSess('${q.id}')">정답 확인</button></div><div class="explanation" id="sq-exp"><strong>해설</strong>\n${q.explanation||'해설 없음'}</div></div>`;
   document.getElementById('sess-body').innerHTML=html;
-  if(q.type==='RO'){if(!quizStates[q.id])quizStates[q.id]={shuffled:shuffle([...(q.options||[]).map((_,i)=>i)]),order:[]};reRO(q.id);}
 }
-
 function submitSess(qid){
   const q=DB.questions.find(q=>q.id===qid);if(!q)return;
   const state=quizStates[qid]||{};
-  let correct=false;
-  if(q.type==='FIB'||q.type==='RW-FIB'){
-    let all=true;
-    (q.answers||[]).forEach((ans,i)=>{
-      const bl=document.getElementById(`bl-${qid}-${i}`);if(!bl){all=false;return;}
-      const ok=(bl.textContent||'').trim().toLowerCase()===ans.trim().toLowerCase();
-      bl.classList.remove('b-filled');bl.classList.add(ok?'b-correct':'b-wrong');if(!ok)all=false;
-    });correct=all;
-  } else if(q.type==='MCM'||q.type==='MCS'){
-    const ci=(q.options||[]).map((o,i)=>o.correct?i:-1).filter(i=>i!==-1);
-    const sel=state.selected||[];correct=JSON.stringify([...ci].sort())===JSON.stringify([...sel].sort());
-    (q.options||[]).forEach((o,i)=>{const b=document.getElementById(`opt-${qid}-${i}`);if(!b)return;b.disabled=true;if(o.correct)b.classList.add('opt-correct');else if(sel.includes(i))b.classList.add('opt-wrong');});
-  } else if(q.type==='RO'){const order=(quizStates[qid]||{}).order||[];correct=JSON.stringify(order)===JSON.stringify((q.options||[]).map((_,i)=>i));}
+  const correct=evalAnswer(q,state);
   if(correct)sessScore++;
   DB.history.push({date:todayStr(),qid,correct});
   document.getElementById('sq-card')?.classList.add(correct?'state-correct':'state-wrong');
   document.getElementById('sq-exp')?.classList.add('show');
-  document.getElementById('sq-actions').innerHTML=`
-    <span style="font-family:'DM Mono',monospace;font-size:14px;color:${correct?'var(--green)':'var(--red)'}">${correct?'✓ 정답!':'✗ 오답'}</span>
-    <button class="btn btn-primary" style="margin-left:auto" onclick="nextSess()">다음 →</button>`;
+  document.getElementById('sq-actions').innerHTML=`<span style="font-family:'DM Mono',monospace;font-size:14px;color:${correct?'var(--green)':'var(--red)'}">${correct?'✓ 정답!':'✗ 오답'}</span><button class="btn btn-primary" style="margin-left:auto" onclick="nextSess()">다음 →</button>`;
 }
-
 function nextSess(){sessIdx++;renderSess();}
 
 // ══════════════════════════════════════════════════
@@ -872,12 +625,9 @@ function updateForm(){
   const t=document.getElementById('f-type').value;
   document.getElementById('fg-fib').style.display=(t==='FIB'||t==='RW-FIB')?'block':'none';
   document.getElementById('fg-mc').style.display=(t==='MCM'||t==='MCS')?'block':'none';
-  document.getElementById('fg-ro').style.display=(t==='RO')?'block':'none';
-  document.getElementById('fg-passage').style.display=(t==='RO')?'none':'block';
 }
 function addFibOpt(){const r=document.createElement('div');r.className='opt-row';r.innerHTML=`<input type="text" class="form-input fib-opt" placeholder="단어"><button class="rm-btn" onclick="this.parentNode.remove()">✕</button>`;document.getElementById('fib-list').appendChild(r);}
 function addMcOpt(){const r=document.createElement('div');r.className='opt-row';r.innerHTML=`<input type="text" class="form-input mc-opt" placeholder="보기 텍스트"><label class="correct-label"><input type="checkbox" class="mc-cor"> 정답</label><button class="rm-btn" onclick="this.parentNode.remove()">✕</button>`;document.getElementById('mc-list').appendChild(r);}
-function addRoOpt(){const r=document.createElement('div');r.className='opt-row';r.innerHTML=`<input type="text" class="form-input ro-opt" placeholder="문장 (정답 순서대로)"><button class="rm-btn" onclick="this.parentNode.remove()">✕</button>`;document.getElementById('ro-list').appendChild(r);}
 
 function addQuestion(){
   const type=document.getElementById('f-type').value;
@@ -901,14 +651,11 @@ function addQuestion(){
       if(text)options.push({text,correct});
     });
     if(options.length<2){showToast('보기를 2개 이상 추가하세요.');return;}
-  } else if(type==='RO'){
-    options=[...document.querySelectorAll('.ro-opt')].map(i=>i.value.trim()).filter(Boolean);
-    if(options.length<2){showToast('문장을 2개 이상 추가하세요.');return;}
   }
-  DB.questions.push({id:Date.now().toString(),type,cat,date,passage,question,options,answers,explanation,memo});
+  DB.questions.push({id:Date.now().toString(),type,cat,date,passage,question,options,answers,explanation,memo,_local:true});
   saveDB();showToast('✓ 저장됐어요!');
   ['f-passage','f-question','f-explanation','f-memo','f-answers'].forEach(id=>document.getElementById(id).value='');
-  ['fib-list','mc-list','ro-list'].forEach(id=>document.getElementById(id).innerHTML='');
+  ['fib-list','mc-list'].forEach(id=>document.getElementById(id).innerHTML='');
   updateSidebar();
 }
 
@@ -916,7 +663,6 @@ function exportData(){
   const blob=new Blob([JSON.stringify(DB,null,2)],{type:'application/json'});
   const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`pte-vault-${todayStr()}.json`;a.click();
 }
-
 function importData(e){
   const file=e.target.files[0];if(!file)return;
   const reader=new FileReader();
@@ -941,14 +687,15 @@ function updateSidebar(){const{total,acc,today}=getStats();document.getElementBy
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500);}
 
 // ── INIT ──
-window.addEventListener('DOMContentLoaded',()=>{
-  loadDB();
+window.addEventListener('DOMContentLoaded', async ()=>{
+  document.getElementById('quiz-list').innerHTML='<div class="loading">⏳ 문제 로딩 중...</div>';
+  await loadDB();
   document.getElementById('f-date').value=todayStr();
   updateForm();
   addFibOpt();addFibOpt();addFibOpt();
   addMcOpt();addMcOpt();addMcOpt();
-  addRoOpt();addRoOpt();addRoOpt();
   renderDashboard();
+  updateSidebar();
 });
 </script>
 </body>

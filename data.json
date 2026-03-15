@@ -1,519 +1,1501 @@
 {
   "questions": [
     {
-      "id": "20250308-seminar-fib", "type": "FIB", "cat": "collocation", "date": "2025-03-08",
-      "passage": "Seminars are not designed to be mini-lectures. Their educational [BLANK] is to provide an opportunity for in-depth discussion of material that has been introduced in lectures. This is founded on the [BLANK] that students have read the relevant material beforehand, and it is highly [BLANK] that a worthwhile seminar can take place if they have not. Each student has a responsibility, possibly including undertaking a [BLANK] for the entire group, such as leading the discussion or summarising key points. The seminar is also to [BLANK] discussion, so students should come prepared with questions and comments.",
-      "question": "아래 단어 중 알맞은 것을 골라 빈칸을 채우세요.",
-      "options": ["role","assumption","unlikely","duty","provoke","purpose","information","possible","task","commit"],
-      "answers": ["role","assumption","unlikely","duty","provoke"],
-      "explanation": "❌ purpose → ✅ role\n패턴: educational role is to + verb\n\n❌ information → ✅ assumption\n패턴: founded on the assumption that\n\n❌ possible → ✅ unlikely\n패턴: highly unlikely\n\n❌ task → ✅ duty\n패턴: undertake a duty\n\n❌ commit → ✅ provoke\n패턴: provoke discussion",
+      "id": "odam-seminar",
+      "type": "FIB",
+      "cat": "collocation",
+      "date": "2025-03-08",
+      "passage": "Seminars are not designed to be mini-lectures. Their educational [BLANK] is to provide an opportunity for in-depth discussion of material that has been introduced in lectures. This is founded on the [BLANK] that students have read the relevant material beforehand, and it is highly [BLANK] that a worthwhile seminar can take place if they have not. Each student has a responsibility, possibly including undertaking a [BLANK] for the entire group. The seminar is also to [BLANK] discussion.",
+      "question": "빈칸에 알맞은 단어를 고르세요.",
+      "options": [
+        "role",
+        "assumption",
+        "unlikely",
+        "duty",
+        "provoke",
+        "purpose",
+        "information",
+        "possible",
+        "task",
+        "commit"
+      ],
+      "answers": [
+        "role",
+        "assumption",
+        "unlikely",
+        "duty",
+        "provoke"
+      ],
+      "explanation": "❌ purpose → ✅ role : educational role is to + verb\n❌ information → ✅ assumption : founded on the assumption that\n❌ possible → ✅ unlikely : highly unlikely (highly possible은 거의 안 씀)\n❌ task → ✅ duty : undertake a duty (task는 complete/perform)\n❌ commit → ✅ provoke : provoke discussion",
       "memo": "founded on assumption / highly unlikely / undertake a duty / provoke discussion"
     },
     {
-      "id": "20250308-ikebana-fib", "type": "FIB", "cat": "collocation", "date": "2025-03-08",
+      "id": "odam-ikebana",
+      "type": "FIB",
+      "cat": "collocation",
+      "date": "2025-03-08",
       "passage": "More than simply putting flowers in a [BLANK], Ikebana is a [BLANK] art form that encompasses the aesthetic principles of Japanese culture. Rather than a multicolored [BLANK] of blossoms, Ikebana often uses other areas of the [BLANK], such as stems, leaves, and branches, as design elements.",
-      "question": "아래 단어 중 알맞은 것을 골라 빈칸을 채우세요.",
-      "options": ["container","disciplined","arrangement","plant","vase","creative","collection","flower"],
-      "answers": ["container","disciplined","arrangement","plant"],
-      "explanation": "• flowers in a container\n• disciplined art form\n• flower arrangement\n• areas of the plant",
+      "question": "빈칸에 알맞은 단어를 고르세요.",
+      "options": [
+        "container",
+        "disciplined",
+        "arrangement",
+        "plant",
+        "vase",
+        "creative",
+        "collection",
+        "flower"
+      ],
+      "answers": [
+        "container",
+        "disciplined",
+        "arrangement",
+        "plant"
+      ],
+      "explanation": "• flowers in a container\n• disciplined art form (체계적/규율 있는)\n• flower arrangement (의도적 배열 ≠ collection)\n• areas of the plant (stems/leaves/branches 포함)",
       "memo": "flowers in container / disciplined art form / flower arrangement / parts of a plant"
     },
     {
-      "id": "20250315-sedentary-fib", "type": "FIB", "cat": "collocation", "date": "2025-03-15",
-      "passage": "Research shows that children spend an increasing amount of time [BLANK] in sedentary activities such as watching television and playing video games. This [BLANK] is linked to rising obesity rates, as these activities burn very few calories. Although active video games have been proposed as a solution, they are not a sufficient [BLANK] for normal physical activity and should not be treated as such.",
-      "question": "아래 단어 중 알맞은 것을 골라 빈칸을 채우세요.",
-      "options": ["engaged","behavior","replacement","wasted","action","consumption","involved","habit","substitute","alternative"],
-      "answers": ["engaged","behavior","replacement"],
-      "explanation": "① Collocation: engage in activities / replacement for\n② 의미착각: behavior(패턴) vs action(개별)\n③ 논리: sedentary→obesity→not replacement",
+      "id": "odam-sedentary",
+      "type": "FIB",
+      "cat": "collocation",
+      "date": "2025-03-15",
+      "passage": "Research shows that children spend an increasing amount of time [BLANK] in sedentary activities such as watching television and playing video games. This [BLANK] is linked to rising obesity rates. Although active video games have been proposed as a solution, they are not a sufficient [BLANK] for normal physical activity.",
+      "question": "빈칸에 알맞은 단어를 고르세요.",
+      "options": [
+        "engaged",
+        "behavior",
+        "replacement",
+        "wasted",
+        "action",
+        "consumption",
+        "involved",
+        "substitute"
+      ],
+      "answers": [
+        "engaged",
+        "behavior",
+        "replacement"
+      ],
+      "explanation": "① Collocation: engage in activities / replacement for\n② 의미착각: behavior(반복 패턴) vs action(개별 행동)\n③ 논리: sedentary → obesity → AVG는 대체 불가 → replacement",
       "memo": "engage in / replacement for | behavior vs action"
     },
-
     {
-      "id": "colloc-in-01", "type": "FIB", "cat": "collocation", "date": "2025-03-16",
-      "passage": "Scientists engage [BLANK] research to better understand climate change. Many universities encourage students to participate [BLANK] academic discussions and specialize [BLANK] a particular field of study.",
-      "question": "빈칸에 들어갈 전치사를 고르세요.",
-      "options": ["in","on","to","with","for","of"],
-      "answers": ["in","in","in"],
-      "explanation": "전치사 IN 그룹 ①\n• engage in — ~에 참여하다\n• participate in — ~에 참가하다\n• specialize in — ~을 전공/전문으로 하다\n\n세 단어 모두 항상 IN과 함께 씁니다.",
+      "id": "prep-in-01",
+      "type": "FIB",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "Scientists engage [BLANK] research to understand climate change. Many universities encourage students to participate [BLANK] discussions and specialize [BLANK] a particular field.",
+      "question": "빈칸에 알맞은 전치사를 고르세요.",
+      "options": [
+        "in",
+        "on",
+        "to",
+        "with",
+        "for",
+        "of"
+      ],
+      "answers": [
+        "in",
+        "in",
+        "in"
+      ],
+      "explanation": "전치사 IN 그룹 ①\n• engage in — 참여하다\n• participate in — 참가하다\n• specialize in — 전공/전문으로 하다",
       "memo": "engage in / participate in / specialize in"
     },
     {
-      "id": "colloc-in-02", "type": "FIB", "cat": "collocation", "date": "2025-03-16",
-      "passage": "The experiment resulted [BLANK] significant change across the sector. The new regulations involve [BLANK] decision making at all levels of government. Most scientists believe [BLANK] the importance of evidence-based research.",
-      "question": "빈칸에 들어갈 전치사를 고르세요.",
-      "options": ["in","on","to","with","for","of"],
-      "answers": ["in","in","in"],
-      "explanation": "전치사 IN 그룹 ②\n• result in — ~을 초래하다 (원인→결과)\n• involve in — ~에 관여하다\n• believe in — ~을 믿다\n\n⚠️ result IN vs result FROM:\n  result IN = ~을 초래하다\n  result FROM = ~에서 비롯되다",
+      "id": "prep-in-02",
+      "type": "FIB",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "The experiment resulted [BLANK] significant change. The policy involves [BLANK] decision making at all levels. Most people believe [BLANK] the power of education.",
+      "question": "빈칸에 알맞은 전치사를 고르세요.",
+      "options": [
+        "in",
+        "on",
+        "to",
+        "with",
+        "for",
+        "of"
+      ],
+      "answers": [
+        "in",
+        "in",
+        "in"
+      ],
+      "explanation": "전치사 IN 그룹 ②\n• result in — 초래하다 (원인→결과)\n• involve in — 관여하다\n• believe in — 믿다\n\n⚠️ result IN(초래) vs result FROM(기인)",
       "memo": "result in / involve in / believe in"
     },
     {
-      "id": "colloc-in-03", "type": "FIB", "cat": "collocation", "date": "2025-03-16",
-      "passage": "Children succeed [BLANK] achieving their goals when they engage [BLANK] structured learning. The programme consists [BLANK] three main components.",
-      "question": "빈칸에 들어갈 전치사를 고르세요.",
-      "options": ["in","on","to","with","for","of"],
-      "answers": ["in","in","of"],
-      "explanation": "전치사 IN / OF\n• succeed in — ~에 성공하다 (succeed in + -ing)\n• engage in — ~에 참여하다\n• consist of — ~으로 구성되다\n\n⚠️ consist OF (구성) vs consist IN (본질이 ~에 있다)\n  PTE에서는 consist OF가 대부분입니다.",
+      "id": "prep-in-03",
+      "type": "FIB",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "Students succeed [BLANK] achieving goals when they engage [BLANK] structured learning. The programme consists [BLANK] three main components.",
+      "question": "빈칸에 알맞은 전치사를 고르세요.",
+      "options": [
+        "in",
+        "on",
+        "to",
+        "with",
+        "for",
+        "of"
+      ],
+      "answers": [
+        "in",
+        "in",
+        "of"
+      ],
+      "explanation": "• succeed in — 성공하다\n• engage in — 참여하다\n• consist of — 구성되다 (of!)\n\n⚠️ consist OF가 PTE 기본 형태입니다.",
       "memo": "succeed in / engage in / consist of"
     },
     {
-      "id": "colloc-in-drill", "type": "MCM", "cat": "collocation", "date": "2025-03-16",
-      "passage": "", "question": "【전치사 IN 드릴】 IN과 함께 쓰이는 올바른 표현을 모두 고르세요.",
+      "id": "prep-in-drill",
+      "type": "MCM",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "",
+      "question": "【전치사 IN 드릴】 IN과 함께 쓰이는 올바른 표현을 모두 고르세요.",
       "options": [
-        {"text":"engage in","correct":true}, {"text":"engage with","correct":false},
-        {"text":"result in","correct":true}, {"text":"result to","correct":false},
-        {"text":"participate in","correct":true}, {"text":"participate to","correct":false},
-        {"text":"specialize in","correct":true}, {"text":"specialize on","correct":false},
-        {"text":"succeed in","correct":true}, {"text":"succeed on","correct":false},
-        {"text":"believe in","correct":true}, {"text":"believe to","correct":false}
+        {
+          "text": "engage in",
+          "correct": true
+        },
+        {
+          "text": "engage with",
+          "correct": false
+        },
+        {
+          "text": "result in",
+          "correct": true
+        },
+        {
+          "text": "result to",
+          "correct": false
+        },
+        {
+          "text": "participate in",
+          "correct": true
+        },
+        {
+          "text": "participate to",
+          "correct": false
+        },
+        {
+          "text": "specialize in",
+          "correct": true
+        },
+        {
+          "text": "specialize on",
+          "correct": false
+        },
+        {
+          "text": "succeed in",
+          "correct": true
+        },
+        {
+          "text": "succeed on",
+          "correct": false
+        },
+        {
+          "text": "believe in",
+          "correct": true
+        },
+        {
+          "text": "believe to",
+          "correct": false
+        }
       ],
       "answers": [],
-      "explanation": "전치사 IN 전체:\nengage in / participate in / result in / succeed in / specialize in / consist in / believe in / involve in\n\n공통 의미: '참여·포함·결과' 개념",
+      "explanation": "IN 그룹: engage / participate / result / succeed / specialize / believe / involve\n공통 의미: '참여·포함·결과'",
       "memo": "IN 그룹 드릴"
     },
-
     {
-      "id": "colloc-on-01", "type": "FIB", "cat": "collocation", "date": "2025-03-16",
-      "passage": "Researchers focus [BLANK] improving education systems in developing nations. Many industries depend [BLANK] technological innovation to remain competitive. Scientists concentrate [BLANK] collecting accurate and reproducible data.",
-      "question": "빈칸에 들어갈 전치사를 고르세요.",
-      "options": ["in","on","to","with","for","of"],
-      "answers": ["on","on","on"],
-      "explanation": "전치사 ON 그룹 ①\n• focus on — ~에 집중하다\n• depend on — ~에 의존하다\n• concentrate on — ~에 집중하다\n\n💡 focus on / concentrate on은 거의 동의어로 씁니다.",
+      "id": "prep-on-01",
+      "type": "FIB",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "Researchers focus [BLANK] improving education. Many countries depend [BLANK] technological innovation. Scientists concentrate [BLANK] collecting accurate data.",
+      "question": "빈칸에 알맞은 전치사를 고르세요.",
+      "options": [
+        "in",
+        "on",
+        "to",
+        "with",
+        "for",
+        "of"
+      ],
+      "answers": [
+        "on",
+        "on",
+        "on"
+      ],
+      "explanation": "전치사 ON 그룹 ①\n• focus on — 집중하다\n• depend on — 의존하다\n• concentrate on — 집중하다\n\n💡 focus on = concentrate on (거의 동의어)",
       "memo": "focus on / depend on / concentrate on"
     },
     {
-      "id": "colloc-on-02", "type": "FIB", "cat": "collocation", "date": "2025-03-16",
-      "passage": "Modern healthcare systems rely [BLANK] data analysis to improve patient outcomes. The study's conclusions were based [BLANK] extensive evidence gathered over a decade. The government insisted [BLANK] maintaining strict environmental standards.",
-      "question": "빈칸에 들어갈 전치사를 고르세요.",
-      "options": ["in","on","to","with","for","of"],
-      "answers": ["on","on","on"],
-      "explanation": "전치사 ON 그룹 ②\n• rely on — ~에 의존하다\n• base on / based on — ~에 근거하다\n• insist on — ~을 주장하다\n\n⚠️ base on = found on\n'based on evidence' / 'founded on the assumption'",
+      "id": "prep-on-02",
+      "type": "FIB",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "Modern healthcare relies [BLANK] data analysis. Conclusions were based [BLANK] extensive evidence. The government insisted [BLANK] strict environmental standards.",
+      "question": "빈칸에 알맞은 전치사를 고르세요.",
+      "options": [
+        "in",
+        "on",
+        "to",
+        "with",
+        "for",
+        "of"
+      ],
+      "answers": [
+        "on",
+        "on",
+        "on"
+      ],
+      "explanation": "전치사 ON 그룹 ②\n• rely on — 의존하다\n• based on — 근거하다\n• insist on — 주장하다\n\n⚠️ based on = founded on (같은 의미)",
       "memo": "rely on / based on / insist on"
     },
     {
-      "id": "colloc-on-03", "type": "FIB", "cat": "collocation", "date": "2025-03-16",
-      "passage": "The findings reflect [BLANK] significant social change over the past twenty years. The report comments [BLANK] the urgent need for further research into renewable energy.",
-      "question": "빈칸에 들어갈 전치사를 고르세요.",
-      "options": ["in","on","to","with","for","of"],
-      "answers": ["on","on"],
-      "explanation": "전치사 ON 그룹 ③\n• reflect on — ~을 반영하다 / 반성하다\n• comment on — ~에 대해 언급하다\n\n두 동사 모두 ON을 씁니다.",
+      "id": "prep-on-03",
+      "type": "FIB",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "The findings reflect [BLANK] significant social change. The report comments [BLANK] the urgent need for further research.",
+      "question": "빈칸에 알맞은 전치사를 고르세요.",
+      "options": [
+        "in",
+        "on",
+        "to",
+        "with",
+        "for",
+        "of"
+      ],
+      "answers": [
+        "on",
+        "on"
+      ],
+      "explanation": "• reflect on — 반영하다/반성하다\n• comment on — 언급하다",
       "memo": "reflect on / comment on"
     },
     {
-      "id": "colloc-on-drill", "type": "MCM", "cat": "collocation", "date": "2025-03-16",
-      "passage": "", "question": "【전치사 ON 드릴】 ON과 함께 쓰이는 올바른 표현을 모두 고르세요.",
+      "id": "prep-on-drill",
+      "type": "MCM",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "",
+      "question": "【전치사 ON 드릴】 ON과 함께 쓰이는 올바른 표현을 모두 고르세요.",
       "options": [
-        {"text":"focus on","correct":true}, {"text":"focus in","correct":false},
-        {"text":"depend on","correct":true}, {"text":"depend in","correct":false},
-        {"text":"rely on","correct":true}, {"text":"rely to","correct":false},
-        {"text":"based on","correct":true}, {"text":"based in","correct":false},
-        {"text":"insist on","correct":true}, {"text":"insist in","correct":false},
-        {"text":"comment on","correct":true}, {"text":"comment about","correct":false}
+        {
+          "text": "focus on",
+          "correct": true
+        },
+        {
+          "text": "focus in",
+          "correct": false
+        },
+        {
+          "text": "depend on",
+          "correct": true
+        },
+        {
+          "text": "depend in",
+          "correct": false
+        },
+        {
+          "text": "rely on",
+          "correct": true
+        },
+        {
+          "text": "rely to",
+          "correct": false
+        },
+        {
+          "text": "based on",
+          "correct": true
+        },
+        {
+          "text": "based in",
+          "correct": false
+        },
+        {
+          "text": "insist on",
+          "correct": true
+        },
+        {
+          "text": "insist in",
+          "correct": false
+        },
+        {
+          "text": "comment on",
+          "correct": true
+        },
+        {
+          "text": "comment about",
+          "correct": false
+        }
       ],
       "answers": [],
-      "explanation": "전치사 ON 전체:\nfocus on / depend on / concentrate on / rely on / base on / insist on / reflect on / comment on\n\n공통 의미: '방향·근거·의존' 개념",
+      "explanation": "ON 그룹: focus / depend / concentrate / rely / base / insist / reflect / comment\n공통 의미: '방향·근거·의존'",
       "memo": "ON 그룹 드릴"
     },
-
     {
-      "id": "colloc-to-01", "type": "FIB", "cat": "collocation", "date": "2025-03-16",
-      "passage": "Regular exercise contributes [BLANK] improved mental health and economic productivity. New digital technologies lead [BLANK] significantly improved outcomes in healthcare. This study refers [BLANK] the foundational research conducted in the 1990s.",
-      "question": "빈칸에 들어갈 전치사를 고르세요.",
-      "options": ["in","on","to","with","for","of"],
-      "answers": ["to","to","to"],
-      "explanation": "전치사 TO 그룹 ①\n• contribute to — ~에 기여하다\n• lead to — ~로 이어지다\n• refer to — ~을 언급/참고하다\n\n💡 contribute to / lead to 는 PTE 최빈출 표현입니다.",
+      "id": "prep-to-01",
+      "type": "FIB",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "Exercise contributes [BLANK] improved mental health. New technologies lead [BLANK] better outcomes. This study refers [BLANK] previous research conducted in the 1990s.",
+      "question": "빈칸에 알맞은 전치사를 고르세요.",
+      "options": [
+        "in",
+        "on",
+        "to",
+        "with",
+        "for",
+        "of"
+      ],
+      "answers": [
+        "to",
+        "to",
+        "to"
+      ],
+      "explanation": "전치사 TO 그룹 ①\n• contribute to — 기여하다\n• lead to — 이어지다\n• refer to — 언급/참고하다\n\n💡 contribute to / lead to 는 PTE 최빈출!",
       "memo": "contribute to / lead to / refer to"
     },
     {
-      "id": "colloc-to-02", "type": "FIB", "cat": "collocation", "date": "2025-03-16",
-      "passage": "Organisations must adapt [BLANK] rapidly changing environmental conditions. The new findings relate [BLANK] social factors that influence long-term behaviour. The economic downturn was attributed [BLANK] a sudden lack of consumer confidence.",
-      "question": "빈칸에 들어갈 전치사를 고르세요.",
-      "options": ["in","on","to","with","for","of"],
-      "answers": ["to","to","to"],
-      "explanation": "전치사 TO 그룹 ②\n• adapt to — ~에 적응하다\n• relate to — ~에 관련되다\n• attribute to — ~의 원인으로 돌리다\n\n⚠️ attribute A to B = A를 B의 탓으로 돌리다",
+      "id": "prep-to-02",
+      "type": "FIB",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "Organisations must adapt [BLANK] changing conditions. The findings relate [BLANK] social factors. The decline was attributed [BLANK] a lack of funding.",
+      "question": "빈칸에 알맞은 전치사를 고르세요.",
+      "options": [
+        "in",
+        "on",
+        "to",
+        "with",
+        "for",
+        "of"
+      ],
+      "answers": [
+        "to",
+        "to",
+        "to"
+      ],
+      "explanation": "전치사 TO 그룹 ②\n• adapt to — 적응하다\n• relate to — 관련되다\n• attribute to — 원인으로 돌리다\n\n⚠️ attribute A to B = A를 B의 탓으로 돌리다",
       "memo": "adapt to / relate to / attribute to"
     },
     {
-      "id": "colloc-to-03", "type": "FIB", "cat": "collocation", "date": "2025-03-16",
-      "passage": "The community responded [BLANK] environmental challenges with immediate action. The dataset belongs [BLANK] a collection of studies on urban development.",
-      "question": "빈칸에 들어갈 전치사를 고르세요.",
-      "options": ["in","on","to","with","for","of"],
-      "answers": ["to","to"],
-      "explanation": "전치사 TO 그룹 ③\n• respond to — ~에 반응하다/대응하다\n• belong to — ~에 속하다",
+      "id": "prep-to-03",
+      "type": "FIB",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "The community responded [BLANK] environmental challenges with immediate action. The dataset belongs [BLANK] a broader collection of urban studies.",
+      "question": "빈칸에 알맞은 전치사를 고르세요.",
+      "options": [
+        "in",
+        "on",
+        "to",
+        "with",
+        "for",
+        "of"
+      ],
+      "answers": [
+        "to",
+        "to"
+      ],
+      "explanation": "• respond to — 반응하다/대응하다\n• belong to — 속하다",
       "memo": "respond to / belong to"
     },
     {
-      "id": "colloc-to-drill", "type": "MCM", "cat": "collocation", "date": "2025-03-16",
-      "passage": "", "question": "【전치사 TO 드릴】 TO와 함께 쓰이는 올바른 표현을 모두 고르세요.",
+      "id": "prep-to-drill",
+      "type": "MCM",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "",
+      "question": "【전치사 TO 드릴】 TO와 함께 쓰이는 올바른 표현을 모두 고르세요.",
       "options": [
-        {"text":"contribute to","correct":true}, {"text":"contribute in","correct":false},
-        {"text":"lead to","correct":true}, {"text":"lead in","correct":false},
-        {"text":"adapt to","correct":true}, {"text":"adapt with","correct":false},
-        {"text":"respond to","correct":true}, {"text":"respond on","correct":false},
-        {"text":"attribute to","correct":true}, {"text":"attribute for","correct":false},
-        {"text":"belong to","correct":true}, {"text":"belong for","correct":false}
+        {
+          "text": "contribute to",
+          "correct": true
+        },
+        {
+          "text": "contribute in",
+          "correct": false
+        },
+        {
+          "text": "lead to",
+          "correct": true
+        },
+        {
+          "text": "lead in",
+          "correct": false
+        },
+        {
+          "text": "adapt to",
+          "correct": true
+        },
+        {
+          "text": "adapt with",
+          "correct": false
+        },
+        {
+          "text": "respond to",
+          "correct": true
+        },
+        {
+          "text": "respond on",
+          "correct": false
+        },
+        {
+          "text": "attribute to",
+          "correct": true
+        },
+        {
+          "text": "attribute for",
+          "correct": false
+        },
+        {
+          "text": "belong to",
+          "correct": true
+        },
+        {
+          "text": "belong for",
+          "correct": false
+        }
       ],
       "answers": [],
-      "explanation": "전치사 TO 전체:\ncontribute to / lead to / refer to / belong to / respond to / adapt to / relate to / attribute to\n\n공통 의미: '방향·연결·귀속' 개념",
+      "explanation": "TO 그룹: contribute / lead / refer / belong / respond / adapt / relate / attribute\n공통 의미: '방향·연결·귀속'",
       "memo": "TO 그룹 드릴"
     },
-
     {
-      "id": "colloc-with-01", "type": "FIB", "cat": "collocation", "date": "2025-03-16",
-      "passage": "Obesity is closely associated [BLANK] a sedentary lifestyle and poor dietary habits. Governments must deal [BLANK] increasingly complex environmental problems. Many young people struggle to cope [BLANK] high levels of academic stress.",
-      "question": "빈칸에 들어갈 전치사를 고르세요.",
-      "options": ["in","on","to","with","for","of"],
-      "answers": ["with","with","with"],
-      "explanation": "전치사 WITH 그룹 ①\n• associate with — ~와 관련짓다\n• deal with — ~을 다루다/처리하다\n• cope with — ~에 대처하다\n\n💡 deal with / cope with 는 '어려운 상황 처리'에 씁니다.",
+      "id": "prep-with-01",
+      "type": "FIB",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "Obesity is closely associated [BLANK] a sedentary lifestyle. Governments must deal [BLANK] complex environmental problems. Many people struggle to cope [BLANK] stress.",
+      "question": "빈칸에 알맞은 전치사를 고르세요.",
+      "options": [
+        "in",
+        "on",
+        "to",
+        "with",
+        "for",
+        "of"
+      ],
+      "answers": [
+        "with",
+        "with",
+        "with"
+      ],
+      "explanation": "전치사 WITH 그룹 ①\n• associate with — 관련짓다\n• deal with — 처리하다\n• cope with — 대처하다",
       "memo": "associate with / deal with / cope with"
     },
     {
-      "id": "colloc-with-02", "type": "FIB", "cat": "collocation", "date": "2025-03-16",
-      "passage": "Researchers compared their results [BLANK] those from previous studies conducted in similar conditions. Most experts agree [BLANK] the conclusion that regular exercise significantly improves mental health. Universities now routinely collaborate [BLANK] international partners to advance scientific research.",
-      "question": "빈칸에 들어갈 전치사를 고르세요.",
-      "options": ["in","on","to","with","for","of"],
-      "answers": ["with","with","with"],
-      "explanation": "전치사 WITH 그룹 ②\n• compare with — ~와 비교하다\n• agree with — ~에 동의하다\n• collaborate with — ~와 협력하다\n\n⚠️ compare WITH vs compare TO:\n  compare with = 비교 (같은 종류)\n  compare to = 비유 (다른 종류를 같다고 표현)",
+      "id": "prep-with-02",
+      "type": "FIB",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "Researchers compared results [BLANK] previous studies. Most experts agree [BLANK] the conclusion. Universities collaborate [BLANK] international partners.",
+      "question": "빈칸에 알맞은 전치사를 고르세요.",
+      "options": [
+        "in",
+        "on",
+        "to",
+        "with",
+        "for",
+        "of"
+      ],
+      "answers": [
+        "with",
+        "with",
+        "with"
+      ],
+      "explanation": "전치사 WITH 그룹 ②\n• compare with — 비교하다\n• agree with — 동의하다\n• collaborate with — 협력하다\n\n⚠️ compare WITH(같은 종류 비교) vs compare TO(비유)",
       "memo": "compare with / agree with / collaborate with"
     },
     {
-      "id": "colloc-with-03", "type": "FIB", "cat": "collocation", "date": "2025-03-16",
-      "passage": "The researcher connected theory [BLANK] practice by applying abstract models to real-world scenarios. The new data contrasts sharply [BLANK] findings from the previous decade.",
-      "question": "빈칸에 들어갈 전치사를 고르세요.",
-      "options": ["in","on","to","with","for","of"],
-      "answers": ["with","with"],
-      "explanation": "전치사 WITH 그룹 ③\n• connect with — ~와 연결하다\n• contrast with — ~와 대조하다",
+      "id": "prep-with-03",
+      "type": "FIB",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "The researcher connected theory [BLANK] practice. The new data contrasts sharply [BLANK] earlier findings.",
+      "question": "빈칸에 알맞은 전치사를 고르세요.",
+      "options": [
+        "in",
+        "on",
+        "to",
+        "with",
+        "for",
+        "of"
+      ],
+      "answers": [
+        "with",
+        "with"
+      ],
+      "explanation": "• connect with — 연결하다\n• contrast with — 대조하다",
       "memo": "connect with / contrast with"
     },
     {
-      "id": "colloc-with-drill", "type": "MCM", "cat": "collocation", "date": "2025-03-16",
-      "passage": "", "question": "【전치사 WITH 드릴】 WITH와 함께 쓰이는 올바른 표현을 모두 고르세요.",
+      "id": "prep-with-drill",
+      "type": "MCM",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "",
+      "question": "【전치사 WITH 드릴】 WITH와 함께 쓰이는 올바른 표현을 모두 고르세요.",
       "options": [
-        {"text":"associate with","correct":true}, {"text":"associate to","correct":false},
-        {"text":"deal with","correct":true}, {"text":"deal on","correct":false},
-        {"text":"cope with","correct":true}, {"text":"cope to","correct":false},
-        {"text":"compare with","correct":true}, {"text":"compare for","correct":false},
-        {"text":"agree with","correct":true}, {"text":"agree to","correct":false},
-        {"text":"collaborate with","correct":true}, {"text":"collaborate to","correct":false}
+        {
+          "text": "associate with",
+          "correct": true
+        },
+        {
+          "text": "associate to",
+          "correct": false
+        },
+        {
+          "text": "deal with",
+          "correct": true
+        },
+        {
+          "text": "deal on",
+          "correct": false
+        },
+        {
+          "text": "cope with",
+          "correct": true
+        },
+        {
+          "text": "cope to",
+          "correct": false
+        },
+        {
+          "text": "compare with",
+          "correct": true
+        },
+        {
+          "text": "compare for",
+          "correct": false
+        },
+        {
+          "text": "agree with",
+          "correct": true
+        },
+        {
+          "text": "agree to",
+          "correct": false
+        },
+        {
+          "text": "collaborate with",
+          "correct": true
+        },
+        {
+          "text": "collaborate to",
+          "correct": false
+        }
       ],
       "answers": [],
-      "explanation": "전치사 WITH 전체:\nassociate with / deal with / cope with / compare with / agree with / connect with / collaborate with / contrast with\n\n공통 의미: '관계·비교·협력' 개념",
+      "explanation": "WITH 그룹: associate / deal / cope / compare / agree / connect / collaborate / contrast\n공통 의미: '관계·비교·협력'",
       "memo": "WITH 그룹 드릴"
     },
-
     {
-      "id": "colloc-for-01", "type": "FIB", "cat": "collocation", "date": "2025-03-16",
-      "passage": "Each department head is responsible [BLANK] managing its own budget and resources. The institution is widely known [BLANK] its innovative approach to research. This methodology is particularly suitable [BLANK] large-scale academic studies.",
-      "question": "빈칸에 들어갈 전치사를 고르세요.",
-      "options": ["in","on","to","with","for","of"],
-      "answers": ["for","for","for"],
-      "explanation": "전치사 FOR 그룹 ① (형용사)\n• responsible for — ~에 책임이 있는\n• known for — ~로 알려진\n• suitable for — ~에 적합한\n\n💡 형용사 + FOR 패턴이 FIB에서 자주 출제됩니다.",
+      "id": "prep-for-01",
+      "type": "FIB",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "Each department is responsible [BLANK] managing its budget. The institution is known [BLANK] innovative research. This method is suitable [BLANK] academic purposes.",
+      "question": "빈칸에 알맞은 전치사를 고르세요.",
+      "options": [
+        "in",
+        "on",
+        "to",
+        "with",
+        "for",
+        "of"
+      ],
+      "answers": [
+        "for",
+        "for",
+        "for"
+      ],
+      "explanation": "전치사 FOR 그룹 (형용사)\n• responsible for — 책임이 있는\n• known for — ~로 알려진\n• suitable for — ~에 적합한",
       "memo": "responsible for / known for / suitable for"
     },
     {
-      "id": "colloc-for-02", "type": "FIB", "cat": "collocation", "date": "2025-03-16",
-      "passage": "Investment in infrastructure is absolutely necessary [BLANK] long-term economic success. All staff must be well prepared [BLANK] the challenges of the upcoming transition. Physical activity is highly beneficial [BLANK] both physical and mental public health.",
-      "question": "빈칸에 들어갈 전치사를 고르세요.",
-      "options": ["in","on","to","with","for","of"],
-      "answers": ["for","for","for"],
-      "explanation": "전치사 FOR 그룹 ② (형용사)\n• necessary for — ~에 필요한\n• prepared for — ~을 대비한\n• beneficial for — ~에 유익한\n\n⚠️ eligible FOR (자격이 있는), famous FOR (유명한) 도 함께 기억하세요.",
+      "id": "prep-for-02",
+      "type": "FIB",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "Investment is necessary [BLANK] long-term success. Staff must be prepared [BLANK] future challenges. Exercise is beneficial [BLANK] public health.",
+      "question": "빈칸에 알맞은 전치사를 고르세요.",
+      "options": [
+        "in",
+        "on",
+        "to",
+        "with",
+        "for",
+        "of"
+      ],
+      "answers": [
+        "for",
+        "for",
+        "for"
+      ],
+      "explanation": "전치사 FOR 그룹 (형용사)\n• necessary for — 필요한\n• prepared for — 대비한\n• beneficial for — 유익한\n\n+ eligible for / famous for 도 함께 기억!",
       "memo": "necessary for / prepared for / beneficial for"
     },
     {
-      "id": "colloc-for-drill", "type": "MCM", "cat": "collocation", "date": "2025-03-16",
-      "passage": "", "question": "【전치사 FOR 드릴】 FOR와 함께 쓰이는 올바른 표현을 모두 고르세요.",
+      "id": "prep-for-drill",
+      "type": "MCM",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "",
+      "question": "【전치사 FOR 드릴】 FOR과 함께 쓰이는 올바른 표현을 모두 고르세요.",
       "options": [
-        {"text":"responsible for","correct":true}, {"text":"responsible of","correct":false},
-        {"text":"known for","correct":true}, {"text":"known of","correct":false},
-        {"text":"suitable for","correct":true}, {"text":"suitable to","correct":false},
-        {"text":"necessary for","correct":true}, {"text":"necessary to","correct":false},
-        {"text":"beneficial for","correct":true}, {"text":"beneficial of","correct":false},
-        {"text":"eligible for","correct":true}, {"text":"eligible to","correct":false}
+        {
+          "text": "responsible for",
+          "correct": true
+        },
+        {
+          "text": "responsible of",
+          "correct": false
+        },
+        {
+          "text": "known for",
+          "correct": true
+        },
+        {
+          "text": "known of",
+          "correct": false
+        },
+        {
+          "text": "suitable for",
+          "correct": true
+        },
+        {
+          "text": "suitable to",
+          "correct": false
+        },
+        {
+          "text": "necessary for",
+          "correct": true
+        },
+        {
+          "text": "necessary to",
+          "correct": false
+        },
+        {
+          "text": "beneficial for",
+          "correct": true
+        },
+        {
+          "text": "beneficial of",
+          "correct": false
+        },
+        {
+          "text": "eligible for",
+          "correct": true
+        },
+        {
+          "text": "eligible to",
+          "correct": false
+        }
       ],
       "answers": [],
-      "explanation": "전치사 FOR 전체 (형용사):\nresponsible for / known for / famous for / suitable for / necessary for / prepared for / eligible for / beneficial for\n\n공통 의미: 형용사가 '자격·적합·이유·책임'을 나타낼 때",
+      "explanation": "FOR 그룹: responsible / known / famous / suitable / necessary / prepared / eligible / beneficial\n공통 의미: 형용사 '자격·적합·책임'",
       "memo": "FOR 그룹 드릴"
     },
-
     {
-      "id": "colloc-of-01", "type": "FIB", "cat": "collocation", "date": "2025-03-16",
-      "passage": "Social media has rapidly become part [BLANK] modern society and everyday communication. The effect [BLANK] climate change is now being felt in every region of the world. A persistent lack [BLANK] funding remains the main obstacle to scientific progress.",
-      "question": "빈칸에 들어갈 전치사를 고르세요.",
-      "options": ["in","on","to","with","for","of"],
-      "answers": ["of","of","of"],
-      "explanation": "전치사 OF 그룹 ① (명사)\n• part of — ~의 일부\n• effect of — ~의 영향\n• lack of — ~의 부족\n\n💡 명사 + of = '소속·내용·관계'를 나타냅니다.",
+      "id": "prep-of-01",
+      "type": "FIB",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "Social media has become part [BLANK] modern society. The effect [BLANK] climate change is felt worldwide. A lack [BLANK] resources remains a major obstacle.",
+      "question": "빈칸에 알맞은 전치사를 고르세요.",
+      "options": [
+        "in",
+        "on",
+        "to",
+        "with",
+        "for",
+        "of"
+      ],
+      "answers": [
+        "of",
+        "of",
+        "of"
+      ],
+      "explanation": "전치사 OF 그룹 (명사)\n• part of — 일부\n• effect of — 영향\n• lack of — 부족",
       "memo": "part of / effect of / lack of"
     },
     {
-      "id": "colloc-of-02", "type": "FIB", "cat": "collocation", "date": "2025-03-16",
-      "passage": "Fossil fuels remain the primary source [BLANK] energy in many parts of the world. Exercise is widely recognised as an important form [BLANK] social interaction among older adults. Researchers have identified industrial pollution as the main cause [BLANK] environmental damage in urban areas.",
-      "question": "빈칸에 들어갈 전치사를 고르세요.",
-      "options": ["in","on","to","with","for","of"],
-      "answers": ["of","of","of"],
-      "explanation": "전치사 OF 그룹 ② (명사)\n• source of — ~의 원천\n• form of — ~의 형태\n• cause of — ~의 원인\n\n⚠️ cause of vs reason for:\n  cause of = 물리적 원인\n  reason for = 논리적 이유",
+      "id": "prep-of-02",
+      "type": "FIB",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "Fossil fuels remain the primary source [BLANK] energy. Exercise is an important form [BLANK] social interaction. Pollution is the main cause [BLANK] environmental damage.",
+      "question": "빈칸에 알맞은 전치사를 고르세요.",
+      "options": [
+        "in",
+        "on",
+        "to",
+        "with",
+        "for",
+        "of"
+      ],
+      "answers": [
+        "of",
+        "of",
+        "of"
+      ],
+      "explanation": "전치사 OF 그룹 (명사)\n• source of — 원천\n• form of — 형태\n• cause of — 원인\n\n⚠️ cause of(물리적 원인) vs reason for(논리적 이유)",
       "memo": "source of / form of / cause of"
     },
     {
-      "id": "colloc-of-drill", "type": "MCM", "cat": "collocation", "date": "2025-03-16",
-      "passage": "", "question": "【전치사 OF 드릴】 OF와 함께 쓰이는 올바른 표현을 모두 고르세요.",
+      "id": "prep-of-drill",
+      "type": "MCM",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "",
+      "question": "【전치사 OF 드릴】 OF와 함께 쓰이는 올바른 표현을 모두 고르세요.",
       "options": [
-        {"text":"part of","correct":true}, {"text":"part in","correct":false},
-        {"text":"effect of","correct":true}, {"text":"effect on","correct":false},
-        {"text":"lack of","correct":true}, {"text":"lack in","correct":false},
-        {"text":"source of","correct":true}, {"text":"source from","correct":false},
-        {"text":"cause of","correct":true}, {"text":"cause for","correct":false},
-        {"text":"form of","correct":true}, {"text":"form in","correct":false}
+        {
+          "text": "part of",
+          "correct": true
+        },
+        {
+          "text": "part in",
+          "correct": false
+        },
+        {
+          "text": "effect of",
+          "correct": true
+        },
+        {
+          "text": "effect on",
+          "correct": false
+        },
+        {
+          "text": "lack of",
+          "correct": true
+        },
+        {
+          "text": "lack in",
+          "correct": false
+        },
+        {
+          "text": "source of",
+          "correct": true
+        },
+        {
+          "text": "source from",
+          "correct": false
+        },
+        {
+          "text": "cause of",
+          "correct": true
+        },
+        {
+          "text": "cause for",
+          "correct": false
+        },
+        {
+          "text": "form of",
+          "correct": true
+        },
+        {
+          "text": "form in",
+          "correct": false
+        }
       ],
       "answers": [],
-      "explanation": "전치사 OF 전체 (명사):\npart of / effect of / result of / cause of / source of / lack of / form of / type of\n\n공통 의미: 명사가 다른 명사의 내용·소속·관계를 나타낼 때",
+      "explanation": "OF 그룹: part / effect / result / cause / source / lack / form / type\n공통 의미: 명사의 '내용·소속·관계'",
       "memo": "OF 그룹 드릴"
     },
-
     {
-      "id": "colloc-between-01", "type": "FIB", "cat": "collocation", "date": "2025-03-16",
-      "passage": "Scientists have established a clear relationship [BLANK] diet and long-term health outcomes. The difference [BLANK] urban and rural areas has widened significantly over the past two decades. A detailed comparison [BLANK] the two studies reveals several important inconsistencies.",
-      "question": "빈칸에 들어갈 전치사를 고르세요.",
-      "options": ["in","on","to","with","for","between","of","about"],
-      "answers": ["between","between","between"],
-      "explanation": "전치사 BETWEEN 그룹 ①\n• relationship between — ~ 사이의 관계\n• difference between — ~ 사이의 차이\n• comparison between — ~ 사이의 비교\n\n💡 두 대상을 비교·대조할 때 항상 between을 씁니다.",
+      "id": "prep-between-01",
+      "type": "FIB",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "Scientists found a clear relationship [BLANK] diet and health. The difference [BLANK] urban and rural areas has widened. A comparison [BLANK] the two studies reveals inconsistencies.",
+      "question": "빈칸에 알맞은 전치사를 고르세요.",
+      "options": [
+        "in",
+        "on",
+        "to",
+        "with",
+        "for",
+        "between",
+        "of",
+        "about"
+      ],
+      "answers": [
+        "between",
+        "between",
+        "between"
+      ],
+      "explanation": "전치사 BETWEEN 그룹 ①\n• relationship between — 사이의 관계\n• difference between — 사이의 차이\n• comparison between — 사이의 비교",
       "memo": "relationship between / difference between / comparison between"
     },
     {
-      "id": "colloc-between-02", "type": "FIB", "cat": "collocation", "date": "2025-03-16",
-      "passage": "There is a strong connection [BLANK] the natural environment and long-term health outcomes. Maintaining a sustainable balance [BLANK] economic growth and environmental protection is essential. The contrast [BLANK] the two policy approaches highlights fundamental differences in values.",
-      "question": "빈칸에 들어갈 전치사를 고르세요.",
-      "options": ["in","on","to","with","for","between","of","about"],
-      "answers": ["between","between","between"],
-      "explanation": "전치사 BETWEEN 그룹 ②\n• connection between — ~ 사이의 연결\n• balance between — ~ 사이의 균형\n• contrast between — ~ 사이의 대조\n\n+ interaction between / conflict between 도 함께 기억하세요.",
+      "id": "prep-between-02",
+      "type": "FIB",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "There is a strong connection [BLANK] environment and health. Maintaining a balance [BLANK] work and life is essential. The contrast [BLANK] the two approaches highlights key differences.",
+      "question": "빈칸에 알맞은 전치사를 고르세요.",
+      "options": [
+        "in",
+        "on",
+        "to",
+        "with",
+        "for",
+        "between",
+        "of",
+        "about"
+      ],
+      "answers": [
+        "between",
+        "between",
+        "between"
+      ],
+      "explanation": "전치사 BETWEEN 그룹 ②\n• connection between — 연결\n• balance between — 균형\n• contrast between — 대조\n\n+ interaction between / conflict between",
       "memo": "connection between / balance between / contrast between"
     },
     {
-      "id": "colloc-between-drill", "type": "MCM", "cat": "collocation", "date": "2025-03-16",
-      "passage": "", "question": "【전치사 BETWEEN 드릴】 BETWEEN과 함께 쓰이는 올바른 표현을 모두 고르세요.",
+      "id": "prep-between-drill",
+      "type": "MCM",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "",
+      "question": "【전치사 BETWEEN 드릴】 BETWEEN과 함께 쓰이는 올바른 표현을 모두 고르세요.",
       "options": [
-        {"text":"relationship between","correct":true}, {"text":"relationship with","correct":false},
-        {"text":"difference between","correct":true}, {"text":"difference in","correct":false},
-        {"text":"balance between","correct":true}, {"text":"balance of","correct":false},
-        {"text":"connection between","correct":true}, {"text":"connection to","correct":false},
-        {"text":"contrast between","correct":true}, {"text":"contrast with","correct":false}
+        {
+          "text": "relationship between",
+          "correct": true
+        },
+        {
+          "text": "relationship with",
+          "correct": false
+        },
+        {
+          "text": "difference between",
+          "correct": true
+        },
+        {
+          "text": "difference in",
+          "correct": false
+        },
+        {
+          "text": "balance between",
+          "correct": true
+        },
+        {
+          "text": "balance of",
+          "correct": false
+        },
+        {
+          "text": "connection between",
+          "correct": true
+        },
+        {
+          "text": "connection to",
+          "correct": false
+        },
+        {
+          "text": "contrast between",
+          "correct": true
+        },
+        {
+          "text": "contrast with",
+          "correct": false
+        }
       ],
       "answers": [],
-      "explanation": "전치사 BETWEEN 전체:\nrelationship between / difference between / comparison between / interaction between / connection between / balance between / contrast between / conflict between\n\n공통 의미: 두 개 이상의 대상 '사이'를 나타낼 때",
+      "explanation": "BETWEEN: relationship / difference / comparison / interaction / connection / balance / contrast / conflict\n공통 의미: 두 대상 '사이'",
       "memo": "BETWEEN 그룹 드릴"
     },
-
     {
-      "id": "colloc-about-01", "type": "FIB", "cat": "collocation", "date": "2025-03-16",
-      "passage": "Many researchers are deeply concerned [BLANK] the rapid and accelerating pace of climate change. Governments around the world are increasingly worried [BLANK] the environmental damage caused by industrial activity. All citizens should be properly informed [BLANK] recent and significant policy developments.",
-      "question": "빈칸에 들어갈 전치사를 고르세요.",
-      "options": ["in","on","to","with","for","of","about","at"],
-      "answers": ["about","about","about"],
-      "explanation": "전치사 ABOUT 그룹\n• concerned about — ~에 대해 걱정하는\n• worried about — ~에 대해 걱정하는\n• informed about — ~에 대해 알고 있는\n\n💡 '감정·태도 + about' 패턴은 매우 흔합니다.",
+      "id": "prep-about-01",
+      "type": "FIB",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "Researchers are concerned [BLANK] climate change. Governments are worried [BLANK] environmental damage. Citizens should be informed [BLANK] recent policy developments.",
+      "question": "빈칸에 알맞은 전치사를 고르세요.",
+      "options": [
+        "in",
+        "on",
+        "to",
+        "with",
+        "for",
+        "of",
+        "about",
+        "at"
+      ],
+      "answers": [
+        "about",
+        "about",
+        "about"
+      ],
+      "explanation": "전치사 ABOUT 그룹\n• concerned about — 걱정하는\n• worried about — 걱정하는\n• informed about — 알고 있는\n\n💡 '감정·태도 + about' 패턴",
       "memo": "concerned about / worried about / informed about"
     },
     {
-      "id": "colloc-about-02", "type": "FIB", "cat": "collocation", "date": "2025-03-16",
-      "passage": "The public must be fully aware [BLANK] the serious health risks associated with air pollution. Policymakers regularly talk [BLANK] the need for stronger economic growth strategies to address inequality.",
-      "question": "빈칸에 들어갈 전치사를 고르세요.",
-      "options": ["in","on","to","with","for","of","about","at"],
-      "answers": ["of","about"],
-      "explanation": "• aware of — ~을 알고 있는 (aware of가 더 일반적)\n• talk about — ~에 대해 이야기하다\n\n⚠️ 'aware of'가 'aware about'보다 PTE에서 더 자주 출제됩니다.",
+      "id": "prep-about-02",
+      "type": "FIB",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "The public must be aware [BLANK] health risks. Policymakers regularly talk [BLANK] economic growth strategies.",
+      "question": "빈칸에 알맞은 전치사를 고르세요.",
+      "options": [
+        "in",
+        "on",
+        "to",
+        "with",
+        "for",
+        "of",
+        "about",
+        "at"
+      ],
+      "answers": [
+        "of",
+        "about"
+      ],
+      "explanation": "• aware of — ~을 알고 있는 (of가 일반적)\n• talk about — ~에 대해 이야기하다",
       "memo": "aware of / talk about"
     },
     {
-      "id": "colloc-about-drill", "type": "MCM", "cat": "collocation", "date": "2025-03-16",
-      "passage": "", "question": "【전치사 ABOUT 드릴】 ABOUT과 함께 쓰이는 올바른 표현을 모두 고르세요.",
+      "id": "prep-at-01",
+      "type": "FIB",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "Some students are particularly good [BLANK] problem solving. The project aims [BLANK] improving productivity. Researchers looked [BLANK] data from multiple sources.",
+      "question": "빈칸에 알맞은 전치사를 고르세요.",
       "options": [
-        {"text":"concerned about","correct":true}, {"text":"concerned for","correct":false},
-        {"text":"worried about","correct":true}, {"text":"worried for","correct":false},
-        {"text":"informed about","correct":true}, {"text":"informed on","correct":false},
-        {"text":"talk about","correct":true}, {"text":"talk on","correct":false},
-        {"text":"think about","correct":true}, {"text":"think on","correct":false}
+        "in",
+        "on",
+        "to",
+        "with",
+        "for",
+        "of",
+        "about",
+        "at"
       ],
-      "answers": [],
-      "explanation": "전치사 ABOUT 전체:\nconcerned about / worried about / informed about / talk about / think about\n\n공통 의미: 감정·인지·화제의 '대상'을 나타낼 때",
-      "memo": "ABOUT 그룹 드릴"
-    },
-
-    {
-      "id": "colloc-at-01", "type": "FIB", "cat": "collocation", "date": "2025-03-16",
-      "passage": "Some students are particularly good [BLANK] solving complex mathematical problems. The project aims [BLANK] improving overall productivity across the entire manufacturing sector. Researchers carefully looked [BLANK] the raw data from multiple independent sources.",
-      "question": "빈칸에 들어갈 전치사를 고르세요.",
-      "options": ["in","on","to","with","for","of","about","at"],
-      "answers": ["at","at","at"],
-      "explanation": "전치사 AT 그룹 ①\n• good at — ~을 잘하다\n• aim at — ~을 목표로 하다\n• look at — ~을 보다\n\n⚠️ aim at vs aim for:\n  aim at = 구체적 목표물을 겨냥\n  aim for = 추상적 목표를 향해 나아감",
+      "answers": [
+        "at",
+        "at",
+        "at"
+      ],
+      "explanation": "전치사 AT 그룹\n• good at — 잘하다\n• aim at — 목표로 하다\n• look at — 보다\n\n⚠️ aim at(구체적 목표) vs aim for(추상적 목표)",
       "memo": "good at / aim at / look at"
     },
     {
-      "id": "colloc-at-02", "type": "FIB", "cat": "collocation", "date": "2025-03-16",
-      "passage": "After years of careful and systematic analysis, the research team finally arrived [BLANK] a new set of conclusions that had long been overlooked by the field.",
-      "question": "빈칸에 들어갈 전치사를 고르세요.",
-      "options": ["in","on","to","with","for","of","about","at"],
-      "answers": ["at"],
-      "explanation": "전치사 AT\n• arrive at (a conclusion/decision/agreement) — 결론/결정에 도달하다\n\n⚠️ arrive at vs arrive in vs arrive on:\n  arrive AT = 결론·특정 지점에 도달\n  arrive IN = 도시·국가에 도착\n  arrive ON = 날짜에 (arrive on Monday)",
+      "id": "prep-at-02",
+      "type": "MCS",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "",
+      "question": "After years of analysis, researchers arrived ___ new conclusions.",
+      "options": [
+        {
+          "text": "at",
+          "correct": true
+        },
+        {
+          "text": "to",
+          "correct": false
+        },
+        {
+          "text": "on",
+          "correct": false
+        },
+        {
+          "text": "in",
+          "correct": false
+        }
+      ],
+      "answers": [],
+      "explanation": "arrive at a conclusion — 결론에 도달하다\n\n⚠️ arrive AT(결론·지점) / arrive IN(도시·국가) / arrive ON(날짜)",
       "memo": "arrive at a conclusion"
     },
     {
-      "id": "colloc-at-drill", "type": "MCM", "cat": "collocation", "date": "2025-03-16",
-      "passage": "", "question": "【전치사 AT 드릴】 AT과 함께 쓰이는 올바른 표현을 모두 고르세요.",
+      "id": "phrase-01",
+      "type": "FIB",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "In terms [BLANK] economic impact, the policy has been successful. As a result [BLANK] increased investment, productivity improved. In contrast [BLANK] previous years, unemployment has decreased.",
+      "question": "빈칸에 알맞은 전치사를 고르세요.",
       "options": [
-        {"text":"good at","correct":true}, {"text":"good in","correct":false},
-        {"text":"aim at","correct":true}, {"text":"aim to","correct":false},
-        {"text":"look at","correct":true}, {"text":"look on","correct":false},
-        {"text":"arrive at","correct":true}, {"text":"arrive to","correct":false},
-        {"text":"bad at","correct":true}, {"text":"bad in","correct":false}
+        "of",
+        "to",
+        "in",
+        "with",
+        "for",
+        "on"
       ],
-      "answers": [],
-      "explanation": "전치사 AT 전체:\ngood at / bad at / aim at / look at / arrive at / laugh at / smile at\n\n공통 의미: 특정 대상에 '직접 향하는' 개념",
-      "memo": "AT 그룹 드릴"
-    },
-
-    {
-      "id": "colloc-phrase-01", "type": "FIB", "cat": "collocation", "date": "2025-03-16",
-      "passage": "In terms [BLANK] its economic impact, the new trade policy has been largely successful. As a result [BLANK] significantly increased foreign investment, overall productivity has improved. In contrast [BLANK] the previous decade, the unemployment rate has decreased substantially.",
-      "question": "빈칸에 들어갈 전치사를 고르세요.",
-      "options": ["of","to","in","with","for","on"],
-      "answers": ["of","of","to"],
-      "explanation": "고정 전치사 표현 ①\n• in terms of — ~의 관점에서\n• as a result of — ~의 결과로\n• in contrast to — ~와 대조적으로",
+      "answers": [
+        "of",
+        "of",
+        "to"
+      ],
+      "explanation": "고정 구문 ①\n• in terms of — ~의 관점에서\n• as a result of — ~의 결과로\n• in contrast to — ~와 대조적으로",
       "memo": "in terms of / as a result of / in contrast to"
     },
     {
-      "id": "colloc-phrase-02", "type": "FIB", "cat": "collocation", "date": "2025-03-16",
-      "passage": "The policy was carefully developed in response [BLANK] growing and widespread public demand. All major decisions should be made on the basis [BLANK] reliable and independently verified evidence. All field activities must be carried out in full accordance [BLANK] current safety regulations.",
-      "question": "빈칸에 들어갈 전치사를 고르세요.",
-      "options": ["of","to","in","with","for","on"],
-      "answers": ["to","of","with"],
-      "explanation": "고정 전치사 표현 ②\n• in response to — ~에 대응하여\n• on the basis of — ~에 근거하여\n• in accordance with — ~에 따라\n\n⚠️ 각각 전치사가 다릅니다! 꼭 외우세요.",
+      "id": "phrase-02",
+      "type": "FIB",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "The policy was developed in response [BLANK] public demand. Decisions should be made on the basis [BLANK] reliable evidence. Activities must be carried out in accordance [BLANK] safety regulations.",
+      "question": "빈칸에 알맞은 전치사를 고르세요.",
+      "options": [
+        "of",
+        "to",
+        "in",
+        "with",
+        "for",
+        "on"
+      ],
+      "answers": [
+        "to",
+        "of",
+        "with"
+      ],
+      "explanation": "고정 구문 ②\n• in response to — 대응하여\n• on the basis of — 근거하여\n• in accordance with — 따라\n\n⚠️ 각각 전치사가 다릅니다! 꼭 외우세요.",
       "memo": "in response to / on the basis of / in accordance with"
     },
     {
-      "id": "colloc-phrase-03", "type": "FIB", "cat": "collocation", "date": "2025-03-16",
-      "passage": "With regard [BLANK] current environmental policy, overall progress has been disappointingly slow. The results should always be considered in relation [BLANK] the broader and more complex social context. In addition [BLANK] economic factors, cultural and historical influences must also be carefully considered.",
-      "question": "빈칸에 들어갈 전치사를 고르세요.",
-      "options": ["of","to","in","with","for","on"],
-      "answers": ["to","to","to"],
-      "explanation": "고정 전치사 표현 ③\n• with regard to — ~에 관하여\n• in relation to — ~에 관련하여\n• in addition to — ~에 덧붙여\n\n💡 세 개 모두 TO로 끝납니다!",
+      "id": "phrase-03",
+      "type": "FIB",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "With regard [BLANK] environmental policy, progress has been slow. Results should be considered in relation [BLANK] the broader context. In addition [BLANK] economic factors, cultural influences must also be considered.",
+      "question": "빈칸에 알맞은 전치사를 고르세요.",
+      "options": [
+        "of",
+        "to",
+        "in",
+        "with",
+        "for",
+        "on"
+      ],
+      "answers": [
+        "to",
+        "to",
+        "to"
+      ],
+      "explanation": "고정 구문 ③\n• with regard to — ~에 관하여\n• in relation to — ~에 관련하여\n• in addition to — ~에 덧붙여\n\n💡 셋 다 TO!",
       "memo": "with regard to / in relation to / in addition to"
     },
     {
-      "id": "colloc-phrase-04", "type": "FIB", "cat": "collocation", "date": "2025-03-16",
-      "passage": "In comparison [BLANK] most other developed nations, Australia maintains exceptionally high living standards. The scientific evidence is now strongly in favour [BLANK] transitioning entirely to renewable energy sources. The outdoor protest proceeded in spite [BLANK] the unusually poor and unpredictable weather conditions.",
-      "question": "빈칸에 들어갈 전치사를 고르세요.",
-      "options": ["of","to","in","with","for","on"],
-      "answers": ["with","of","of"],
-      "explanation": "고정 전치사 표현 ④\n• in comparison with — ~와 비교하여\n• in favour of — ~에 찬성하여\n• in spite of — ~에도 불구하고\n\n⚠️ in spite of = despite (하지만 despite 뒤에는 of 없음!)",
+      "id": "phrase-04",
+      "type": "FIB",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "In comparison [BLANK] other countries, Australia has high living standards. The evidence is in favour [BLANK] renewable energy. The protest proceeded in spite [BLANK] poor weather.",
+      "question": "빈칸에 알맞은 전치사를 고르세요.",
+      "options": [
+        "of",
+        "to",
+        "in",
+        "with",
+        "for",
+        "on"
+      ],
+      "answers": [
+        "with",
+        "of",
+        "of"
+      ],
+      "explanation": "고정 구문 ④\n• in comparison with — ~와 비교하여\n• in favour of — ~에 찬성하여\n• in spite of — ~에도 불구하고\n\n⚠️ in spite of = despite (despite 뒤에는 of 없음!)",
       "memo": "in comparison with / in favour of / in spite of"
     },
     {
-      "id": "colloc-phrase-05", "type": "FIB", "cat": "collocation", "date": "2025-03-16",
-      "passage": "Security cameras were installed in place [BLANK] traditional human guards throughout the facility. The international team of scientists worked tirelessly in search [BLANK] a viable and long-term solution to the global energy crisis.",
-      "question": "빈칸에 들어갈 전치사를 고르세요.",
-      "options": ["of","to","in","with","for","on"],
-      "answers": ["of","of"],
-      "explanation": "고정 전치사 표현 ⑤\n• in place of — ~을 대신하여\n• in search of — ~을 찾아서\n\n추가:\n• in support of — ~을 지지하여\n• in theory — 이론상으로 (전치사 없음)\n• in practice — 실제로 (전치사 없음)",
-      "memo": "in place of / in search of / in support of"
+      "id": "phrase-05",
+      "type": "FIB",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "Cameras were installed in place [BLANK] security guards. Scientists worked in search [BLANK] a viable solution to the energy crisis.",
+      "question": "빈칸에 알맞은 전치사를 고르세요.",
+      "options": [
+        "of",
+        "to",
+        "in",
+        "with",
+        "for",
+        "on"
+      ],
+      "answers": [
+        "of",
+        "of"
+      ],
+      "explanation": "고정 구문 ⑤\n• in place of — ~을 대신하여\n• in search of — ~을 찾아서\n\n+ in support of(지지하여) / in favour of(찬성하여)",
+      "memo": "in place of / in search of"
     },
     {
-      "id": "colloc-phrase-drill", "type": "MCM", "cat": "collocation", "date": "2025-03-16",
-      "passage": "", "question": "【고정 전치사 구문 드릴】 올바른 표현을 모두 고르세요.",
+      "id": "phrase-drill",
+      "type": "MCM",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "",
+      "question": "【고정 전치사 구문 드릴】 올바른 표현을 모두 고르세요.",
       "options": [
-        {"text":"in terms of","correct":true}, {"text":"in terms with","correct":false},
-        {"text":"as a result of","correct":true}, {"text":"as a result from","correct":false},
-        {"text":"in response to","correct":true}, {"text":"in response of","correct":false},
-        {"text":"on the basis of","correct":true}, {"text":"on the basis on","correct":false},
-        {"text":"in accordance with","correct":true}, {"text":"in accordance to","correct":false},
-        {"text":"in spite of","correct":true}, {"text":"in despite of","correct":false},
-        {"text":"in favour of","correct":true}, {"text":"in favour to","correct":false},
-        {"text":"with regard to","correct":true}, {"text":"with regard of","correct":false}
+        {
+          "text": "in terms of",
+          "correct": true
+        },
+        {
+          "text": "in terms with",
+          "correct": false
+        },
+        {
+          "text": "as a result of",
+          "correct": true
+        },
+        {
+          "text": "as a result from",
+          "correct": false
+        },
+        {
+          "text": "in response to",
+          "correct": true
+        },
+        {
+          "text": "in response of",
+          "correct": false
+        },
+        {
+          "text": "on the basis of",
+          "correct": true
+        },
+        {
+          "text": "on the basis on",
+          "correct": false
+        },
+        {
+          "text": "in accordance with",
+          "correct": true
+        },
+        {
+          "text": "in accordance to",
+          "correct": false
+        },
+        {
+          "text": "in spite of",
+          "correct": true
+        },
+        {
+          "text": "in despite of",
+          "correct": false
+        },
+        {
+          "text": "in favour of",
+          "correct": true
+        },
+        {
+          "text": "in favour to",
+          "correct": false
+        },
+        {
+          "text": "with regard to",
+          "correct": true
+        },
+        {
+          "text": "with regard of",
+          "correct": false
+        }
       ],
       "answers": [],
-      "explanation": "PTE 초빈출 고정 구문 전체:\n• in terms of\n• as a result of\n• in response to\n• on the basis of\n• in accordance with ← with!\n• with regard to\n• in relation to\n• in addition to\n• in comparison with ← with!\n• in favour of\n• in spite of\n• in contrast to\n• in place of\n• in search of",
-      "memo": "고정 전치사 구문 총정리 드릴"
-    },
-
-    {
-      "id": "colloc-mega-01", "type": "MCM", "cat": "collocation", "date": "2025-03-16",
-      "passage": "", "question": "【종합 복습 1】 IN과 ON — 올바른 표현을 모두 고르세요.",
-      "options": [
-        {"text":"engage in research","correct":true}, {"text":"engage on research","correct":false},
-        {"text":"focus on education","correct":true}, {"text":"focus in education","correct":false},
-        {"text":"result in change","correct":true}, {"text":"result on change","correct":false},
-        {"text":"depend on evidence","correct":true}, {"text":"depend in evidence","correct":false},
-        {"text":"specialize in science","correct":true}, {"text":"specialize on science","correct":false},
-        {"text":"insist on standards","correct":true}, {"text":"insist in standards","correct":false}
-      ],
-      "answers": [],
-      "explanation": "IN 그룹: engage / participate / result / specialize / succeed / believe / involve\nON 그룹: focus / depend / concentrate / rely / base / insist / reflect / comment\n\n헷갈릴 때: '참여·포함' → IN / '방향·근거' → ON",
-      "memo": "IN vs ON 종합 복습"
-    },
-    {
-      "id": "colloc-mega-02", "type": "MCM", "cat": "collocation", "date": "2025-03-16",
-      "passage": "", "question": "【종합 복습 2】 TO와 WITH — 올바른 표현을 모두 고르세요.",
-      "options": [
-        {"text":"contribute to growth","correct":true}, {"text":"contribute with growth","correct":false},
-        {"text":"associate with obesity","correct":true}, {"text":"associate to obesity","correct":false},
-        {"text":"adapt to change","correct":true}, {"text":"adapt with change","correct":false},
-        {"text":"deal with problems","correct":true}, {"text":"deal to problems","correct":false},
-        {"text":"respond to challenges","correct":true}, {"text":"respond with challenges","correct":false},
-        {"text":"agree with conclusions","correct":true}, {"text":"agree to conclusions","correct":false}
-      ],
-      "answers": [],
-      "explanation": "TO 그룹: contribute / lead / refer / belong / respond / adapt / relate / attribute\nWITH 그룹: associate / deal / cope / compare / agree / connect / collaborate / contrast\n\n헷갈릴 때: '방향·연결' → TO / '관계·협력' → WITH",
-      "memo": "TO vs WITH 종합 복습"
-    },
-    {
-      "id": "colloc-mega-03", "type": "MCM", "cat": "collocation", "date": "2025-03-16",
-      "passage": "", "question": "【종합 복습 3】 혼동하기 쉬운 고정 구문 — 올바른 것을 모두 고르세요.",
-      "options": [
-        {"text":"in terms of","correct":true},
-        {"text":"in response to","correct":true},
-        {"text":"on the basis of","correct":true},
-        {"text":"in accordance to","correct":false},
-        {"text":"in accordance with","correct":true},
-        {"text":"in comparison to","correct":false},
-        {"text":"in comparison with","correct":true},
-        {"text":"in spite of","correct":true},
-        {"text":"in despite of","correct":false},
-        {"text":"despite of","correct":false}
-      ],
-      "answers": [],
-      "explanation": "⚠️ 자주 틀리는 것:\n❌ in accordance TO → ✅ in accordance WITH\n❌ in comparison TO → ✅ in comparison WITH\n❌ in despite of → ✅ in spite of\n❌ despite of → ✅ despite (of 없음!)\n\n기억법: accordance / comparison 뒤에는 WITH!",
-      "memo": "고정 구문 종합 복습 — 자주 틀리는 것"
-    },
-    {
-      "id": "colloc-mega-04", "type": "MCM", "cat": "collocation", "date": "2025-03-16",
-      "passage": "", "question": "【종합 복습 4】 FOR과 OF — 올바른 표현을 모두 고르세요.",
-      "options": [
-        {"text":"responsible for","correct":true}, {"text":"responsible of","correct":false},
-        {"text":"cause of","correct":true}, {"text":"cause for","correct":false},
-        {"text":"known for","correct":true}, {"text":"known of","correct":false},
-        {"text":"part of","correct":true}, {"text":"part for","correct":false},
-        {"text":"suitable for","correct":true}, {"text":"suitable of","correct":false},
-        {"text":"lack of","correct":true}, {"text":"lack for","correct":false}
-      ],
-      "answers": [],
-      "explanation": "FOR 그룹 (형용사): responsible / known / famous / suitable / necessary / prepared / eligible / beneficial\nOF 그룹 (명사): part / effect / result / cause / source / lack / form / type\n\n헷갈릴 때: 형용사 뒤 → FOR / 명사 뒤 → OF",
-      "memo": "FOR vs OF 종합 복습"
+      "explanation": "PTE 초빈출 고정 구문:\n• in terms of\n• as a result of\n• in response to\n• on the basis of\n• in accordance WITH ← with!\n• with regard to\n• in relation to\n• in addition to\n• in comparison WITH ← with!\n• in favour of\n• in spite of\n• in contrast to\n• in place of\n• in search of",
+      "memo": "고정 전치사 구문 총정리"
     },
     {
-      "id": "colloc-mega-05", "type": "MCM", "cat": "collocation", "date": "2025-03-16",
-      "passage": "", "question": "【최종 보스 드릴】 전 전치사 혼합 — 틀린 표현을 찾아 올바른 것만 고르세요.",
+      "id": "review-in-on",
+      "type": "MCM",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "",
+      "question": "【종합 복습 1】 IN vs ON — 올바른 표현을 모두 고르세요.",
       "options": [
-        {"text":"engage in research","correct":true},
-        {"text":"focus on education","correct":true},
-        {"text":"contribute to growth","correct":true},
-        {"text":"associate with stress","correct":true},
-        {"text":"responsible of the team","correct":false},
-        {"text":"part for modern life","correct":false},
-        {"text":"relationship between groups","correct":true},
-        {"text":"concerned about climate","correct":true},
-        {"text":"good at problem solving","correct":true},
-        {"text":"in terms with economy","correct":false},
-        {"text":"in accordance with rules","correct":true},
-        {"text":"in spite of difficulties","correct":true}
+        {
+          "text": "engage in research",
+          "correct": true
+        },
+        {
+          "text": "engage on research",
+          "correct": false
+        },
+        {
+          "text": "focus on education",
+          "correct": true
+        },
+        {
+          "text": "focus in education",
+          "correct": false
+        },
+        {
+          "text": "result in change",
+          "correct": true
+        },
+        {
+          "text": "result on change",
+          "correct": false
+        },
+        {
+          "text": "depend on evidence",
+          "correct": true
+        },
+        {
+          "text": "depend in evidence",
+          "correct": false
+        },
+        {
+          "text": "specialize in science",
+          "correct": true
+        },
+        {
+          "text": "specialize on science",
+          "correct": false
+        },
+        {
+          "text": "insist on standards",
+          "correct": true
+        },
+        {
+          "text": "insist in standards",
+          "correct": false
+        }
       ],
       "answers": [],
-      "explanation": "틀린 표현 정정:\n❌ responsible OF → ✅ responsible FOR\n❌ part FOR → ✅ part OF\n❌ in terms WITH → ✅ in terms OF\n\n전 전치사 그룹 최종 정리:\nIN: engage/participate/result/specialize/succeed/believe\nON: focus/depend/rely/base/insist/comment\nTO: contribute/lead/adapt/respond/belong/attribute\nWITH: associate/deal/cope/compare/agree/collaborate\nFOR: responsible/known/suitable/necessary/beneficial\nOF: part/effect/cause/source/lack/form\nBETWEEN: relationship/difference/balance/connection\nABOUT: concerned/worried/informed/talk/think\nAT: good/aim/look/arrive",
-      "memo": "전 전치사 최종 종합 드릴"
+      "explanation": "IN: engage / participate / result / specialize / succeed / believe / involve\nON: focus / depend / concentrate / rely / base / insist / reflect / comment\n\n헷갈릴 때: '참여·포함' → IN / '방향·근거' → ON",
+      "memo": "IN vs ON"
+    },
+    {
+      "id": "review-to-with",
+      "type": "MCM",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "",
+      "question": "【종합 복습 2】 TO vs WITH — 올바른 표현을 모두 고르세요.",
+      "options": [
+        {
+          "text": "contribute to growth",
+          "correct": true
+        },
+        {
+          "text": "contribute with growth",
+          "correct": false
+        },
+        {
+          "text": "associate with obesity",
+          "correct": true
+        },
+        {
+          "text": "associate to obesity",
+          "correct": false
+        },
+        {
+          "text": "adapt to change",
+          "correct": true
+        },
+        {
+          "text": "adapt with change",
+          "correct": false
+        },
+        {
+          "text": "deal with problems",
+          "correct": true
+        },
+        {
+          "text": "deal to problems",
+          "correct": false
+        },
+        {
+          "text": "respond to challenges",
+          "correct": true
+        },
+        {
+          "text": "respond with challenges",
+          "correct": false
+        },
+        {
+          "text": "agree with conclusions",
+          "correct": true
+        },
+        {
+          "text": "agree to conclusions",
+          "correct": false
+        }
+      ],
+      "answers": [],
+      "explanation": "TO: contribute / lead / refer / belong / respond / adapt / relate / attribute\nWITH: associate / deal / cope / compare / agree / connect / collaborate / contrast\n\n헷갈릴 때: '방향·연결' → TO / '관계·협력' → WITH",
+      "memo": "TO vs WITH"
+    },
+    {
+      "id": "review-for-of",
+      "type": "MCM",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "",
+      "question": "【종합 복습 3】 FOR vs OF — 올바른 표현을 모두 고르세요.",
+      "options": [
+        {
+          "text": "responsible for",
+          "correct": true
+        },
+        {
+          "text": "responsible of",
+          "correct": false
+        },
+        {
+          "text": "cause of",
+          "correct": true
+        },
+        {
+          "text": "cause for",
+          "correct": false
+        },
+        {
+          "text": "known for",
+          "correct": true
+        },
+        {
+          "text": "known of",
+          "correct": false
+        },
+        {
+          "text": "part of",
+          "correct": true
+        },
+        {
+          "text": "part for",
+          "correct": false
+        },
+        {
+          "text": "suitable for",
+          "correct": true
+        },
+        {
+          "text": "suitable of",
+          "correct": false
+        },
+        {
+          "text": "lack of",
+          "correct": true
+        },
+        {
+          "text": "lack for",
+          "correct": false
+        }
+      ],
+      "answers": [],
+      "explanation": "FOR(형용사): responsible / known / famous / suitable / necessary / prepared / eligible / beneficial\nOF(명사): part / effect / cause / source / lack / form / type\n\n형용사 뒤 → FOR / 명사 뒤 → OF",
+      "memo": "FOR vs OF"
+    },
+    {
+      "id": "review-phrases",
+      "type": "MCM",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "",
+      "question": "【종합 복습 4】 자주 틀리는 고정 구문 — 올바른 것만 고르세요.",
+      "options": [
+        {
+          "text": "in accordance with",
+          "correct": true
+        },
+        {
+          "text": "in accordance to",
+          "correct": false
+        },
+        {
+          "text": "in comparison with",
+          "correct": true
+        },
+        {
+          "text": "in comparison to",
+          "correct": false
+        },
+        {
+          "text": "in spite of",
+          "correct": true
+        },
+        {
+          "text": "in despite of",
+          "correct": false
+        },
+        {
+          "text": "despite of the problem",
+          "correct": false
+        },
+        {
+          "text": "despite the problem",
+          "correct": true
+        }
+      ],
+      "answers": [],
+      "explanation": "⚠️ 자주 틀리는 것:\n❌ in accordance TO → ✅ in accordance WITH\n❌ in comparison TO → ✅ in comparison WITH\n❌ in despite of → ✅ in spite of\n❌ despite OF → ✅ despite (of 없음!)",
+      "memo": "고정 구문 — 틀리기 쉬운 것"
+    },
+    {
+      "id": "review-final",
+      "type": "MCM",
+      "cat": "collocation",
+      "date": "2025-03-16",
+      "passage": "",
+      "question": "【최종 보스】 전 전치사 혼합 — 올바른 표현만 고르세요.",
+      "options": [
+        {
+          "text": "engage in research",
+          "correct": true
+        },
+        {
+          "text": "focus on education",
+          "correct": true
+        },
+        {
+          "text": "contribute to growth",
+          "correct": true
+        },
+        {
+          "text": "associate with stress",
+          "correct": true
+        },
+        {
+          "text": "responsible of the team",
+          "correct": false
+        },
+        {
+          "text": "part for modern life",
+          "correct": false
+        },
+        {
+          "text": "relationship between groups",
+          "correct": true
+        },
+        {
+          "text": "concerned about climate",
+          "correct": true
+        },
+        {
+          "text": "good at problem solving",
+          "correct": true
+        },
+        {
+          "text": "in terms with economy",
+          "correct": false
+        },
+        {
+          "text": "in accordance with rules",
+          "correct": true
+        },
+        {
+          "text": "in spite of difficulties",
+          "correct": true
+        }
+      ],
+      "answers": [],
+      "explanation": "틀린 표현:\n❌ responsible OF → ✅ responsible FOR\n❌ part FOR → ✅ part OF\n❌ in terms WITH → ✅ in terms OF\n\n전체 암기 요약:\nIN: engage/participate/result/specialize\nON: focus/depend/rely/insist\nTO: contribute/lead/adapt/respond\nWITH: associate/deal/cope/compare\nFOR: responsible/suitable/beneficial\nOF: part/effect/cause/lack\nBETWEEN: relationship/difference/balance\nABOUT: concerned/worried/talk\nAT: good/aim/arrive",
+      "memo": "최종 종합 드릴"
     }
   ]
 }
