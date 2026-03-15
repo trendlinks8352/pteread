@@ -484,7 +484,7 @@ function buildPassage(q){
     let i=0;
     return (q.passage||'').replace(/\[BLANK\]/g,()=>{
       const idx=i++;
-      return `<span class="blank" id="bl-${q.id}-${idx}" onclick="clickBlank('${q.id}',${idx})" data-fi="">___</span>`;
+      return `<span class="blank" id="bl-${q.id}-${idx}" onclick="clearBlank('${q.id}',${idx})" data-filled="" data-word="">___</span>`;
     });
   }
   return q.passage||'';
@@ -492,7 +492,14 @@ function buildPassage(q){
 
 function buildInteraction(q,state){
   if(q.type==='FIB'||q.type==='RW-FIB'){
-    return `<div class="word-bank" id="bank-${q.id}">${(q.options||[]).map((w,i)=>`<span class="bank-word" id="bw-${q.id}-${i}" onclick="selectWord('${q.id}',${i},'${esc(w)}')">${w}</span>`).join('')}</div>`;
+    // 단어 뱅크: 클릭하면 첫 빈 칸에 자동 삽입
+    return `
+      <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:1px;">
+        👆 단어 클릭 → 빈칸에 자동 입력 &nbsp;|&nbsp; 채워진 빈칸 클릭 → 취소
+      </div>
+      <div class="word-bank" id="bank-${q.id}">
+        ${(q.options||[]).map((w,i)=>`<span class="bank-word" id="bw-${q.id}-${i}" onclick="fillNext('${q.id}','${esc(w)}')">${w}</span>`).join('')}
+      </div>`;
   }
   if(q.type==='MCM'||q.type==='MCS'){
     const sel=state.selected||[];
@@ -501,22 +508,32 @@ function buildInteraction(q,state){
   return '';
 }
 
+// 단어 클릭 → 첫 번째 빈 칸(___) 에 자동 채우기
+function fillNext(qid, word){
+  const blanks = [...document.querySelectorAll(`[id^="bl-${qid}-"]`)];
+  // 아직 안 채워진 첫 번째 빈칸 찾기
+  const target = blanks.find(bl => bl.dataset.filled !== '1');
+  if(!target){ showToast('모든 빈칸이 채워졌어요! 빈칸을 클릭해서 지우세요.'); return; }
+  target.textContent = word;
+  target.dataset.filled = '1';
+  target.dataset.word = word;
+  target.classList.add('b-filled');
+}
+
+// 채워진 빈칸 클릭 → 지우기
+function clearBlank(qid, bi){
+  const bl = document.getElementById(`bl-${qid}-${bi}`);
+  if(!bl || bl.dataset.filled !== '1') return;
+  bl.textContent = '___';
+  bl.dataset.filled = '';
+  bl.dataset.word = '';
+  bl.classList.remove('b-filled','b-correct','b-wrong');
+}
+
+// 기존 호환용 (사용 안 함)
 let selWord=null;
-function selectWord(qid,idx,word){
-  selWord={qid,idx,word};
-  document.querySelectorAll(`#bank-${qid} .bank-word`).forEach(b=>b.classList.remove('bw-sel'));
-  document.getElementById(`bw-${qid}-${idx}`)?.classList.add('bw-sel');
-}
-function clickBlank(qid,bi){
-  if(!selWord||selWord.qid!==qid)return;
-  const bl=document.getElementById(`bl-${qid}-${bi}`);if(!bl)return;
-  const prev=bl.dataset.fi;
-  if(prev!=='') document.getElementById(`bw-${qid}-${prev}`)?.classList.remove('bw-used');
-  bl.textContent=selWord.word;bl.dataset.fi=selWord.idx;bl.classList.add('b-filled');
-  const bw=document.getElementById(`bw-${qid}-${selWord.idx}`);
-  if(bw){bw.classList.add('bw-used');bw.classList.remove('bw-sel');}
-  selWord=null;
-}
+function selectWord(){}
+function clickBlank(qid,bi){ clearBlank(qid,bi); }
 function toggleOpt(qid,idx,type){
   if(!quizStates[qid])quizStates[qid]={};
   let sel=quizStates[qid].selected||[];
@@ -546,8 +563,11 @@ function evalAnswer(q,state){
     let all=true;
     (q.answers||[]).forEach((ans,i)=>{
       const bl=document.getElementById(`bl-${q.id}-${i}`);if(!bl){all=false;return;}
-      const ok=(bl.textContent||'').trim().toLowerCase()===ans.trim().toLowerCase();
-      bl.classList.remove('b-filled');bl.classList.add(ok?'b-correct':'b-wrong');if(!ok)all=false;
+      const userAns=(bl.dataset.word||bl.textContent||'').trim().toLowerCase();
+      const ok=userAns===ans.trim().toLowerCase();
+      bl.classList.remove('b-filled');
+      bl.classList.add(ok?'b-correct':'b-wrong');
+      if(!ok) all=false;
     });
     return all;
   }
