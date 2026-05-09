@@ -3,557 +3,1082 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PTE Academic Collocation Quiz</title>
+<title>PTE Academic Collocation Quiz — Full List</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --bg: #0e0e14;
-    --surface: #16161f;
-    --surface2: #1e1e2a;
-    --border: rgba(255,255,255,0.08);
-    --accent: #a78bfa;
-    --accent2: #7c3aed;
-    --accent-dim: rgba(167,139,250,0.12);
-    --text: #f0eeff;
-    --text-muted: #8882aa;
-    --text-faint: #4a4766;
-    --green: #4ade80;
-    --green-dim: rgba(74,222,128,0.12);
-    --red: #f87171;
-    --red-dim: rgba(248,113,113,0.12);
-    --radius: 12px;
-    --radius-sm: 8px;
-  }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem 1rem 4rem;
-  }
-
-  /* noise overlay */
-  body::before {
-    content: '';
-    position: fixed; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .container {
-    width: 100%;
-    max-width: 640px;
-    position: relative;
-    z-index: 1;
-  }
-
-  /* Header */
-  .header {
-    text-align: center;
-    margin-bottom: 2.5rem;
-  }
-  .header-tag {
-    display: inline-block;
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent);
-    background: var(--accent-dim);
-    border: 1px solid rgba(167,139,250,0.2);
-    padding: 4px 14px;
-    border-radius: 99px;
-    margin-bottom: 1rem;
-  }
-  .header h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(28px, 6vw, 42px);
-    font-weight: 400;
-    line-height: 1.15;
-    color: var(--text);
-    margin-bottom: 0.5rem;
-  }
-  .header h1 span { color: var(--accent); }
-  .header p {
-    font-size: 14px;
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
-
-  /* Progress */
-  .progress-wrap {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 1.5rem;
-  }
-  .progress-track {
-    flex: 1;
-    height: 3px;
-    background: var(--border);
-    border-radius: 99px;
-    overflow: hidden;
-  }
-  .progress-fill {
-    height: 100%;
-    background: var(--accent);
-    border-radius: 99px;
-    transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
-  }
-  .progress-text { font-size: 13px; color: var(--text-muted); white-space: nowrap; }
-  .score-badge {
-    font-size: 13px;
-    color: var(--accent);
-    background: var(--accent-dim);
-    padding: 3px 10px;
-    border-radius: 99px;
-    white-space: nowrap;
-  }
-
-  /* Question card */
-  .q-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.75rem;
-    margin-bottom: 1rem;
-    animation: fadeUp 0.3s ease;
-  }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(10px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  .q-type-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-faint);
-    margin-bottom: 1rem;
-  }
-  .q-type-badge::before {
-    content: '';
-    display: block;
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--accent);
-    flex-shrink: 0;
-  }
-
-  .q-text {
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 1.6;
-    color: var(--text);
-    margin-bottom: 1.5rem;
-  }
-  .blank {
-    display: inline-block;
-    border-bottom: 2px solid var(--accent);
-    color: var(--accent);
-    font-weight: 500;
-    min-width: 80px;
-    padding: 0 4px;
-  }
-
-  /* Fill-in options */
-  .options {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-  }
-  .opt-btn {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 11px 16px;
-    font-size: 14px;
-    font-family: 'DM Sans', sans-serif;
-    color: var(--text-muted);
-    cursor: pointer;
-    text-align: left;
-    transition: border-color 0.15s, background 0.15s, color 0.15s;
-  }
-  .opt-btn:hover:not(:disabled) {
-    border-color: rgba(167,139,250,0.4);
-    background: var(--accent-dim);
-    color: var(--text);
-  }
-  .opt-btn.correct {
-    border-color: var(--green);
-    background: var(--green-dim);
-    color: var(--green);
-  }
-  .opt-btn.wrong {
-    border-color: var(--red);
-    background: var(--red-dim);
-    color: var(--red);
-  }
-
-  /* Match */
-  .match-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-  .match-col-label {
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-faint);
-    margin-bottom: 8px;
-  }
-  .match-items { display: flex; flex-direction: column; gap: 6px; }
-  .match-item {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 10px 14px;
-    font-size: 14px;
-    font-family: 'DM Sans', sans-serif;
-    color: var(--text-muted);
-    cursor: pointer;
-    transition: all 0.15s;
-    min-height: 42px;
-    display: flex;
-    align-items: center;
-  }
-  .match-item:hover:not(.matched):not(.wrong-flash) {
-    border-color: rgba(167,139,250,0.4);
-    color: var(--text);
-  }
-  .match-item.selected {
-    border-color: var(--accent);
-    background: var(--accent-dim);
-    color: var(--accent);
-  }
-  .match-item.matched {
-    border-color: var(--green);
-    background: var(--green-dim);
-    color: var(--green);
-    cursor: default;
-  }
-  .match-item.wrong-flash {
-    border-color: var(--red);
-    background: var(--red-dim);
-    color: var(--red);
-  }
-
-  /* Feedback */
-  .feedback {
-    margin-top: 1rem;
-    padding: 10px 14px;
-    border-radius: var(--radius-sm);
-    font-size: 14px;
-    line-height: 1.5;
-    animation: fadeUp 0.2s ease;
-  }
-  .feedback.ok { background: var(--green-dim); color: var(--green); border: 1px solid rgba(74,222,128,0.2); }
-  .feedback.no { background: var(--red-dim); color: var(--red); border: 1px solid rgba(248,113,113,0.2); }
-
-  /* Next button */
-  .next-btn {
-    width: 100%;
-    background: var(--accent2);
-    border: none;
-    border-radius: var(--radius-sm);
-    padding: 13px;
-    font-size: 15px;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 500;
-    color: #fff;
-    cursor: pointer;
-    margin-top: 0.75rem;
-    transition: background 0.15s, transform 0.1s;
-    letter-spacing: 0.01em;
-  }
-  .next-btn:hover { background: #6d28d9; }
-  .next-btn:active { transform: scale(0.99); }
-
-  /* Final */
-  .final-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 3rem 2rem;
-    text-align: center;
-    animation: fadeUp 0.3s ease;
-  }
-  .final-score-wrap {
-    margin-bottom: 1.5rem;
-  }
-  .final-score {
-    font-family: 'DM Serif Display', serif;
-    font-size: 72px;
-    font-weight: 400;
-    color: var(--accent);
-    line-height: 1;
-  }
-  .final-denom {
-    font-size: 24px;
-    color: var(--text-faint);
-  }
-  .final-msg {
-    font-size: 16px;
-    color: var(--text-muted);
-    margin-bottom: 0.5rem;
-  }
-  .final-pct {
-    font-size: 13px;
-    color: var(--text-faint);
-    margin-bottom: 2rem;
-  }
-  .final-stars {
-    font-size: 28px;
-    margin-bottom: 1.5rem;
-    letter-spacing: 4px;
-  }
-  .restart-btn {
-    background: transparent;
-    border: 1px solid rgba(167,139,250,0.4);
-    border-radius: var(--radius-sm);
-    padding: 12px 32px;
-    font-size: 15px;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 500;
-    color: var(--accent);
-    cursor: pointer;
-    transition: background 0.15s, border-color 0.15s;
-  }
-  .restart-btn:hover { background: var(--accent-dim); border-color: var(--accent); }
-
-  .hint { font-size: 12px; color: var(--text-faint); text-align: center; margin-top: 0.5rem; }
-
-  @media (max-width: 480px) {
-    .options { grid-template-columns: 1fr; }
-    .match-grid { grid-template-columns: 1fr 1fr; }
-    .q-text { font-size: 16px; }
-  }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0c0c12;--surface:#13131c;--surface2:#1a1a26;
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);
+  --accent:#a78bfa;--accent2:#7c3aed;
+  --accent-dim:rgba(167,139,250,0.1);--accent-border:rgba(167,139,250,0.25);
+  --text:#eeebff;--text-muted:#8880aa;--text-faint:#3f3d58;
+  --green:#4ade80;--green-dim:rgba(74,222,128,0.1);--green-border:rgba(74,222,128,0.3);
+  --red:#f87171;--red-dim:rgba(248,113,113,0.1);--red-border:rgba(248,113,113,0.3);
+  --radius:14px;--radius-sm:9px;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:2.5rem 1rem 5rem}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 60% 40% at 70% 10%,rgba(124,58,237,0.08),transparent),radial-gradient(ellipse 50% 30% at 10% 80%,rgba(167,139,250,0.05),transparent);pointer-events:none;z-index:0}
+.container{width:100%;max-width:680px;position:relative;z-index:1}
+.header{text-align:center;margin-bottom:2.5rem}
+.header-pill{display:inline-flex;align-items:center;gap:6px;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);background:var(--accent-dim);border:1px solid var(--accent-border);padding:5px 14px;border-radius:99px;margin-bottom:1.25rem}
+.header h1{font-family:'DM Serif Display',serif;font-size:clamp(26px,6vw,42px);font-weight:400;line-height:1.1;margin-bottom:.6rem}
+.header h1 em{color:var(--accent);font-style:normal}
+.header p{font-size:14px;color:var(--text-muted);line-height:1.7}
+.mode-wrap{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:1.25rem}
+.mode-btn{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px 10px;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--text-muted);cursor:pointer;text-align:center;transition:all .2s;line-height:1.5}
+.mode-btn .mi{font-size:20px;display:block;margin-bottom:4px}
+.mode-btn:hover,.mode-btn.active{border-color:var(--accent-border);color:var(--text);background:var(--accent-dim)}
+.mode-btn.active{border-color:var(--accent);color:var(--accent)}
+.range-wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:1.25rem}
+.range-btn{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 6px;font-size:12px;font-family:'DM Sans',sans-serif;color:var(--text-muted);cursor:pointer;text-align:center;transition:all .2s}
+.range-btn:hover,.range-btn.active{border-color:var(--accent-border);background:var(--accent-dim);color:var(--accent)}
+.start-btn{width:100%;background:var(--accent2);border:none;border-radius:var(--radius-sm);padding:14px;font-size:16px;font-family:'DM Sans',sans-serif;font-weight:500;color:#fff;cursor:pointer;transition:background .15s,transform .1s;margin-bottom:.75rem}
+.start-btn:hover{background:#6d28d9}
+.start-btn:active{transform:scale(.99)}
+.count-info{text-align:center;font-size:12px;color:var(--text-faint);margin-bottom:2rem}
+.progress-wrap{display:flex;align-items:center;gap:10px;margin-bottom:1.25rem}
+.progress-track{flex:1;height:3px;background:var(--border);border-radius:99px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent2),var(--accent));border-radius:99px;transition:width .4s cubic-bezier(.4,0,.2,1)}
+.progress-text{font-size:12px;color:var(--text-faint);white-space:nowrap}
+.score-badge{font-size:12px;color:var(--accent);background:var(--accent-dim);border:1px solid var(--accent-border);padding:3px 10px;border-radius:99px;white-space:nowrap}
+.q-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem;margin-bottom:.75rem;animation:fadeUp .25s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.q-type-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);margin-bottom:.9rem}
+.q-type-badge::before{content:'';display:block;width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.q-text{font-size:18px;line-height:1.65;color:var(--text);margin-bottom:1.4rem}
+.blank{display:inline-block;border-bottom:2px solid var(--accent);color:var(--accent);font-weight:500;min-width:90px;padding:0 6px}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.opt-btn{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:11px 15px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--text-muted);cursor:pointer;text-align:left;transition:all .15s;line-height:1.3}
+.opt-btn:hover:not(:disabled){border-color:var(--accent-border);background:var(--accent-dim);color:var(--text)}
+.opt-btn.correct{border-color:var(--green-border);background:var(--green-dim);color:var(--green)}
+.opt-btn.wrong{border-color:var(--red-border);background:var(--red-dim);color:var(--red)}
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.match-col-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint);margin-bottom:7px}
+.match-items{display:flex;flex-direction:column;gap:5px}
+.match-item{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px 13px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--text-muted);cursor:pointer;transition:all .15s;min-height:40px;display:flex;align-items:center}
+.match-item:hover:not(.matched):not(.wrong-flash){border-color:var(--accent-border);color:var(--text)}
+.match-item.selected{border-color:var(--accent);background:var(--accent-dim);color:var(--accent)}
+.match-item.matched{border-color:var(--green-border);background:var(--green-dim);color:var(--green);cursor:default}
+.match-item.wrong-flash{border-color:var(--red-border);background:var(--red-dim);color:var(--red)}
+.feedback{margin-top:.9rem;padding:10px 14px;border-radius:var(--radius-sm);font-size:14px;line-height:1.5;animation:fadeUp .2s ease}
+.feedback.ok{background:var(--green-dim);color:var(--green);border:1px solid var(--green-border)}
+.feedback.no{background:var(--red-dim);color:var(--red);border:1px solid var(--red-border)}
+.next-btn{width:100%;background:var(--accent2);border:none;border-radius:var(--radius-sm);padding:13px;font-size:15px;font-family:'DM Sans',sans-serif;font-weight:500;color:#fff;cursor:pointer;margin-top:.75rem;transition:background .15s,transform .1s}
+.next-btn:hover{background:#6d28d9}
+.next-btn:active{transform:scale(.99)}
+.hint{font-size:12px;color:var(--text-faint);text-align:center;margin-top:.4rem}
+.final-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:3rem 2rem;text-align:center;animation:fadeUp .3s ease}
+.final-stars{font-size:30px;letter-spacing:6px;margin-bottom:1.25rem}
+.final-score{font-family:'DM Serif Display',serif;font-size:76px;font-weight:400;color:var(--accent);line-height:1}
+.final-denom{font-size:24px;color:var(--text-faint)}
+.final-msg{font-size:16px;color:var(--text-muted);margin:.75rem 0 .3rem}
+.final-pct{font-size:13px;color:var(--text-faint);margin-bottom:1.75rem}
+.stats-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:1.75rem}
+.stat-box{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px;text-align:center}
+.stat-num{font-size:22px;font-weight:500;color:var(--text)}
+.stat-label{font-size:11px;color:var(--text-faint);margin-top:2px}
+.final-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.home-btn{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 28px;font-size:15px;font-family:'DM Sans',sans-serif;font-weight:500;color:var(--text-muted);cursor:pointer;transition:all .15s}
+.home-btn:hover{border-color:var(--border2);color:var(--text)}
+.restart-btn{background:transparent;border:1px solid var(--accent-border);border-radius:var(--radius-sm);padding:12px 28px;font-size:15px;font-family:'DM Sans',sans-serif;font-weight:500;color:var(--accent);cursor:pointer;transition:background .15s,border-color .15s}
+.restart-btn:hover{background:var(--accent-dim);border-color:var(--accent)}
+@media(max-width:480px){.options{grid-template-columns:1fr}.q-text{font-size:16px}.mode-wrap{grid-template-columns:1fr}.range-wrap{grid-template-columns:repeat(2,1fr)}.final-score{font-size:60px}}
 </style>
 </head>
 <body>
 <div class="container">
   <div class="header">
-    <div class="header-tag">Pearson PTE Academic</div>
-    <h1>Collocation <span>Quiz</span></h1>
-    <p>Academic Collocation List (A–G) · 빈칸 채우기 + 매칭 혼합</p>
+    <div class="header-pill">Pearson PTE Academic</div>
+    <h1>Academic Collocation <em>Quiz</em></h1>
+    <p>PDF 전체 수록 (A–Z, 2,469개) · 빈칸 채우기 + 매칭</p>
   </div>
   <div id="app"></div>
 </div>
-
 <script>
-const ALL_QUESTIONS = [
-  {type:'fill', sentence:'The study found __ evidence supporting the hypothesis.', answer:'ample', options:['ample','general','slight','common']},
-  {type:'fill', sentence:'She conducted an __ analysis of the data.', answer:'analytical', options:['analytical','emotional','manual','vague']},
-  {type:'fill', sentence:'They held an __ conference to share the findings.', answer:'annual', options:['annual','optional','informal','local']},
-  {type:'fill', sentence:'The new policy may __ affect the learning environment.', answer:'adversely', options:['adversely','gradually','broadly','deeply']},
-  {type:'fill', sentence:'They need to __ resources wisely across departments.', answer:'allocate', options:['allocate','discover','collect','publish']},
-  {type:'fill', sentence:'Researchers used __ data to draw conclusions.', answer:'available', options:['available','missing','anecdotal','binary']},
-  {type:'fill', sentence:'The team plans to __ research into this topic next year.', answer:'conduct', options:['conduct','ignore','reduce','display']},
-  {type:'fill', sentence:'The report presents __ evidence for the new theory.', answer:'compelling', options:['compelling','fragile','vague','artificial']},
-  {type:'fill', sentence:'The review gave a __ overview of current trends.', answer:'comprehensive', options:['comprehensive','narrow','brief','random']},
-  {type:'fill', sentence:'The results show a __ pattern across all groups.', answer:'consistent', options:['consistent','dramatic','hostile','ambiguous']},
-  {type:'fill', sentence:'Researchers must __ data before drawing any conclusions.', answer:'collect', options:['collect','discard','avoid','invent']},
-  {type:'fill', sentence:'The discovery brought a __ change to the field.', answer:'dramatic', options:['dramatic','minor','careful','static']},
-  {type:'fill', sentence:'The report uses a __ framework to analyse results.', answer:'conceptual', options:['conceptual','random','distant','vague']},
-  {type:'fill', sentence:'All participants gave their __ consent to take part.', answer:'informed', options:['informed','verbal','quiet','brief']},
-  {type:'fill', sentence:'The team made a __ effort to complete the project on time.', answer:'concerted', options:['concerted','passive','broken','separate']},
-  {type:'fill', sentence:'She tried to __ an approach that balanced both views.', answer:'adopt', options:['adopt','eliminate','contest','report']},
-  {type:'fill', sentence:'The government must __ an issue of great importance.', answer:'address', options:['address','ignore','copy','collect']},
-  {type:'fill', sentence:'Climate __ is one of the most urgent global issues.', answer:'change', options:['change','event','analysis','reform']},
-  {type:'fill', sentence:'The experiment required __ conditions to be valid.', answer:'controlled', options:['controlled','random','unclear','complex']},
-  {type:'fill', sentence:'The two groups showed a __ distinction in their outcomes.', answer:'clear', options:['clear','vague','sudden','loud']},
-  {type:'match', pairs:[['accept','responsibility'],['accurate','assessment'],['achieve','goal'],['acquire','knowledge']]},
-  {type:'match', pairs:[['cast','doubt'],['causal','link'],['central','concern'],['clear','evidence']]},
-  {type:'match', pairs:[['collect','data'],['common','assumption'],['conduct','research'],['considerable','attention']]},
-  {type:'match', pairs:[['draw','conclusion'],['develop','strategy'],['direct','impact'],['driving','force']]},
-  {type:'match', pairs:[['early','decades'],['economic','growth'],['effective','communication'],['empirical','evidence']]},
-  {type:'match', pairs:[['gain','access'],['gather','information'],['global','context'],['growing','awareness']]},
-  {type:'match', pairs:[['give','feedback'],['general','consensus'],['basic','assumption'],['background','knowledge']]},
-  {type:'match', pairs:[['affect','outcome'],['allow','access'],['apply','method'],['broad','range']]},
-  {type:'match', pairs:[['become','apparent'],['begin','process'],['briefly','describe'],['changing','circumstances']]},
-  {type:'match', pairs:[['conflicting','interests'],['convince','evidence'],['core','skills'],['create','conditions']]},
+// ================================================================
+// COMPLETE COLLOCATION DATA — ALL entries from PDF pages 5–39
+// FILLS: [sentence, answer, w1, w2, w3]
+// MATCHES: [[left,right], ...]  — 4 pairs per set
+// ================================================================
+
+const FILLS = [
+// A
+["The paper explored an __ concept that resists easy definition.","abstract","concrete","simple","literal"],
+["Her __ achievement won praise from colleagues across the field.","academic","personal","minor","physical"],
+["The CEO agreed to __ responsibility for the company's losses.","accept","avoid","ignore","reject"],
+["The lab required an __ measurement of each sample.","accurate","rough","vague","general"],
+["The project team worked hard to __ their objective on time.","achieve","miss","delay","ignore"],
+["Children __ knowledge through experience as much as instruction.","acquire","lose","forget","destroy"],
+["She took an __ role in organising the local community group.","active","passive","minor","silent"],
+["He was __ involved in shaping the new curriculum.","actively","barely","never","quietly"],
+["The footnote will __ information omitted from the main body.","add","remove","reduce","hide"],
+["There may be __ cost if the timeline is extended.","additional","no","reduced","fixed"],
+["The government must __ the issue of rising homelessness.","address","ignore","forget","delay"],
+["The board voted to __ a new procedure for staff reviews.","adopt","reject","drop","cancel"],
+["The country built an __ economy through decades of investment.","advanced","weak","rural","basic"],
+["The trial reported an __ reaction in a small number of patients.","adverse","positive","helpful","neutral"],
+["Stress can __ affect both physical and mental health.","adversely","positively","slightly","rarely"],
+["Budget cuts may __ the outcome of the programme.","affect","help","ignore","copy"],
+["Charities must __ resources carefully to maximise impact.","allocate","waste","ignore","remove"],
+["The new policy will __ access to legal aid for all citizens.","allow","block","deny","limit"],
+["The two versions of the document were __ identical.","almost","never","barely","wildly"],
+["There is __ evidence in the literature to support this view.","ample","little","no","vague"],
+["The team used an __ approach to break down the problem.","analytical","emotional","casual","random"],
+["The journalist relied on __ evidence from a handful of sources.","anecdotal","scientific","empirical","statistical"],
+["The institute holds an __ review of its strategic priorities.","annual","weekly","random","occasional"],
+["The committee was asked to __ the impact of the proposed cuts.","assess","ignore","delay","avoid"],
+["The risks are closely __ with poor data management.","associated","separate","unrelated","distant"],
+["He was asked to __ responsibility for the overseas division.","assume","avoid","reject","transfer"],
+["She was invited to __ the role of acting director.","assume","reject","leave","ignore"],
+["The power plant generates __ energy for the region.","atomic","solar","wind","fossil"],
+["Delegates were expected to __ a conference in the capital.","attend","skip","cancel","host"],
+["Researchers relied on all __ evidence from the trial.","available","missing","hidden","secret"],
+["Her score was above the __ score for candidates her age.","average","maximum","minimum","total"],
+["The seminar provided useful __ knowledge before fieldwork began.","background","expert","advanced","future"],
+// B
+["The argument rests on a __ assumption that has never been tested.","basic","complex","minor","advanced"],
+["The new structure bore a remarkable __ to the original design.","resemblance","difference","contrast","variation"],
+["It soon became __ that more funding would be required.","apparent","hidden","secret","invisible"],
+["The findings __ available to the wider research community.","became","were","stayed","remained"],
+["Exercise has a proven __ effect on long-term cognitive health.","beneficial","harmful","negative","neutral"],
+["The concept can best be __ as a feedback loop.","described","ignored","hidden","avoided"],
+["The model relies on a __ opposition between presence and absence.","binary","complex","triple","layered"],
+["The team studied __ evolution in geographically isolated species.","biological","cultural","social","economic"],
+["The witness gave a __ account of the sequence of events.","brief","lengthy","complex","vague"],
+["She __ described the key steps before moving to the next topic.","briefly","clearly","fully","partly"],
+["There is __ agreement among researchers that more work is needed.","broad","narrow","weak","contested"],
+["The results need to be understood in a __ context.","broader","narrower","specific","local"],
+["The concept is __ defined to include informal as well as formal work.","broadly","narrowly","strictly","vaguely"],
+["The report focused on trends in the __ sector over the decade.","business","public","private","government"],
+// C
+["The state shifted to a __ economy after the reforms of the 1990s.","capitalist","socialist","rural","planned"],
+["She made significant __ development during her first two years.","career","personal","academic","social"],
+["The issue requires __ analysis before any decision is made.","careful","casual","quick","careless"],
+["Each participant was __ selected to ensure representativeness.","carefully","loosely","barely","randomly"],
+["Neurons __ information from one region of the brain to another.","carry","block","hide","lose"],
+["The institute planned to __ out research into renewable energy.","carry","look","bring","push"],
+["Each volunteer was required to __ out a series of timed tasks.","carry","leave","delay","miss"],
+["New findings may __ doubt on the validity of earlier results.","cast","remove","clear","avoid"],
+["The study established a __ link between diet and cardiovascular risk.","causal","random","weak","unlikely"],
+["Affordable housing has become a __ concern for urban planners.","central","minor","local","distant"],
+["Social norms have been __ changing throughout recorded history.","constantly","rarely","barely","seldom"],
+["The species developed a __ feature that helps it camouflage.","characteristic","unusual","hidden","random"],
+["The substance undergoes a __ reaction when exposed to moisture.","chemical","physical","mental","social"],
+["The case was settled through a __ process in the courts.","civil","criminal","public","formal"],
+["There is growing __ consciousness among younger generations.","class","gender","cultural","social"],
+["The study has become a __ example of experimental design.","classic","modern","simple","brief"],
+["The professor challenged the __ theory underpinning the discipline.","classical","modern","recent","radical"],
+["The line between the two concepts is not always __.","clear","vague","complex","obvious"],
+["The policy objectives were __ defined from the outset.","clearly","vaguely","briefly","roughly"],
+["Climate __ is disrupting ecosystems around the world.","change","policy","data","shift"],
+["The project examined __ conditions across three continents.","climatic","social","economic","political"],
+["She maintained __ contact with her supervisor throughout the year.","close","distant","minimal","occasional"],
+["The two theories are __ linked in the philosophical tradition.","closely","barely","loosely","never"],
+["A __ examination of the evidence reveals a different conclusion.","closer","brief","quick","random"],
+["The module aimed to strengthen __ skills such as reasoning and memory.","cognitive","physical","social","manual"],
+["The programme fosters __ learning between students at different levels.","collaborative","individual","competitive","passive"],
+["The team needed to __ data from a large and diverse sample.","collect","ignore","destroy","hide"],
+["The event gave participants a sense of __ identity and solidarity.","collective","personal","individual","private"],
+["The __ effect of drought and inflation devastated rural incomes.","combined","separate","single","total"],
+["The two departments frequently come into __ with each other.","conflict","contact","agreement","balance"],
+["The regulator found evidence of illegal __ activity.","commercial","private","public","political"],
+["The accused was found guilty of committing a serious __ offence.","criminal","civil","minor","public"],
+["The barrister constructed a __ argument that shifted the verdict.","compelling","weak","vague","simple"],
+["The industry became highly __ after the barriers to entry fell.","competitive","calm","stable","protected"],
+["Participants were asked to __ a task in less than five minutes.","complete","ignore","delay","miss"],
+["The interaction between variables is far more __ than expected.","complex","simple","clear","basic"],
+["The organisation published a __ account of its first decade.","comprehensive","brief","partial","vague"],
+["The analysis built on a __ framework developed by earlier scholars.","conceptual","physical","basic","simple"],
+["The trade unions made a __ effort to negotiate better conditions.","concerted","weak","casual","brief"],
+["The speaker began with __ remarks summarising the main arguments.","concluding","opening","initial","first"],
+["The hospital plans to __ research into early detection methods.","conduct","stop","cancel","delay"],
+["There were __ interests between shareholders and employees.","conflicting","shared","common","matching"],
+["Reviewers were asked to __ whether the methodology was appropriate.","consider","ignore","forget","avoid"],
+["The renovation project demanded __ attention from the project team.","considerable","little","no","minimal"],
+["The data showed a __ pattern of decline across all regions.","consistent","random","varied","mixed"],
+["The water temperature in the tank was kept at a __ rate.","constant","falling","rising","variable"],
+["Each chapter __ information that builds on the one before.","contains","loses","hides","removes"],
+["The novel explores __ questions of belonging and displacement.","contemporary","historical","ancient","past"],
+["Any analysis must take __ factors into account.","contextual","general","global","random"],
+["Membership showed __ growth over the five-year period.","continued","sudden","unexpected","rapid"],
+["Language development is a __ process that extends into adulthood.","continuous","short","brief","limited"],
+["The new study __ significantly to the literature on migration.","contributed","removed","reduced","avoided"],
+["The initiative aims to __ to the development of green infrastructure.","contribute","block","limit","prevent"],
+["The use of animals in experiments remains __ in public discourse.","controversial","settled","simple","clear"],
+["She challenged the __ wisdom that growth always benefits everyone.","conventional","modern","radical","recent"],
+["Visual aids __ information more efficiently than text alone.","convey","hide","lose","block"],
+["She conveyed a __ message of reassurance to the waiting families.","clear","vague","brief","complex"],
+["The prosecution produced __ evidence linking the suspect to the scene.","convincing","weak","false","vague"],
+["The counsellor helped the client develop effective __ strategies.","coping","learning","teaching","reading"],
+["Problem-solving remains a __ skill across all academic disciplines.","core","minor","extra","optional"],
+["The editor provided a __ interpretation of the ambiguous statute.","correct","wrong","rough","vague"],
+["The student was helped to __ an error in the statistical analysis.","correct","make","ignore","add"],
+["She wrote a well-structured __ argument against the committee's decision.","counter","main","basic","simple"],
+["The module aims to __ a wide range of issues in applied ethics.","cover","avoid","skip","ignore"],
+["The scheme is designed to __ conditions for social enterprise.","create","destroy","remove","block"],
+["The assessment includes a __ essay weighted at 40 percent.","critical","simple","brief","short"],
+["Students are expected to __ evaluate all sources they cite.","critically","briefly","quickly","randomly"],
+["Sleep is a __ factor in maintaining good cognitive performance.","crucial","minor","small","unclear"],
+["The study highlighted the __ implications of the policy change.","cultural","financial","political","technical"],
+["The article reflects the __ climate in the media industry.","current","past","future","general"],
+["The technique is __ available in most university laboratories.","currently","rarely","never","barely"],
+// D
+["Access to clean water is a basic __ necessity in every community.","daily","luxury","modern","social"],
+["The research team began __ gathering well before the analysis phase.","data","idea","result","theory"],
+["The board will __ with an urgent staffing issue at its next meeting.","deal","ignore","skip","avoid"],
+["The judge __ it appropriate to impose a suspended sentence.","deemed","knew","found","thought"],
+["The internship gave students a __ understanding of industry practice.","deep","basic","rough","surface"],
+["The __ concept of the work is that identity is always constructed.","defining","vague","old","common"],
+["The break-in appeared to be a __ attempt to steal the files.","deliberate","accidental","random","natural"],
+["In a __ society, citizens can challenge state decisions in court.","democratic","authoritarian","random","local"],
+["Rapid __ changes have put enormous pressure on housing supply.","demographic","economic","social","cultural"],
+["The intern was able to __ competence across a range of tasks.","demonstrate","avoid","hide","ignore"],
+["The city centre is __ populated, with very little green space.","densely","sparsely","barely","slightly"],
+["The authority ruled to __ access to the classified documents.","deny","allow","grant","give"],
+["The result depends on a __ variable controlled by the experimenter.","dependent","random","fixed","free"],
+["The handbook will __ a procedure for handling data breaches.","describe","ignore","copy","hide"],
+["The team used __ statistics to present the survey findings clearly.","descriptive","advanced","complex","simple"],
+["The intervention produced the __ outcome the researchers had predicted.","desired","unexpected","random","unclear"],
+["The review required a __ analysis of six years of financial records.","detailed","brief","rough","vague"],
+["The lab is working to __ a new method for detecting pathogens.","develop","ignore","copy","drop"],
+["All children pass through a distinct __ stage in early childhood.","developmental","social","cultural","physical"],
+["A __ test helped clinicians confirm the condition at an early stage.","diagnostic","random","basic","simple"],
+["The two populations __ considerably in their immune response.","differ","agree","match","align"],
+["The school adopted __ media to extend its reach to remote learners.","digital","print","audio","local"],
+["There is a __ link between socioeconomic status and health outcomes.","direct","vague","unclear","possible"],
+["The legislation will __ affect over two million low-income families.","directly","barely","rarely","slightly"],
+["Firms must __ all information relevant to investor decisions.","disclose","hide","block","keep"],
+["The seminar invited participants to __ an issue of their choice.","discuss","ignore","avoid","skip"],
+["She has a substantial __ income from her investment portfolio.","disposable","fixed","basic","gross"],
+["The data identified several __ groups within the wider population.","distinct","similar","mixed","shared"],
+["Each valley developed its own __ feature due to its isolation.","distinctive","common","shared","general"],
+["The mountain has a __ feature that makes it recognisable from afar.","distinguishing","hidden","common","minor"],
+["The programme attracts applicants from __ backgrounds globally.","diverse","similar","same","single"],
+["The __ line between acceptable risk and recklessness is often unclear.","dividing","connecting","joining","linking"],
+["The inquiry relied on __ evidence rather than oral testimony alone.","documentary","oral","written","verbal"],
+["The charity focuses on reducing __ violence in urban areas.","domestic","foreign","international","global"],
+["The __ culture in the organisation shapes what is considered acceptable.","dominant","weak","minor","local"],
+["The discovery had a __ effect on the direction of the research.","dramatic","minor","small","weak"],
+["The tutor paused to __ attention to a common misunderstanding.","draw","remove","block","hide"],
+["After reviewing all the testimony, the jury was able to __ a conclusion.","draw","avoid","skip","delay"],
+["Curiosity is often the __ force behind scientific discovery.","driving","blocking","slowing","stopping"],
+["Every suspect is entitled to __ process under the law.","due","quick","fast","slow"],
+["The estuary maintains a __ equilibrium between salt and fresh water.","dynamic","fixed","stable","static"],
+// E
+["The accelerated growth occurred during the __ decades of the century.","early","later","final","recent"],
+["The archive is __ accessible via the university's open-access portal.","easily","barely","never","rarely"],
+["The scheme promises __ access to affordable childcare for all families.","easy","limited","difficult","restricted"],
+["Tourism has become a major source of __ activity in the region.","economic","social","cultural","physical"],
+["The government invested heavily in improving the __ system.","educational","health","transport","housing"],
+["The new protocol proved to be a highly __ method for reducing errors.","effective","weak","poor","random"],
+["The library now offers __ access to over 50,000 journal articles.","electronic","physical","limited","local"],
+["The film had a powerful __ impact on audiences around the world.","emotional","financial","political","technical"],
+["The conclusion rests on __ data collected over a five-year period.","empirical","theoretical","imaginary","assumed"],
+["The researcher chose to __ a method used successfully in earlier work.","employ","ignore","drop","avoid"],
+["More __ opportunities exist for graduates with specialised skills.","employment","study","learning","social"],
+["New staff often __ difficulties when adapting to the organisation.","encounter","avoid","ignore","escape"],
+["The grant is expected to __ the development of new teaching resources.","encourage","block","prevent","reduce"],
+["Students were invited to __ in a structured activity to build teamwork.","engage","ignore","avoid","skip"],
+["Interactive technology can __ learning and raise academic performance.","enhance","reduce","block","slow"],
+["The charity received an __ amount of support from the local community.","enormous","tiny","small","brief"],
+["The textbook covers the __ range of topics in the discipline.","entire","partial","brief","limited"],
+["The relationship between the two variables is not __ clear.","entirely","partially","mostly","barely"],
+["The company reduced its impact on the __ environment significantly.","physical","local","natural","chemical"],
+["All employees should have __ access to training and development.","equal","limited","variable","unequal"],
+["Both methodologies are __ valid under different research conditions.","equally","barely","rarely","hardly"],
+["Carbon is an __ element in the chemistry of all living organisms.","essential","optional","minor","extra"],
+["The charity managed to __ a lasting relationship with local councils.","establish","break","end","avoid"],
+["The __ practice in clinical research is to obtain written consent.","established","new","modern","recent"],
+["The review raised several __ issues that needed resolution.","ethical","minor","legal","financial"],
+["The city has a vibrant __ community from Sub-Saharan Africa.","ethnic","local","rural","urban"],
+["Technology is __ changing the way organisations communicate.","ever","never","rarely","barely"],
+["The theory describes an __ process of slow adaptation over generations.","evolutionary","sudden","immediate","random"],
+["The study aims to __ the role of leadership in project success.","examine","ignore","skip","avoid"],
+["The appeal represents an __ case outside the standard guidelines.","exceptional","common","typical","standard"],
+["Parliament voted to __ authority over key areas of foreign policy.","exercise","ignore","block","delay"],
+["Analysts are expected to work with __ data rather than projections.","existing","new","future","imaginary"],
+["The platform is expected to __ rapidly as new markets open up.","expand","shrink","slow","stop"],
+["Graduates frequently __ difficulties when first entering the profession.","experience","avoid","ignore","deny"],
+["The school introduced __ learning through accredited work placements.","experiential","online","digital","remote"],
+["The __ conditions were strictly monitored at every stage of the trial.","experimental","natural","random","social"],
+["The committee sought __ opinion from specialists in the field.","expert","public","student","basic"],
+["The model has considerable __ power and accounts for most observed cases.","explanatory","predictive","analytical","practical"],
+["The team decided to __ further into the social causes of the problem.","explore","ignore","avoid","skip"],
+["The grant funded an __ period of archival research in three countries.","extended","brief","short","quick"],
+["The group has published __ research on the topic over two decades.","extensive","brief","limited","minor"],
+["This approach has been __ used in research hospitals worldwide.","extensively","rarely","barely","never"],
+["The __ environment often exerts a stronger influence than the school.","external","internal","local","global"],
+["The algorithm was designed to __ data from large unstructured texts.","extract","hide","block","delete"],
+["The ethical questions raised are __ complex and deserve careful thought.","extremely","barely","slightly","fairly"],
+// F
+["Young professionals often __ difficulties when entering a new sector.","face","avoid","ignore","escape"],
+["The grant will __ the development of a new community arts centre.","facilitate","block","prevent","reduce"],
+["She restricted her account to __ information rather than personal views.","factual","false","random","rough"],
+["The system aims to ensure __ treatment for all applicants.","fair","biased","unequal","random"],
+["It is __ obvious from the data that some intervention is required.","fairly","barely","rarely","never"],
+["The incident does not __ into any existing legal category.","fall","fit","rise","stay"],
+["The policy proposal feels __ removed from the realities faced by citizens.","far","slightly","barely","nearly"],
+["The institution receives __ funding from several government departments.","federal","local","private","corporate"],
+["She was active in a __ movement that campaigned for equal pay.","feminist","political","social","local"],
+["The placement involved __ research in three remote rural communities.","field","lab","online","desk"],
+["In the __ analysis, the weight of evidence supported the hypothesis.","final","first","brief","initial"],
+["The charity has struggled to secure __ support for its core programmes.","financial","public","political","social"],
+["Detectives spent months trying to __ evidence connecting the suspect to the crime.","find","hide","ignore","remove"],
+["There are only a __ number of places available in the first cohort.","finite","infinite","large","huge"],
+["The method is now __ established as the standard across the field.","firmly","barely","slightly","loosely"],
+["The candidate made a strong __ impression at the selection centre.","first","last","brief","weak"],
+["The school adopted a __ approach to suit a wide range of learning styles.","flexible","rigid","fixed","strict"],
+["The presentation identified the __ point around which the entire debate turns.","focal","main","key","central"],
+["The session encouraged participants to __ attention on long-term priorities.","focus","remove","block","avoid"],
+["Each new cohort __ a format established by the previous year's intake.","followed","ignored","skipped","changed"],
+["Candidates are expected to __ instructions precisely throughout the assessment.","follow","ignore","forget","skip"],
+["The paper opens with a __ chapter establishing the theoretical framework.","following","opening","concluding","final"],
+["The country depends heavily on __ investment to finance infrastructure.","foreign","local","public","national"],
+["The debate adhered to a __ structure agreed by all participants in advance.","formal","casual","random","flexible"],
+["All research findings should be __ available to the wider academic community.","freely","barely","rarely","never"],
+["The paper is __ cited as a turning point in the sociology of education.","frequently","rarely","barely","never"],
+["The organisation agreed to __ an obligation to report annually.","fulfil","ignore","break","avoid"],
+["The programme enabled participants to reach their __ potential.","full","partial","brief","limited"],
+["The paper calls for a __ discussion of the limitations before conclusions are drawn.","fuller","brief","quick","short"],
+["The committee was __ aware of the implications before the vote was taken.","fully","barely","slightly","partly"],
+["The software must meet every __ requirement before it can be released.","functional","optional","extra","minor"],
+["There is a __ difference between studying language and studying linguistics.","fundamental","minor","small","slight"],
+["The two frameworks are __ different in their epistemological assumptions.","fundamentally","slightly","barely","partly"],
+["The data will require __ analysis before it can be submitted for publication.","further","no","brief","quick"],
+["The professor drew on __ evidence to strengthen the argument.","further","no","less","weak"],
+["The foundation will fund __ research into climate adaptation strategies.","future","past","recent","earlier"],
+// G
+["She had to __ access to restricted government archives through a formal request.","gain","block","deny","lose"],
+["The study focused on __ data from hospital records spanning two decades.","gathering","hiding","ignoring","removing"],
+["Closing the __ pay gap remains a priority for the organisation.","gender","racial","social","economic"],
+["There is __ agreement that reform is necessary, though views on method differ.","general","little","no","weak"],
+["The recommendation was __ accepted by the committee without debate.","generally","rarely","barely","never"],
+["Researchers found significant __ variation across the three study populations.","genetic","cultural","social","random"],
+["The factory was built in a __ area with excellent transport connections.","geographic","cultural","social","economic"],
+["Pupils are encouraged to __ involved in extracurricular activities.","get","stay","remain","keep"],
+["The supervisor agreed to __ access to advanced laboratory equipment.","give","block","deny","remove"],
+["She was invited to __ a presentation at the annual international symposium.","give","cancel","skip","avoid"],
+["The graph gives a clear __ of income trends over the last thirty years.","overview","summary","account","record"],
+["The company competes in a __ market that requires constant innovation.","global","local","national","regional"],
+["The __ policy on planning has been revised four times in three years.","government","personal","private","local"],
+["The report uses a __ representation of the data to aid interpretation.","graphical","written","verbal","oral"],
+["The campaign had a __ impact on public awareness of the disease.","great","small","minor","weak"],
+["There is now __ emphasis on evidence-based decision-making in policy.","greater","less","no","little"],
+["The reforms are expected to __ enhance the quality of public services.","greatly","barely","rarely","slightly"],
+["The sector is expected to __ rapidly once barriers to entry are removed.","grow","shrink","stop","pause"],
+["There is a __ awareness of the mental health challenges facing students.","growing","falling","decreasing","fading"],
+["The organisation is guided by a __ principle of inclusion and equity.","guiding","minor","basic","simple"],
+// H
+["It is __ surprising that the reform attracted so much opposition.","hardly","clearly","obviously","entirely"],
+["Researchers must __ access to a wide range of sources.","have","lack","lose","block"],
+["The policy debate has become __ heated in recent months.","increasingly","less","barely","rarely"],
+["The organisation maintains a __ structure with clear lines of authority.","hierarchical","flat","modern","simple"],
+["The region has a __ level of youth unemployment.","high","low","equal","stable"],
+["The model is __ competitive and demands constant adaptation.","highly","barely","rarely","slightly"],
+["The paper provides an in-depth __ analysis of the period.","historical","future","random","basic"],
+["The research team chose to take a __ approach to the problem.","holistic","narrow","simple","rigid"],
+["There is a __ amount of uncertainty remaining in the data.","huge","tiny","small","brief"],
+["The policy raises important __ rights questions.","human","animal","basic","social"],
+// I
+["They need to __ the factors responsible for the decline in biodiversity.","identify","ignore","hide","remove"],
+["The new factory is in the __ environment of the town centre.","immediate","distant","future","general"],
+["The website provides __ goods at prices lower than retail.","imported","local","handmade","recycled"],
+["New regulations will __ constraints on the use of personal data.","impose","remove","avoid","reduce"],
+["The new curriculum will lead to __ performance across all subjects.","improved","reduced","stable","random"],
+["The initiative aims to __ awareness of sustainable consumption.","increase","reduce","block","avoid"],
+["There is __ demand for graduates with data science skills.","increased","decreased","stable","unchanged"],
+["Climate anxiety is becoming __ common among young people worldwide.","increasingly","less","barely","rarely"],
+["Each region was treated as an __ variable in the analysis.","independent","shared","linked","common"],
+["The government has a responsibility to protect __ people and communities.","indigenous","foreign","urban","modern"],
+["The study looked at __ differences rather than group averages.","individual","shared","collective","general"],
+["The country went through rapid __ development in the twentieth century.","industrial","agricultural","cultural","social"],
+["The factory became the first __ nation to adopt the new standard.","industrialized","developing","rural","local"],
+["The two problems are __ linked and cannot be solved in isolation.","increasingly","rarely","barely","loosely"],
+["There are theoretically an __ number of possible solutions.","infinite","finite","limited","small"],
+["The system stores __ and retrieves it on demand.","information","data","knowledge","material"],
+["Participants were required to give __ consent before the study began.","informed","basic","written","verbal"],
+["The project is still in its __ stage and will run until next year.","initial","final","later","advanced"],
+["The board agreed on a new __ arrangement for governance.","institutional","personal","informal","private"],
+["Physical exercise plays an __ part in maintaining good mental health.","integral","optional","minor","extra"],
+["The new scheme takes an __ approach combining health and social care.","integrated","separate","divided","basic"],
+["The university owns the __ property rights to the invention.","intellectual","physical","personal","creative"],
+["The language school offers __ study programmes lasting several weeks.","intensive","basic","casual","online"],
+["All __ parties were invited to submit written evidence.","interested","neutral","absent","hostile"],
+["The government was criticised for interfering in __ affairs.","internal","external","foreign","global"],
+["The treaty was signed under the auspices of an __ organisation.","international","local","national","regional"],
+["The village has limited __ access due to poor broadband infrastructure.","internet","telephone","cable","digital"],
+["The training covered __ skills such as negotiation and conflict resolution.","interpersonal","technical","physical","digital"],
+["The analyst was asked to __ the data from the latest survey.","interpret","ignore","copy","hide"],
+["The couple had an __ relationship built on decades of shared experience.","intimate","distant","formal","brief"],
+["The two disciplines are __ connected in the history of science.","intimately","loosely","barely","rarely"],
+["The painting has __ value that cannot be expressed in monetary terms.","intrinsic","financial","commercial","obvious"],
+["Parliament was asked to __ legislation on digital privacy.","introduce","repeal","block","delay"],
+["The __ chapter sets out the key themes of the book.","introductory","final","concluding","middle"],
+// K
+["She was __ aware of the implications before the vote was taken.","keenly","barely","vaguely","slightly"],
+["Innovation is a __ factor in maintaining long-term competitiveness.","key","minor","optional","basic"],
+// L
+["The survey showed that a __ majority supported the proposed reform.","large","small","tiny","narrow"],
+["The argument is __ based on secondary sources rather than primary data.","largely","barely","slightly","randomly"],
+["His __ work challenged many of the assumptions of the earlier period.","later","earlier","first","initial"],
+["The evidence will __ to the conclusion that reform is overdue.","lead","block","prevent","avoid"],
+["She was given a __ role in coordinating the international response.","leading","minor","passive","supporting"],
+["The module includes a __ activity designed to reinforce vocabulary.","learning","teaching","testing","grading"],
+["Many students experience __ difficulties that require specialist support.","learning","physical","social","minor"],
+["The council was asked to take __ action against the developer.","legal","informal","minor","personal"],
+["The committee agreed on new __ measures to curb financial crime.","legislative","informal","voluntary","local"],
+["The country has a long tradition of __ democracy.","liberal","authoritarian","radical","local"],
+["The university promotes __ learning through professional development courses.","lifelong","short-term","informal","casual"],
+["The study examined the __ impact of the intervention on attainment.","likely","unlikely","possible","actual"],
+["The organisation has __ resources and cannot expand the programme.","limited","abundant","sufficient","unlimited"],
+["There is a clear __ relationship between the two variables.","linear","complex","random","curved"],
+["The judge insisted on the __ interpretation of the statute.","literal","broad","flexible","general"],
+["The department has a rich __ tradition going back three centuries.","literary","scientific","oral","visual"],
+["There is __ research on the long-term effects of the policy.","little","ample","sufficient","extensive"],
+["Poor __ conditions remain a key driver of health inequality.","living","working","study","travel"],
+["The authority consulted __ communities before finalising the plan.","local","national","global","distant"],
+["The approach follows a __ argument that leads to a clear conclusion.","logical","emotional","circular","random"],
+["The study required a __ duration of six months per participant.","long","short","brief","flexible"],
+["The method is __ established and widely recognised in the field.","long","newly","recently","barely"],
+["The team conducted a __ study tracking participants over fifteen years.","longitudinal","cross-sectional","basic","short"],
+["The area has a __ level of educational attainment compared with the national average.","low","high","stable","equal"],
+// M
+["The survey identified several factors as the __ cause of the decline.","main","minor","secondary","possible"],
+["The findings are __ concerned with outcomes in urban areas.","mainly","rarely","partly","equally"],
+["The charity works hard to __ contact with all its beneficiaries.","maintain","break","end","avoid"],
+["Funding is the __ challenge facing the sector in the next decade.","major","minor","small","slight"],
+["She needed to __ adjustments to the timetable at short notice.","make","avoid","block","prevent"],
+["The delegate made a __ contribution to the conference proceedings.","significant","minor","brief","random"],
+["The report was described as __ different from its predecessor.","markedly","slightly","barely","roughly"],
+["The licence sets a __ duration of twelve months.","maximum","minimum","fixed","variable"],
+["The group scored above the __ score for that age bracket.","mean","maximum","minimum","average"],
+["The study produced results in a __ way that could guide future policy.","meaningful","vague","unclear","random"],
+["The story attracted extensive __ coverage across all platforms.","media","academic","public","private"],
+["The patient required __ assistance following the accident.","medical","legal","financial","technical"],
+["The proposal will __ criteria set out in the funding guidelines.","meet","miss","avoid","ignore"],
+["The plan failed to __ a key requirement of the contract.","meet","ignore","avoid","miss"],
+["The authority agreed to __ an objective set out in the original plan.","meet","miss","avoid","ignore"],
+["The study examined __ health outcomes across three cohorts.","mental","physical","social","economic"],
+["The review raised a number of __ issues with the original design.","methodological","minor","personal","practical"],
+["The study concentrated on the __ area of the capital city.","metropolitan","rural","coastal","industrial"],
+["The organisation focuses on supporting workers on __ incomes.","middle","high","low","basic"],
+["The agency provides support for __ workers seeking employment.","migrant","local","skilled","seasonal"],
+["The use of __ force was condemned by international observers.","military","political","economic","social"],
+["The standard sets a __ wage below which no employer may pay.","minimum","maximum","average","flexible"],
+["The change had a __ role and did not affect the overall outcome.","minor","major","central","crucial"],
+["The policy benefits the __ group that has historically been excluded.","minority","majority","dominant","general"],
+["Analysts identified several cases of __ data in the original dataset.","missing","available","complete","sufficient"],
+["The institute adopted a __ method developed over the past decade.","modern","traditional","outdated","basic"],
+["A __ version of the original design was adopted for the final product.","modified","original","identical","basic"],
+["The case raised a serious __ dilemma that divided the committee.","moral","legal","political","financial"],
+["The researchers used __ sources to triangulate their findings.","multiple","single","limited","basic"],
+["The scheme is managed by the __ government with central oversight.","municipal","national","regional","private"],
+["The agreement is built on __ trust and shared objectives.","mutual","one-sided","formal","limited"],
+["The two categories are __ exclusive and cannot overlap.","mutually","entirely","clearly","broadly"],
+// N
+["The policy takes a __ definition of poverty that excludes many vulnerable groups.","narrow","broad","flexible","general"],
+["The government launched a __ survey of housing conditions.","national","local","regional","personal"],
+["The speaker is a __ speaker of Mandarin who also teaches the language.","native","second","foreign","fluent"],
+["The experiment was conducted under __ conditions in a controlled setting.","natural","artificial","digital","indoor"],
+["The species is __ occurring and has not been introduced by humans.","naturally","artificially","rarely","barely"],
+["The manager asked for __ information before making a final decision.","necessary","optional","extra","general"],
+["The new regulation will have a __ effect on small businesses.","negative","positive","neutral","indirect"],
+["The variables were found to be __ correlated, meaning one rises as the other falls.","negatively","positively","barely","equally"],
+["The scheme offers a __ perspective on a long-standing debate.","new","old","standard","basic"],
+["The technology was __ discovered and has not yet been patented.","newly","recently","always","barely"],
+["The project will run into the __ decade if funding is maintained.","next","past","current","previous"],
+["The findings are subject to __ conditions that may not apply elsewhere.","normal","unusual","specific","random"],
+["This is a __ exception to the general rule, not a new precedent.","notable","common","typical","minor"],
+["The reactor was designed to generate __ energy for the national grid.","nuclear","solar","wind","tidal"],
+["The table presents __ data showing the distribution of scores.","numerical","qualitative","visual","basic"],
+["There have been __ studies confirming the effectiveness of this approach.","numerous","few","no","brief"],
+// O
+["The committee applied __ criteria to evaluate each application.","objective","personal","biased","flexible"],
+["The team had to __ data from a range of institutional sources.","obtain","ignore","destroy","hide"],
+["Errors tend to __ more frequently when tasks are performed under pressure.","occur","stop","cease","reduce"],
+["The study aims to __ insight into the causes of long-term unemployment.","offer","block","deny","remove"],
+["The data was sourced from __ statistics published by the government.","official","unofficial","estimated","sample"],
+["Once __ the principle is hard to challenge.","established","removed","ignored","rejected"],
+["The committee is engaged in an __ debate about the role of assessment.","ongoing","finished","brief","historical"],
+["The university provides __ access to all its journals and databases.","online","physical","limited","local"],
+["All publications are available on __ access to any reader worldwide.","open","restricted","limited","private"],
+["The __ chapter introduces the scope and structure of the book.","opening","concluding","final","middle"],
+["The editorial team was looking for an __ leader with broad experience.","opinion","party","team","group"],
+["The analysis points to one __ solution to the allocation problem.","optimal","partial","random","basic"],
+["The group conducted an __ history project recording local memories.","oral","written","digital","formal"],
+["The framework serves as the __ principle holding the argument together.","organizing","minor","basic","simple"],
+["The company redesigned its __ structure to improve efficiency.","organizational","financial","cultural","social"],
+["The __ author of the manuscript has since revised her position.","original","later","final","recent"],
+["The drug was __ developed to treat a different condition.","originally","recently","never","barely"],
+["The report examines the __ effect of the policy on the workforce.","overall","partial","local","minor"],
+["The __ majority of respondents expressed satisfaction with the service.","overwhelming","small","thin","narrow"],
+["The report found that __ employment had declined sharply over the decade.","paid","unpaid","voluntary","informal"],
+["The safety of the public is of __ importance to the authority.","paramount","minor","equal","basic"],
+// P
+["The study focused on a __ aspect of the problem rather than the whole.","particular","general","broad","vague"],
+["The approach proved __ effective in urban areas with high density.","particularly","barely","rarely","equally"],
+["She was __ responsible for the communication breakdown.","partly","fully","equally","barely"],
+["The regional __ leader called for a vote of confidence in the leadership.","party","trade","student","local"],
+["The review drew on __ research as well as new data.","past","future","recent","current"],
+["The countries signed a __ treaty to end decades of conflict.","peace","trade","climate","security"],
+["The __ importance of the site was not recognised until recently.","perceived","actual","real","obvious"],
+["Volunteers were asked to __ a function related to their area of expertise.","perform","avoid","skip","ignore"],
+["She drew on __ experience of working in conflict zones.","personal","academic","general","basic"],
+["The study explored the link between __ health and academic performance.","physical","mental","social","financial"],
+["A small __ study was run first to test the feasibility of the design.","pilot","full","main","large"],
+["The book is __ work in the sociology of science.","pioneering","recent","standard","basic"],
+["She plays a __ role in coordinating relations between the two organisations.","pivotal","minor","passive","small"],
+["The dean asked the team to __ emphasis on applied as well as theoretical work.","place","remove","avoid","block"],
+["The project is still in the __ stage and will move to implementation next year.","planning","final","review","closing"],
+["The researcher offered a __ explanation that fitted all the available evidence.","plausible","vague","weak","unlikely"],
+["The authority invited the public to __ a role in shaping the new strategy.","play","avoid","skip","ignore"],
+["The report examined the __ context in which the decision was made.","political","economic","cultural","social"],
+["The article was __ motivated and did not represent a genuine academic contribution.","politically","academically","poorly","clearly"],
+["The mechanism remains __ understood despite decades of research.","poorly","fully","clearly","broadly"],
+["The documentary reflected __ attitudes toward immigration.","popular","official","academic","historical"],
+["New infrastructure will __ a serious challenge to existing providers.","pose","remove","solve","avoid"],
+["The intervention had a __ outcome for almost all participants.","positive","negative","neutral","unclear"],
+["The two variables are __ correlated, meaning both rise together.","positively","negatively","barely","equally"],
+["There is a __ explanation rooted in the economic history of the region.","possible","unlikely","vague","weak"],
+["The scheme has __ benefits that have not yet been fully realised.","potential","actual","proven","obvious"],
+["Exposure to the chemical is __ dangerous at high concentrations.","potentially","barely","rarely","slightly"],
+["She is a __ influence on policy in her field.","powerful","weak","minor","indirect"],
+["The choice raised important __ considerations that the team had to weigh carefully.","practical","theoretical","minor","academic"],
+["The __ chapter discussed the theoretical background to the study.","preceding","following","concluding","opening"],
+["The statute requires a __ definition of the offence.","precise","vague","broad","flexible"],
+["The algorithm has strong __ power in forecasting market trends.","predictive","analytical","explanatory","basic"],
+["Certain groups were given __ treatment in the allocation of resources.","preferential","equal","fair","standard"],
+["The __ results suggested the intervention was worth testing at scale.","preliminary","final","definitive","conclusive"],
+["Sedentary lifestyles are a leading cause of __ death in the population.","premature","natural","expected","sudden"],
+["The policy is inappropriate for the __ context.","present","past","future","general"],
+["The speaker was asked to __ data on participation rates.","present","ignore","hide","remove"],
+["The new design will __ a challenge to existing providers.","present","solve","remove","ignore"],
+["The first __ election in the country's history was held peacefully.","presidential","local","regional","national"],
+["The module builds on __ knowledge gained in the first year.","previous","future","current","advanced"],
+["This method was __ used in clinical trials throughout the 1990s.","previously","recently","never","barely"],
+["The project is __ concerned with outcomes in the most deprived communities.","primarily","equally","barely","occasionally"],
+["The __ aim of the study is to identify the factors driving inequality.","primary","secondary","minor","basic"],
+["This is a __ example of how evidence-based policy can transform outcomes.","prime","poor","weak","random"],
+["The national archive is the __ source for official documents of this period.","principal","minor","secondary","optional"],
+["Candidates with __ experience in the sector will be preferred.","prior","no","limited","basic"],
+["The investment will be channelled through the __ sector.","private","public","state","voluntary"],
+["The speaker held a __ position from which he could influence policy.","privileged","minor","standard","basic"],
+["The urban __ area presents a particular set of social challenges.","problem","success","research","target"],
+["The system was used to __ data from the satellite images.","process","ignore","collect","destroy"],
+["She is supported by a __ body that governs the sector.","professional","informal","personal","local"],
+["The treatment had a __ effect on the quality of life of patients.","profound","minor","small","weak"],
+["The professor played a __ role in establishing the new discipline.","prominent","minor","passive","supporting"],
+["The authority committed to __ equality across all its services.","promote","reduce","block","ignore"],
+["The scheme seeks to __ the development of green energy technology.","promote","block","reduce","limit"],
+["The concept is __ understood in its narrowest sense in everyday speech.","properly","vaguely","rarely","barely"],
+["The committee reviewed the __ legislation before it went to a vote.","proposed","existing","current","recent"],
+["The technique __ useful across a wide range of research contexts.","proved","failed","seemed","appeared"],
+["The university will __ access to all its online resources free of charge.","provide","block","deny","restrict"],
+["The government plans to __ a service available to all communities.","provide","remove","cancel","block"],
+["All research data should be made __ available to the wider community.","publicly","privately","barely","never"],
+["The team plans to __ research on the long-term effects of the intervention.","publish","hide","block","cancel"],
+// Q
+["The analysis used a __ approach combining interviews and observation.","qualitative","quantitative","statistical","random"],
+["The study used a __ approach with a large sample and structured survey.","quantitative","qualitative","informal","basic"],
+// R
+["The policy was widely criticised for exacerbating __ discrimination.","racial","gender","social","economic"],
+["The invention represented a __ change from everything that had come before.","radical","minor","gradual","slow"],
+["The organisation works hard to __ awareness of digital exclusion.","raise","reduce","block","avoid"],
+["New technology will __ a question about the future of skilled work.","raise","answer","avoid","ignore"],
+["A __ error was introduced during the data entry process.","random","systematic","deliberate","consistent"],
+["Participants were __ assigned to either the treatment or control group.","randomly","carefully","deliberately","systematically"],
+["The organisation experienced __ expansion after the merger.","rapid","slow","gradual","slight"],
+["The landscape is __ changing due to urbanisation.","rapidly","slowly","barely","gradually"],
+["The results are based on __ data that has not yet been processed.","raw","processed","clean","final"],
+["The two parties were able to __ an agreement after months of negotiation.","reach","block","miss","avoid"],
+["The material is __ accessible to any reader with an internet connection.","readily","barely","rarely","never"],
+["All citizens should have __ access to legal information.","ready","limited","restricted","difficult"],
+["The paper addresses a __ issue that has emerged in the literature.","real","imaginary","minor","theoretical"],
+["Participants were invited to __ feedback on their experience of the course.","receive","ignore","block","avoid"],
+["There has been a substantial increase in __ research in this area.","recent","past","historical","early"],
+["The study found a __ relationship between the two variables.","reciprocal","one-way","linear","random"],
+["Field workers were required to __ data at regular intervals.","record","ignore","delete","lose"],
+["The professor identified a __ theme running through all the texts.","recurrent","rare","minor","random"],
+["The factory has committed to __ emissions by 40 percent over the next decade.","reduce","increase","block","maintain"],
+["The charity adopted a __ practice of consulting its beneficiaries.","reflective","rigid","casual","standard"],
+["The impact of the policy varied according to __ factors.","regional","global","personal","minor"],
+["The body acts as a __ agency for the financial services sector.","regulatory","advisory","voluntary","informal"],
+["The paper examines a __ issue raised in the earlier discussion.","related","unrelated","separate","different"],
+["The two countries enjoy a __ autonomy within the federal structure.","relative","absolute","full","limited"],
+["The phenomenon is __ common in temperate climates.","relatively","rarely","never","barely"],
+["All __ data should be collected before the analysis phase begins.","relevant","irrelevant","general","random"],
+["The study requires __ data collected from the same source over time.","reliable","unreliable","random","estimated"],
+["The organisation respects the __ beliefs and practices of all its members.","religious","political","cultural","personal"],
+["The argument __ heavily on assumptions that have not been empirically tested.","relies","rejects","ignores","avoids"],
+["The population of the island __ constant throughout the study period.","remained","changed","grew","fell"],
+["The two proposals are __ similar in their underlying assumptions.","remarkably","barely","slightly","roughly"],
+["The project will invest in __ energy sources such as solar and wind.","renewable","fossil","nuclear","traditional"],
+["There has been a __ interest in the idea following the new publication.","renewed","lost","fading","declining"],
+["The team was required to __ findings at each stage of the project.","report","hide","ignore","block"],
+["The country has a __ government elected through proportional representation.","representative","authoritarian","appointed","informal"],
+["The study __ careful consideration of all the methodological options.","requires","avoids","ignores","blocks"],
+["The paper draws on __ findings from a longitudinal study.","research","personal","anecdotal","informal"],
+["The organisation worked to __ a dispute between two community groups.","resolve","ignore","avoid","escalate"],
+["The staff member was trained to __ appropriately to challenging behaviour.","respond","ignore","avoid","block"],
+["The committee commissioned a __ study of the evidence base.","review","basic","quick","initial"],
+["The textbook has been thoroughly revised for the __ edition.","revised","original","first","standard"],
+["The archive is a __ source of primary material on the period.","rich","poor","weak","limited"],
+["The authority warned of __ costs associated with the expansion.","rising","falling","stable","fixed"],
+["The procedure involved a careful __ assessment before proceeding.","risk","basic","quick","final"],
+["The two samples were __ equal in size.","roughly","exactly","barely","completely"],
+["The town is __ equivalent to a small market town in population.","roughly","exactly","barely","completely"],
+["The __ class retained control of the economy throughout the period.","ruling","working","middle","lower"],
+["The study examined health outcomes in __ communities across three countries.","rural","urban","coastal","industrial"],
+// S
+["The researcher conducted a __ study before launching the full trial.","seminal","basic","quick","standard"],
+["The scientist is __ management of the new laboratory.","senior","junior","assistant","student"],
+["Each institution is treated as a __ entity for the purposes of the analysis.","separate","shared","combined","linked"],
+["The situation presents a __ challenge to the government's credibility.","serious","minor","small","slight"],
+["The mechanism was designed to __ a specific function in the regulatory process.","serve","avoid","ignore","block"],
+["The data is drawn from the __ sector and excludes public organisations.","service","manufacturing","agricultural","financial"],
+["The organisation will __ a goal of carbon neutrality by 2035.","set","miss","ignore","avoid"],
+["The board agreed to __ the agenda for the following year.","set","ignore","avoid","miss"],
+["The new law will __ affect the rights of workers across the industry.","severely","barely","rarely","slightly"],
+["The experience had a profound __ on how she thought about education.","impact","effect","influence","change"],
+["The two views are in __ contrast with each other.","sharp","slight","minor","gradual"],
+["The study plans to __ emphasis from quantity to quality of data.","shift","fix","keep","hold"],
+["The process can be completed within a __ period of time.","short","long","extended","indefinite"],
+["The data __ variation across age groups and income levels.","show","hide","ignore","block"],
+["Both parties agreed to __ a peace treaty.","sign","break","ignore","reject"],
+["The data showed a __ increase in uptake over the three-year period.","significant","minor","small","slight"],
+["The two variables are __ correlated in all three datasets.","significantly","barely","weakly","randomly"],
+["The research used a __ approach to the one adopted in the earlier study.","similar","different","opposite","unrelated"],
+["The motion was carried by a __ majority of two votes.","simple","large","overwhelming","clear"],
+["A __ version of the model was used for the classroom demonstration.","simplified","complex","complete","advanced"],
+["Each institution was treated as a __ entity in the regression.","single","combined","shared","multiple"],
+["The factory employs a large number of __ workers with specialist training.","skilled","unskilled","part-time","seasonal"],
+["The two results are __ different but not statistically significant.","slightly","hugely","entirely","fundamentally"],
+["Institutional change is typically a __ process that unfolds over generations.","slow","rapid","sudden","fast"],
+["Only a __ fraction of applicants are accepted in any given year.","small","large","significant","substantial"],
+["The project examined the __ dimensions of the housing crisis.","social","economic","political","technical"],
+["The behaviour is __ acceptable in some cultures but not others.","socially","legally","morally","physically"],
+["The family occupies a low __ status in the local community.","socioeconomic","cultural","historical","academic"],
+["The building is powered entirely by __ energy.","solar","wind","nuclear","fossil"],
+["The library is a __ of primary material for scholars of the period.","source","result","outcome","product"],
+["The state maintains __ authority over its territory and borders.","sovereign","limited","shared","partial"],
+["The island is __ populated with fewer than ten people per square kilometre.","sparsely","densely","equally","heavily"],
+["She was given __ consideration due to her health circumstances.","special","standard","equal","general"],
+["The module addresses a __ area of law not covered in the core curriculum.","specific","general","broad","basic"],
+["The tool was __ designed for use in low-resource settings.","specifically","generally","broadly","rarely"],
+["The study used a __ approach that had been validated in earlier research.","standard","novel","flexible","basic"],
+["The contrast between the two approaches is __ and immediately apparent.","stark","minor","slight","gradual"],
+["The facilitator asked participants to __ a brainstorming process.","start","end","finish","conclude"],
+["The policy should __ explicitly what is expected of all parties.","state","hide","avoid","ignore"],
+["The paper uses __ analysis to identify patterns in the survey data.","statistical","qualitative","descriptive","basic"],
+["The effect was __ significant across all three experimental conditions.","statistically","barely","slightly","roughly"],
+["The server is used to __ data from multiple research projects.","store","delete","destroy","ignore"],
+["The decision reflects a __ importance placed on long-term planning.","strategic","minor","random","basic"],
+["Many students experience high __ levels during examination periods.","stress","energy","motivation","confidence"],
+["The case offers a __ example of how technology can transform public services.","striking","weak","poor","vague"],
+["There is a __ link between early intervention and long-term educational outcomes.","strong","weak","vague","unclear"],
+["She __ suggested that the existing approach needed revision.","strongly","barely","rarely","vaguely"],
+["The company has made __ adjustments to its supply chain.","structural","minor","local","personal"],
+["The paper focuses on a __ area of environmental law.","subject","broad","general","main"],
+["The __ chapter builds directly on the findings presented in the previous section.","subsequent","opening","initial","preceding"],
+["The intervention produced a __ improvement in well-being scores.","substantial","minor","slight","brief"],
+["The two methods are __ different and should not be conflated.","substantially","slightly","barely","roughly"],
+["The pilot programme has been a __ implementation of the new model.","successful","failed","partial","limited"],
+["The evidence is __ to justify a full review of the policy.","sufficient","insufficient","limited","weak"],
+["The data shows a __ performance gain across all three cohorts.","superior","equal","inferior","similar"],
+["The lawyer was asked to __ the argument with additional case law.","support","challenge","undermine","ignore"],
+["The paper presents __ evidence from three independent studies.","supporting","conflicting","weak","limited"],
+["The results were drawn from __ data collected across all departments.","survey","experimental","secondary","random"],
+["The two species exist in a __ relationship that benefits both.","symbiotic","competitive","hostile","distant"],
+["The team took a __ approach to reviewing all the available literature.","systematic","random","casual","brief"],
+// T
+["The organisation relies on __ knowledge held by experienced staff.","tacit","explicit","written","shared"],
+["She agreed to __ initiative and present the proposal to the board.","take","avoid","ignore","reject"],
+["The publication aims to reach a __ audience of policy professionals.","target","broad","random","general"],
+["The trainer introduced a new __ strategy to support independent learners.","teaching","testing","grading","reading"],
+["The team addressed the __ aspects of the problem before the broader issues.","technical","social","financial","cultural"],
+["The sector has benefited from a series of __ advances in recent years.","technological","social","economic","political"],
+["The student received a low __ score on the first attempt.","test","final","exam","written"],
+["The lecture set out to __ a theory developed in the 1980s.","test","accept","ignore","support"],
+["The paper adopted a __ analysis that examined recurring patterns in the texts.","textual","statistical","numerical","historical"],
+["The workshop introduced a __ analysis of the interview transcripts.","thematic","statistical","numerical","random"],
+["The study adopted a __ approach grounded in post-structural theory.","theoretical","practical","applied","empirical"],
+["Exposure to diverse ideas encourages people to __ differently about familiar problems.","think","act","behave","speak"],
+["A __ party auditor was appointed to review the accounts independently.","third","first","second","external"],
+["The process is __ controlled to eliminate the risk of contamination.","tightly","loosely","barely","randomly"],
+["The decision rests with __ management and cannot be delegated.","top","middle","junior","local"],
+["The household's __ income is derived from three separate sources.","total","partial","average","estimated"],
+["The two approaches are __ different in their underlying assumptions.","totally","slightly","barely","roughly"],
+["The study compared a __ approach with a more experimental one.","traditional","modern","novel","radical"],
+["The skills acquired are __ and applicable across a range of occupations.","transferable","specific","unique","limited"],
+["The system uses fibre-optic cables to __ data at high speed.","transmit","store","delete","hide"],
+["The city needs a robust __ system to support its growing population.","transport","energy","waste","water"],
+["The two groups were __ differently under the original policy.","treated","helped","supported","trained"],
+["The case is a __ example of regulatory failure.","typical","unusual","exceptional","rare"],
+// U
+["The __ goal of the project is to eliminate preventable diseases in the region.","ultimate","initial","minor","basic"],
+["The organisation continues to __ a fundamental transformation in its structure.","undergo","avoid","resist","delay"],
+["The __ assumption is that markets will self-correct without intervention.","underlying","obvious","stated","recent"],
+["The study will __ research into the long-term effects of the policy.","undertake","avoid","cancel","delay"],
+["Power is __ distributed across the organisation, which creates inefficiencies.","unequally","equally","fairly","broadly"],
+["The policy was criticised for providing __ treatment to different groups.","unfair","equal","consistent","standard"],
+["The law of __ consequences applies to every major policy intervention.","unintended","planned","expected","clear"],
+["Each participant brings a __ set of skills and experiences to the project.","unique","common","shared","standard"],
+["The principle is __ accepted across the international research community.","universally","rarely","barely","locally"],
+["The platform provides __ access to all its archived resources.","unlimited","limited","restricted","partial"],
+["The sector has a shortage of __ workers to fill manual roles.","unskilled","skilled","senior","professional"],
+["The authority commissioned a study of __ planning challenges.","urban","rural","coastal","agricultural"],
+["The team will __ a method that has been validated in earlier studies.","use","avoid","reject","ignore"],
+["The data will be used to develop __ tools for classroom practitioners.","useful","basic","limited","general"],
+// V
+["The committee presented a __ argument that was difficult to counter.","valid","weak","flawed","partial"],
+["The archive provides __ resources that cannot be found elsewhere.","valuable","basic","limited","general"],
+["The research examined __ aspects of the relationship between poverty and health.","various","single","limited","basic"],
+["Outcomes __ considerably depending on the context in which the intervention is applied.","vary","remain","stay","hold"],
+["The policy had a __ effect across communities of different sizes.","varying","fixed","equal","stable"],
+["The organisation holds a __ amount of data on the spending habits of its customers.","vast","tiny","limited","fixed"],
+["The course covers both __ and written communication in academic contexts.","verbal","visual","digital","technical"],
+["The board members have a __ interest in the outcome of the decision.","vested","neutral","minor","limited"],
+["The university has created a __ community that spans three continents.","virtual","local","physical","regional"],
+["It is __ impossible to verify all sources in real time.","virtually","entirely","barely","slightly"],
+["The department produced a __ representation of the data to aid comprehension.","visual","written","verbal","oral"],
+["The protection of children is of __ importance to the authority.","vital","minor","equal","basic"],
+["The scheme was specifically designed to support __ groups at risk of exclusion.","vulnerable","privileged","dominant","powerful"],
+// W
+["The policy reform applies to all employees, not just those in senior roles.","welfare","tax","trade","health"],
+["She is __ aware of the risks and has taken steps to mitigate them.","well","barely","rarely","poorly"],
+["The country has a long tradition of __ democracy.","western","eastern","southern","northern"],
+["The analysis covers the __ period from 1850 to the present day.","whole","brief","recent","short"],
+["The organisation serves a __ range of clients across different sectors.","wide","narrow","limited","specific"],
+["The finding was __ accepted within months of publication.","widely","rarely","barely","locally"],
+["The initiative has attracted support from a __ audience.","wider","narrower","specific","local"],
+["The approach enjoys __ acceptance among practitioners in the field.","widespread","limited","local","partial"],
+["She continues to __ effectively despite limited resources.","work","fail","struggle","avoid"],
+["The policy was set out in a __ statement circulated before the meeting.","written","verbal","brief","informal"],
+// Y
+["The scheme is designed to engage the __ generation in civic life.","younger","older","current","previous"],
 ];
 
-let questions = [];
-let current = 0;
-let score = 0;
-let answered = false;
-let matchState = {};
+const MATCHES = [
+// A
+[["abstract","concept"],["academic","achievement"],["accept","responsibility"],["accurate","assessment"]],
+[["achieve","goal"],["acquire","knowledge"],["active","involvement"],["actively","involved"]],
+[["acutely","aware"],["add","information"],["additional","cost"],["address","issue"]],
+[["adopt","approach"],["advanced","economy"],["adverse","effect"],["adversely","affect"]],
+[["affect","outcome"],["allocate","resources"],["allow","access"],["almost","identical"]],
+[["ample","evidence"],["analytical","approach"],["anecdotal","evidence"],["annual","conference"]],
+[["apply","method"],["appropriate","action"],["armed","conflict"],["artificial","intelligence"]],
+[["assess","impact"],["associated","factors"],["assume","responsibility"],["attend","conference"]],
+[["available","data"],["average","score"],["background","knowledge"],["basic","assumption"]],
+// B
+[["bear","resemblance"],["become","apparent"],["beneficial","effect"],["best","described"]],
+[["binary","system"],["biological","evolution"],["brief","account"],["briefly","describe"]],
+[["broad","agreement"],["broader","context"],["broadly","defined"],["business","sector"]],
+// C
+[["capitalist","economy"],["career","development"],["careful","analysis"],["carefully","controlled"]],
+[["carry","information"],["carry out","research"],["cast","doubt"],["causal","link"]],
+[["central","concern"],["change","constantly"],["characteristic","feature"],["chemical","reaction"]],
+[["civil","society"],["class","consciousness"],["classic","example"],["clear","evidence"]],
+[["clearly","defined"],["climate","change"],["climatic","conditions"],["close","relationship"]],
+[["closely","linked"],["closer","examination"],["cognitive","ability"],["collaborative","learning"]],
+[["collect","data"],["collective","identity"],["combined","effect"],["come into","conflict"]],
+[["commercial","activity"],["commit","crime"],["common","assumption"],["commonly","accepted"]],
+[["communicate","effectively"],["comparative","analysis"],["compelling","argument"],["competitive","market"]],
+[["complete","task"],["complex","issue"],["comprehensive","account"],["conceptual","framework"]],
+[["concerted","effort"],["conduct","research"],["conflict","resolution"],["conflicting","interests"]],
+[["consider","possibility"],["considerable","attention"],["consistent","pattern"],["constant","rate"]],
+[["contain","information"],["contemporary","debate"],["contextual","factors"],["continued","growth"]],
+[["continuous","process"],["contribute","significantly"],["controversial","issue"],["conventional","view"]],
+[["convey","information"],["convincing","evidence"],["coping","strategy"],["core","skills"]],
+[["correct","interpretation"],["create","conditions"],["critical","analysis"],["critically","evaluate"]],
+[["crucial","factor"],["cultural","identity"],["current","policy"],["currently","available"]],
+// D
+[["daily","living"],["data","gathering"],["deal with","issue"],["deep","understanding"]],
+[["defining","feature"],["deliberate","attempt"],["democratic","process"],["demographic","change"]],
+[["demonstrate","competence"],["densely","populated"],["deny","access"],["dependent","variable"]],
+[["describe","process"],["desired","outcome"],["detailed","analysis"],["develop","strategy"]],
+[["developmental","stage"],["diagnostic","test"],["differ","significantly"],["digital","technology"]],
+[["direct","impact"],["directly","affected"],["disclose","information"],["discuss","issue"]],
+[["disposable","income"],["distinct","group"],["distinctive","feature"],["diverse","background"]],
+[["dividing","line"],["documentary","evidence"],["domestic","violence"],["dominant","culture"]],
+[["dramatic","change"],["draw","attention"],["draw","conclusion"],["driving","force"]],
+[["due","process"],["dynamic","system"],["early","decades"],["easily","accessible"]],
+// E
+[["easy","access"],["economic","growth"],["educational","system"],["effective","communication"]],
+[["electronic","access"],["emotional","impact"],["empirical","evidence"],["employ","method"]],
+[["employment","opportunities"],["encounter","difficulties"],["encourage","development"],["engage in","activity"]],
+[["enhance","learning"],["enormous","amount"],["entire","range"],["entirely","different"]],
+[["equal","access"],["equally","important"],["essential","element"],["establish","relationship"]],
+[["established","practice"],["ethical","principle"],["ethnic","community"],["ever","increasing"]],
+[["evolutionary","process"],["examine","role"],["exceptional","case"],["exercise","authority"]],
+[["existing","research"],["expand","rapidly"],["experience","difficulties"],["experimental","conditions"]],
+[["expert","opinion"],["explanatory","power"],["extended","period"],["extensive","research"]],
+[["extensively","used"],["external","factors"],["extract","data"],["extremely","complex"]],
+// F
+[["face","difficulties"],["facilitate","development"],["factual","information"],["fair","treatment"]],
+[["fairly","clear"],["fall into","category"],["far","removed"],["federal","government"]],
+[["field","research"],["final","outcome"],["financial","support"],["find","evidence"]],
+[["finite","number"],["firmly","established"],["first","impression"],["flexible","approach"]],
+[["focal","point"],["focus","attention"],["follow","procedure"],["foreign","investment"]],
+[["formal","structure"],["freely","available"],["frequently","cited"],["fulfil","obligation"]],
+[["full","potential"],["fully","aware"],["functional","requirement"],["fundamental","difference"]],
+[["further","analysis"],["future","research"],["gain","access"],["gather","data"]],
+// G
+[["gender","equality"],["general","consensus"],["generally","accepted"],["genetic","variation"]],
+[["geographic","area"],["give","feedback"],["give","guidance"],["global","economy"]],
+[["government","policy"],["graphical","representation"],["great","majority"],["greater","awareness"]],
+[["greatly","enhanced"],["growing","trend"],["guiding","principle"],["hardly","surprising"]],
+// H
+[["have","access"],["heated","debate"],["hierarchical","structure"],["high","level"]],
+[["highly","competitive"],["historical","analysis"],["holistic","approach"],["human","behavior"]],
+// I
+[["identify","factors"],["immediate","environment"],["impose","constraints"],["improved","performance"]],
+[["increase","awareness"],["increased","demand"],["increasingly","common"],["independent","variable"]],
+[["indigenous","people"],["individual","experience"],["industrial","development"],["infinite","number"]],
+[["information","flow"],["informed","consent"],["initial","stage"],["institutional","framework"]],
+[["integral","part"],["integrated","approach"],["intellectual","property"],["intensive","study"]],
+[["internal","conflict"],["international","agreement"],["internet","access"],["interpersonal","skills"]],
+[["intimate","relationship"],["intrinsic","value"],["introduce","legislation"],["key","factor"]],
+// K-L
+[["large","majority"],["largely","based"],["lead to","conclusion"],["leading","role"]],
+[["learning","difficulties"],["legal","framework"],["legislative","measures"],["lifelong","learning"]],
+[["limited","access"],["linear","relationship"],["literal","meaning"],["living","conditions"]],
+[["local","community"],["logical","argument"],["long","established"],["longitudinal","study"]],
+// M
+[["main","factor"],["maintain","contact"],["major","challenge"],["make","arrangements"]],
+[["media","coverage"],["medical","treatment"],["meet","criteria"],["mental","health"]],
+[["methodological","approach"],["military","action"],["minimum","wage"],["minor","change"]],
+[["missing","data"],["modern","technology"],["mutual","trust"],["mutually","exclusive"]],
+// N
+[["narrow","definition"],["national","policy"],["native","speaker"],["natural","resources"]],
+[["negative","impact"],["new","perspective"],["nuclear","energy"],["numerous","studies"]],
+// O
+[["objective","criteria"],["obtain","data"],["occur","frequently"],["official","statistics"]],
+[["ongoing","debate"],["online","access"],["open","access"],["optimal","solution"]],
+[["original","research"],["overall","effect"],["overwhelming","majority"],["paid","employment"]],
+// P
+[["particular","aspect"],["particularly","effective"],["past","research"],["peace","treaty"]],
+[["perceived","importance"],["personal","experience"],["physical","health"],["pilot","study"]],
+[["pioneering","work"],["pivotal","role"],["place","emphasis"],["planning","stage"]],
+[["plausible","explanation"],["play","role"],["political","context"],["pose","challenge"]],
+[["positive","outcome"],["positively","correlated"],["potential","benefits"],["powerful","influence"]],
+[["practical","consideration"],["precise","definition"],["preliminary","findings"],["present","evidence"]],
+[["previous","research"],["primarily","concerned"],["primary","aim"],["prime","example"]],
+[["prior","experience"],["private","sector"],["process","data"],["professional","development"]],
+[["profound","effect"],["prominent","role"],["promote","equality"],["provide","evidence"]],
+[["publicly","available"],["publish","research"],["qualitative","research"],["quantitative","analysis"]],
+// R
+[["racial","discrimination"],["radical","change"],["raise","awareness"],["random","sample"]],
+[["rapidly","changing"],["raw","data"],["reach","consensus"],["readily","available"]],
+[["recent","research"],["reciprocal","relationship"],["record","data"],["recurrent","theme"]],
+[["reduce","emissions"],["reflective","practice"],["regional","development"],["regulatory","framework"]],
+[["related","factor"],["relatively","common"],["relevant","data"],["reliable","information"]],
+[["religious","belief"],["rely","heavily"],["remain","constant"],["remarkably","similar"]],
+[["renewable","energy"],["renewed","interest"],["report","findings"],["representative","government"]],
+[["require","consideration"],["research","findings"],["resolve","conflict"],["respond","appropriately"]],
+[["rising","cost"],["risk","assessment"],["ruling","class"],["rural","community"]],
+// S
+[["scarce","resources"],["scholarly","journal"],["scientific","evidence"],["secondary","data"]],
+[["seek","information"],["seminal","study"],["separate","entity"],["serious","challenge"]],
+[["set","goal"],["set","agenda"],["share","information"],["sharp","contrast"]],
+[["shift","emphasis"],["significant","change"],["significantly","higher"],["similar","approach"]],
+[["single","source"],["skilled","worker"],["social","inequality"],["socioeconomic","status"]],
+[["solar","energy"],["sovereign","state"],["special","circumstances"],["specific","context"]],
+[["standard","approach"],["stark","contrast"],["statistical","analysis"],["statistically","significant"]],
+[["store","data"],["strategic","decision"],["strong","evidence"],["strongly","suggest"]],
+[["structural","change"],["subsequent","chapter"],["substantial","evidence"],["successful","implementation"]],
+[["sufficient","evidence"],["support","argument"],["supporting","evidence"],["survey","data"]],
+[["symbiotic","relationship"],["systematic","approach"],["tacit","knowledge"],["take","initiative"]],
+// T
+[["target","audience"],["teaching","strategy"],["technical","knowledge"],["technological","development"]],
+[["test","theory"],["thematic","analysis"],["theoretical","framework"],["traditional","approach"]],
+[["transferable","skill"],["transmit","data"],["transport","system"],["typical","example"]],
+// U
+[["ultimate","goal"],["underlying","assumption"],["undertake","research"],["unequal","power"]],
+[["unique","opportunity"],["universally","accepted"],["unlimited","access"],["urban","development"]],
+// V
+[["valid","argument"],["valuable","resources"],["vary","considerably"],["vast","majority"]],
+[["verbal","communication"],["vested","interest"],["virtual","community"],["vital","role"]],
+[["vulnerable","group"],["well","established"],["widespread","acceptance"],["younger","generation"]],
+];
 
-function shuffle(arr) { return [...arr].sort(() => Math.random() - 0.5); }
+// ================================================================
+// Quiz engine
+// ================================================================
+let mode='mixed', rangeKey='all', questions=[], current=0, score=0, answered=false, matchState={};
+const QUIZ_SIZE=20;
 
-function init() {
-  const fills = shuffle(ALL_QUESTIONS.filter(q => q.type === 'fill')).slice(0, 6);
-  const matches = shuffle(ALL_QUESTIONS.filter(q => q.type === 'match')).slice(0, 4);
-  questions = shuffle([...fills, ...matches]);
-  current = 0; score = 0; answered = false; matchState = {};
-  render();
+const RANGES={
+  all:{label:'전체 A–Z',fills:()=>FILLS,matches:()=>MATCHES},
+  ag:{label:'A–G',fills:()=>FILLS.filter(f=>f[1][0]<='g'),matches:()=>MATCHES.filter(m=>m[0][0][0]<='g')},
+  hm:{label:'H–M',fills:()=>FILLS.filter(f=>f[1][0]>='h'&&f[1][0]<='m'),matches:()=>MATCHES.filter(m=>m[0][0][0]>='h'&&m[0][0][0]<='m')},
+  nz:{label:'N–Z',fills:()=>FILLS.filter(f=>f[1][0]>='n'),matches:()=>MATCHES.filter(m=>m[0][0][0]>='n')},
+};
+
+function shuffle(a){return[...a].sort(()=>Math.random()-.5);}
+
+function buildQ(){
+  const F=shuffle(RANGES[rangeKey].fills());
+  const M=shuffle(RANGES[rangeKey].matches());
+  if(mode==='fill') return F.slice(0,QUIZ_SIZE).map(f=>({type:'fill',sentence:f[0],answer:f[1],options:shuffle([f[1],f[2],f[3],f[4]])}));
+  if(mode==='match') return M.slice(0,QUIZ_SIZE).map(m=>({type:'match',pairs:m}));
+  const fills=F.slice(0,12).map(f=>({type:'fill',sentence:f[0],answer:f[1],options:shuffle([f[1],f[2],f[3],f[4]])}));
+  const matches=M.slice(0,8).map(m=>({type:'match',pairs:m}));
+  return shuffle([...fills,...matches]);
 }
 
-function render() {
-  const app = document.getElementById('app');
-  if (current >= questions.length) { renderFinal(app); return; }
+function home(){
+  const rng=RANGES[rangeKey];
+  const fCount=rng.fills().length, mCount=rng.matches().reduce((a,b)=>a+b.length,0);
+  document.getElementById('app').innerHTML=`
+    <div class="mode-wrap">
+      ${[['fill','✏️','빈칸 채우기'],['match','🔗','매칭하기'],['mixed','🎲','혼합']].map(([k,i,l])=>`
+        <button class="mode-btn${mode===k?' active':''}" onclick="setMode('${k}')">
+          <span class="mi">${i}</span>${l}<br>
+          <span style="font-size:11px;color:var(--text-faint)">${k==='fill'?`빈칸 ${QUIZ_SIZE}문제`:k==='match'?`매칭 ${QUIZ_SIZE}문제`:'빈칸12+매칭8'}</span>
+        </button>`).join('')}
+    </div>
+    <div style="font-size:12px;color:var(--text-faint);margin-bottom:8px;text-align:center">범위 선택</div>
+    <div class="range-wrap">
+      ${Object.entries(RANGES).map(([k,v])=>`
+        <button class="range-btn${rangeKey===k?' active':''}" onclick="setRange('${k}')">${v.label}</button>`).join('')}
+    </div>
+    <button class="start-btn" onclick="start()">퀴즈 시작하기 →</button>
+    <p class="count-info">현재 범위: ${rng.label} · 빈칸 ${fCount}문항 + 매칭 ${mCount}쌍 수록</p>`;
+}
 
-  const q = questions[current];
-  const prog = Math.round((current / questions.length) * 100);
+function setMode(m){mode=m;home();}
+function setRange(r){rangeKey=r;home();}
 
-  let html = `
-    <div class="progress-wrap">
-      <div class="progress-track"><div class="progress-fill" style="width:${prog}%"></div></div>
-      <span class="progress-text">${current + 1} / ${questions.length}</span>
-      <span class="score-badge">✦ ${score}</span>
-    </div>`;
+function start(){
+  questions=buildQ();current=0;score=0;answered=false;matchState={};render();
+}
 
-  if (q.type === 'fill') {
-    const disp = q.sentence.replace('__', `<span class="blank" id="blank-slot">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>`);
-    const opts = shuffle(q.options);
-    html += `<div class="q-card">
+function nBtn(){const l=current+1<questions.length?'다음 문제 →':'결과 보기 →';return`<button class="next-btn" onclick="nxt()">${l}</button>`;}
+
+function render(){
+  const app=document.getElementById('app');
+  if(current>=questions.length){fin(app);return;}
+  const q=questions[current];
+  const prog=Math.round(current/questions.length*100);
+  let h=`<div class="progress-wrap">
+    <div class="progress-track"><div class="progress-fill" style="width:${prog}%"></div></div>
+    <span class="progress-text">${current+1}/${questions.length}</span>
+    <span class="score-badge">✦ ${score}</span>
+  </div>`;
+  if(q.type==='fill'){
+    const disp=q.sentence.replace('__',`<span class="blank" id="bl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>`);
+    h+=`<div class="q-card">
       <div class="q-type-badge">빈칸 채우기</div>
       <div class="q-text">${disp}</div>
-      <div class="options" id="opts">
-        ${opts.map(o => `<button class="opt-btn" onclick="checkFill('${o}')">${o}</button>`).join('')}
-      </div>
+      <div class="options">${q.options.map(o=>`<button class="opt-btn" onclick="chkF(this,'${esc(o)}','${esc(q.answer)}')">${o}</button>`).join('')}</div>
       <div id="fb"></div>
     </div>`;
+    if(!answered)h+=`<p class="hint">알맞은 단어를 선택하세요</p>`;
   } else {
-    const lefts = shuffle(q.pairs.map(p => p[0]));
-    const rights = shuffle(q.pairs.map(p => p[1]));
-    matchState = { pairs: q.pairs, lefts, rights, selectedLeft: null, matched: [], totalCorrect: q.pairs.length };
-    html += `<div class="q-card">
-      <div class="q-type-badge">매칭하기 — 왼쪽 선택 후 오른쪽 선택</div>
+    const ls=shuffle(q.pairs.map(p=>p[0]));
+    const rs=shuffle(q.pairs.map(p=>p[1]));
+    matchState={pairs:q.pairs,ls,rs,sel:null,matched:[],total:q.pairs.length};
+    h+=`<div class="q-card">
+      <div class="q-type-badge">매칭하기 — 왼쪽 선택 → 오른쪽 선택</div>
       <div class="match-grid">
-        <div>
-          <div class="match-col-label">단어 1</div>
-          <div class="match-items" id="left-col">
-            ${lefts.map(l => `<div class="match-item" id="L_${l}" onclick="selectLeft('${l}')">${l}</div>`).join('')}
-          </div>
-        </div>
-        <div>
-          <div class="match-col-label">단어 2</div>
-          <div class="match-items" id="right-col">
-            ${rights.map(r => `<div class="match-item" id="R_${r}" onclick="selectRight('${r}')">${r}</div>`).join('')}
-          </div>
-        </div>
+        <div><div class="match-col-label">단어 1</div><div class="match-items">${ls.map(l=>`<div class="match-item" id="L${ei(l)}" onclick="selL('${esc(l)}')">${l}</div>`).join('')}</div></div>
+        <div><div class="match-col-label">단어 2</div><div class="match-items">${rs.map(r=>`<div class="match-item" id="R${ei(r)}" onclick="selR('${esc(r)}')">${r}</div>`).join('')}</div></div>
       </div>
       <div id="fb"></div>
     </div>`;
+    if(!answered)h+=`<p class="hint">왼쪽 클릭 → 오른쪽 클릭</p>`;
   }
-
-  if (answered) {
-    html += `<button class="next-btn" onclick="next()">${current + 1 < questions.length ? '다음 문제 →' : '결과 보기 →'}</button>`;
-  } else if (q.type === 'fill') {
-    html += `<p class="hint">보기 중 알맞은 단어를 선택하세요</p>`;
-  } else {
-    html += `<p class="hint">왼쪽 단어를 먼저 클릭한 뒤 오른쪽 단어를 클릭하세요</p>`;
-  }
-
-  app.innerHTML = html;
+  if(answered)h+=nBtn();
+  app.innerHTML=h;
 }
 
-function checkFill(chosen) {
-  if (answered) return;
-  answered = true;
-  const q = questions[current];
-  document.querySelectorAll('.opt-btn').forEach(b => {
-    b.disabled = true;
-    if (b.textContent === q.answer) b.classList.add('correct');
-    else if (b.textContent === chosen) b.classList.add('wrong');
+function esc(s){return s.replace(/'/g,"\\'");}
+function ei(s){return s.replace(/[^a-zA-Z0-9]/g,'_');}
+
+function chkF(btn,chosen,answer){
+  if(answered)return;
+  answered=true;
+  document.querySelectorAll('.opt-btn').forEach(b=>{
+    b.disabled=true;
+    const t=b.textContent.trim();
+    if(t===answer)b.classList.add('correct');
+    else if(t===chosen)b.classList.add('wrong');
   });
-  const slot = document.getElementById('blank-slot');
-  if (slot) slot.textContent = q.answer;
-  const fb = document.getElementById('fb');
-  if (chosen === q.answer) {
-    score++;
-    fb.innerHTML = `<div class="feedback ok">✓ 정답이에요! <strong>${q.answer}</strong>가 맞습니다.</div>`;
-  } else {
-    fb.innerHTML = `<div class="feedback no">✗ 틀렸어요. 정답은 <strong>${q.answer}</strong> 입니다.</div>`;
-  }
-  const nextLabel = current + 1 < questions.length ? '다음 문제 →' : '결과 보기 →';
-  document.getElementById('app').insertAdjacentHTML('beforeend', `<button class="next-btn" onclick="next()">${nextLabel}</button>`);
+  const bl=document.getElementById('bl');
+  if(bl)bl.textContent=answer;
+  const fb=document.getElementById('fb');
+  if(chosen===answer){score++;fb.innerHTML=`<div class="feedback ok">✓ 정답! <strong>${answer}</strong></div>`;}
+  else{fb.innerHTML=`<div class="feedback no">✗ 오답. 정답: <strong>${answer}</strong></div>`;}
+  document.getElementById('app').insertAdjacentHTML('beforeend',nBtn());
 }
 
-function selectLeft(word) {
-  if (matchState.matched.includes(word)) return;
-  matchState.selectedLeft = word;
-  matchState.lefts.forEach(l => {
-    const el = document.getElementById('L_' + l);
-    if (!el) return;
-    if (matchState.matched.includes(l)) { el.className = 'match-item matched'; return; }
-    el.className = l === word ? 'match-item selected' : 'match-item';
+function selL(w){
+  if(matchState.matched.includes(w))return;
+  matchState.sel=w;
+  matchState.ls.forEach(l=>{
+    const el=document.getElementById('L'+ei(l));
+    if(!el)return;
+    if(matchState.matched.includes(l)){el.className='match-item matched';return;}
+    el.className=l===w?'match-item selected':'match-item';
   });
 }
 
-function selectRight(word) {
-  if (!matchState.selectedLeft) return;
-  if (matchState.matched.includes(word)) return;
-  const left = matchState.selectedLeft;
-  const correctRight = matchState.pairs.find(p => p[0] === left)?.[1];
-  const lel = document.getElementById('L_' + left);
-  const rel = document.getElementById('R_' + word);
-
-  if (word === correctRight) {
+function selR(w){
+  if(!matchState.sel)return;
+  if(matchState.matched.includes(w))return;
+  const left=matchState.sel;
+  const correct=matchState.pairs.find(p=>p[0]===left)?.[1];
+  const lel=document.getElementById('L'+ei(left));
+  const rel=document.getElementById('R'+ei(w));
+  if(w===correct){
     matchState.matched.push(left);
-    if (lel) lel.className = 'match-item matched';
-    if (rel) rel.className = 'match-item matched';
-    matchState.selectedLeft = null;
-    if (matchState.matched.length === matchState.totalCorrect) {
+    if(lel)lel.className='match-item matched';
+    if(rel)rel.className='match-item matched';
+    matchState.sel=null;
+    if(matchState.matched.length===matchState.total){
       score++;
-      const fb = document.getElementById('fb');
-      if (fb) fb.innerHTML = `<div class="feedback ok" style="margin-top:12px">✓ 모두 맞았어요! 완벽합니다.</div>`;
-      answered = true;
-      const nextLabel = current + 1 < questions.length ? '다음 문제 →' : '결과 보기 →';
-      document.getElementById('app').insertAdjacentHTML('beforeend', `<button class="next-btn" onclick="next()">${nextLabel}</button>`);
+      const fb=document.getElementById('fb');
+      if(fb)fb.innerHTML=`<div class="feedback ok" style="margin-top:10px">✓ 모두 정답!</div>`;
+      answered=true;
+      document.getElementById('app').insertAdjacentHTML('beforeend',nBtn());
     }
   } else {
-    if (lel) { lel.className = 'match-item wrong-flash'; setTimeout(() => { if (!matchState.matched.includes(left) && lel) lel.className = 'match-item'; }, 500); }
-    if (rel) { rel.className = 'match-item wrong-flash'; setTimeout(() => { if (!matchState.matched.includes(word) && rel) rel.className = 'match-item'; }, 500); }
-    matchState.selectedLeft = null;
-    matchState.lefts.forEach(l => {
-      const el = document.getElementById('L_' + l);
-      if (el && !matchState.matched.includes(l)) el.className = 'match-item';
-    });
+    if(lel){lel.className='match-item wrong-flash';setTimeout(()=>{if(!matchState.matched.includes(left)&&lel)lel.className='match-item';},500);}
+    if(rel){rel.className='match-item wrong-flash';setTimeout(()=>{if(!matchState.matched.includes(w)&&rel)rel.className='match-item';},500);}
+    matchState.sel=null;
+    matchState.ls.forEach(l=>{const el=document.getElementById('L'+ei(l));if(el&&!matchState.matched.includes(l))el.className='match-item';});
   }
 }
 
-function next() {
-  current++;
-  answered = false;
-  matchState = {};
-  render();
-}
+function nxt(){current++;answered=false;matchState={};render();}
 
-function renderFinal(app) {
-  const pct = Math.round((score / questions.length) * 100);
-  let stars = '★★★★★';
-  let msg = '';
-  if (pct >= 90) { stars = '★★★★★'; msg = '완벽해요! 콜로케이션 마스터!'; }
-  else if (pct >= 70) { stars = '★★★★☆'; msg = '훌륭해요! 거의 다 맞았네요.'; }
-  else if (pct >= 50) { stars = '★★★☆☆'; msg = '잘 했어요! 조금만 더 연습해봐요.'; }
-  else { stars = '★★☆☆☆'; msg = '계속 연습하면 늘어요! 파이팅!'; }
-  app.innerHTML = `
+function fin(app){
+  const pct=Math.round(score/questions.length*100);
+  let stars='',msg='';
+  if(pct>=90){stars='★★★★★';msg='완벽해요! 콜로케이션 마스터! 🎉';}
+  else if(pct>=70){stars='★★★★☆';msg='훌륭해요! 거의 다 맞았네요.';}
+  else if(pct>=50){stars='★★★☆☆';msg='좋아요! 조금 더 연습해봐요.';}
+  else{stars='★★☆☆☆';msg='계속 하면 늘어요! 파이팅! 💪';}
+  app.innerHTML=`
     <div class="final-card">
       <div class="final-stars">${stars}</div>
-      <div class="final-score-wrap">
-        <span class="final-score">${score}</span>
-        <span class="final-denom"> / ${questions.length}</span>
-      </div>
+      <div style="margin-bottom:.75rem"><span class="final-score">${score}</span><span class="final-denom"> / ${questions.length}</span></div>
       <div class="final-msg">${msg}</div>
       <div class="final-pct">정답률 ${pct}%</div>
-      <button class="restart-btn" onclick="init()">다시 풀기 ↺</button>
+      <div class="stats-row">
+        <div class="stat-box"><div class="stat-num" style="color:var(--green)">${score}</div><div class="stat-label">정답</div></div>
+        <div class="stat-box"><div class="stat-num" style="color:var(--red)">${questions.length-score}</div><div class="stat-label">오답</div></div>
+        <div class="stat-box"><div class="stat-num">${pct}%</div><div class="stat-label">정답률</div></div>
+      </div>
+      <div class="final-btns">
+        <button class="home-btn" onclick="home()">← 홈으로</button>
+        <button class="restart-btn" onclick="start()">다시 풀기 ↺</button>
+      </div>
     </div>`;
 }
 
-init();
+home();
 </script>
 </body>
 </html>
